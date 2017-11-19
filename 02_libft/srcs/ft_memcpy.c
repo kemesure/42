@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 11:37:29 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/19 02:12:28 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 14:41:28 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char	*ptr1;
 	char	*ptr2;
 
+	if (src == dest)
+		return (dest);
 	i = 0;
 	ptr1 = dest;
 	ptr2 = (char *)src;

@@ -6,15 +6,15 @@
 #    By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/19 01:56:29 by kemesure          #+#    #+#              #
-#    Updated: 2017/11/19 02:13:20 by kemesure         ###   ########.fr        #
+#    Updated: 2017/11/19 14:28:14 by kemesure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = memcpy
 
-SRC = ./srcs/ft_memcpy.c ./srcs/main_memcpy.c
+SRC = ./srcs/ft_memcpy.c ./srcs/main.c
 
-HEADER = ./includes/libft.h
+HEADER = ./includes/
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -24,7 +24,7 @@ GCH = ./includes/libft.h.gch
 
 all: $(NAME)
 $(NAME):
-	gcc $(FLAGS) $(OPT) $(NAME) $(HEADER) $(SRC)
+	gcc $(FLAGS) $(SRC) $(OPT) $(NAME) -I $(HEADER)
 
 clean:
 	/bin/rm -f $(GCH)
