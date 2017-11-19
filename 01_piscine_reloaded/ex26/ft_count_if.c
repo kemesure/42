@@ -6,11 +6,11 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 19:22:57 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/19 17:05:59 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 18:44:54 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_count_if(char **tab, int(*f)(char*))
+int		ft_count_if(char **tab, int (*f)(char*))
 {
 	int		count;
 	int		i;

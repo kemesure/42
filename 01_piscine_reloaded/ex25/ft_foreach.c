@@ -6,11 +6,11 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:33:03 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/19 16:43:07 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 18:41:37 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_foreach(int *tab, int lenght, void(*f)(int))
+void	ft_foreach(int *tab, int lenght, void (*f)(int))
 {
 	int		i;
 

@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 16:46:49 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/19 17:03:32 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 18:45:20 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int		main(int argc, char **argv)
 {
 	(void)argc;
 	printf("%d\n", ft_count_if(argv, &ft_strlen));
-	return 0;
+	return (0);
 }

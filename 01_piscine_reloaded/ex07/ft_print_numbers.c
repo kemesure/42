@@ -1,11 +1,23 @@
-void	ft_putchar(char);
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/19 14:04:28 by kemesure          #+#    #+#             */
+/*   Updated: 2017/11/19 17:45:02 by kemesure         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_putchar(char c);
 
 void	ft_print_numbers(void)
 {
 	char	nb;
 
 	nb = '0';
-	while(nb <= '9')
+	while (nb <= '9')
 	{
 		ft_putchar(nb);
 		nb++;

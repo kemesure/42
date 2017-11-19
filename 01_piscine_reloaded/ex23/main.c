@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 23:57:08 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/16 01:00:46 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 18:29:58 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	set_point(t_point *point)
 	point->y = 21;
 }
 
-int		main()
+int		main(void)
 {
 	t_point		point;
 

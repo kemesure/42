@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 15:35:40 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/19 16:56:05 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 18:04:15 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int		ft_strlen(char *str)
 	int		i;
 
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 		i++;
-	return i;
+	return (i);
 }

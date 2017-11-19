@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/19 14:04:28 by kemesure          #+#    #+#             */
+/*   Updated: 2017/11/19 17:59:32 by kemesure         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
-int	ft_iterative_factorial(int nb);
+int		ft_iterative_factorial(int nb);
 
-int	main()
+int		main(void)
 {
 	printf("-2147483649! = %d\n", ft_recursive_factorial(-2147483649));
 	printf("-2147483648! = %d\n", ft_recursive_factorial(-2147483648));
@@ -28,4 +40,5 @@ int	main()
 	printf("2147483647! = %d\n", ft_recursive_factorial(2147483647));
 	printf("2147483648! = %d\n", ft_recursive_factorial(2147483648));
 	printf("2147483649! = %d\n", ft_recursive_factorial(2147483649));
+	return (0);
 }

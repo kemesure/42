@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/19 14:04:28 by kemesure          #+#    #+#             */
+/*   Updated: 2017/11/19 17:52:42 by kemesure         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
-void	ft_ft(int *);
+void	ft_ft(int *nbr);
 
-int	main()
+int		main(void)
 {
 	int	nbr;
 
@@ -10,5 +22,5 @@ int	main()
 	printf("%d\n", nbr);
 	ft_ft(&nbr);
 	printf("%d\n", nbr);
-	return 0;
+	return (0);
 }

@@ -6,12 +6,12 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 02:29:29 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/16 02:32:40 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 18:38:41 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __HEADER_H__
-# define __HEADER_H__
+#ifndef HEADER_H
+# define HEADER_H
 
 void	ft_putchar(char c);
 void	ft_putstr(char *str);

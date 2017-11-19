@@ -6,12 +6,12 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 21:52:10 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/15 23:01:49 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 18:25:47 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __FT_ABS_H__
-# define __FT_ABS_H__
+#ifndef FT_ABS_H
+# define FT_ABS_H
 
 # define ABS(Value) (Value > 0 ? Value : -Value)
 

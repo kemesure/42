@@ -1,8 +1,20 @@
-void	ft_putchar(char);
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_negative.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/19 14:04:28 by kemesure          #+#    #+#             */
+/*   Updated: 2017/11/19 17:47:32 by kemesure         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_putchar(char c);
 
 void	ft_is_negative(int n)
 {
-	if(n < 0)
+	if (n < 0)
 		ft_putchar('N');
 	else
 		ft_putchar('P');

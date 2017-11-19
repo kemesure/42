@@ -6,13 +6,14 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 15:08:31 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/19 15:13:54 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 18:02:29 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putstr(char *str);
 
-int		main()
+int		main(void)
 {
 	ft_putstr("coucou\n");
+	return (0);
 }

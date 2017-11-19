@@ -1,11 +1,23 @@
-void	ft_putchar(char);
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/19 14:04:28 by kemesure          #+#    #+#             */
+/*   Updated: 2017/11/19 17:36:00 by kemesure         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_putchar(char c);
 
 void	ft_print_alphabet(void)
 {
 	char	c;
 
 	c = 'a';
-	while(c <= 'z')
+	while (c <= 'z')
 	{
 		ft_putchar(c);
 		c++;

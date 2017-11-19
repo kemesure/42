@@ -6,9 +6,10 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 14:41:05 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/11 16:00:59 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 18:03:18 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 void	ft_putchar(char c);
 
 void	ft_putstr(char *str)
@@ -16,7 +17,7 @@ void	ft_putstr(char *str)
 	int		i;
 
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
 		ft_putchar(str[i]);
 		i++;

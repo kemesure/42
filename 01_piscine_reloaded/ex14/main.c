@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/19 14:04:28 by kemesure          #+#    #+#             */
+/*   Updated: 2017/11/19 18:01:18 by kemesure         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
-int	ft_sqrt(int nb);
+int		ft_sqrt(int nb);
 
-int	main()
+int		main(void)
 {
 	printf("sqrt(-4)          = %d\n", ft_sqrt(-4));
 	printf("sqrt(-1)          = %d\n", ft_sqrt(-1));
@@ -19,4 +31,5 @@ int	main()
 	printf("sqrt(100)         = %d\n", ft_sqrt(100));
 	printf("sqrt(2147395600)  = %d\n", ft_sqrt(2147395600));
 	printf("sqrt(2147488281)  = %d\n", ft_sqrt(2147488281));
+	return (0);
 }
