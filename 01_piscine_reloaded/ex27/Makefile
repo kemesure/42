@@ -6,7 +6,7 @@
 #    By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 21:37:26 by kemesure          #+#    #+#              #
-#    Updated: 2017/11/17 02:10:44 by kemesure         ###   ########.fr        #
+#    Updated: 2017/11/19 17:19:37 by kemesure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = ft_display_file
 
 SRC = main.c ft_display_file.c
 
-HEADER = ft_display_file.h
+HEADER = .
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -24,7 +24,7 @@ DEL = main.o ft_display_file.o ft_display_file.h.gch
 
 all: $(NAME)
 $(NAME):
-	gcc $(FLAGS) $(OPT) $(NAME) $(SRC) $(HEADER)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(NAME) $(SRC)
 
 clean:
 	/bin/rm -f $(DEL)

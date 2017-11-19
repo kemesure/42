@@ -6,13 +6,13 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 14:51:30 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/12 16:38:00 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 15:31:51 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putchar(char c);
 
-void	ft_print_params(int argc, char *argv[])
+void	ft_print_params(int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -31,7 +31,7 @@ void	ft_print_params(int argc, char *argv[])
 	}
 }
 
-int		main(int argc, char *argv[])
+int		main(int argc, char **argv)
 {
 	ft_print_params(argc, argv);
 	return (0);

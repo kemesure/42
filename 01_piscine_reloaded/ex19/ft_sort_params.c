@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 16:19:03 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/12 18:39:07 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 15:41:10 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	ft_print_params(int argc, char *argv[])
+void	ft_print_params(int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -44,7 +44,6 @@ void	ft_print_params(int argc, char *argv[])
 void	ft_sort_params(int argc, char *argv[])
 {
 	int		i;
-	int		j;
 	char	*swap;
 
 	i = 1;

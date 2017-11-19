@@ -5,31 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 01:25:53 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/19 17:14:07 by kemesure         ###   ########.fr       */
+/*   Created: 2017/11/19 16:46:49 by kemesure          #+#    #+#             */
+/*   Updated: 2017/11/19 17:03:32 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_display_file.h"
-
-void	ft_display_file(int fd);
+int		ft_count_if(char **tab, int(*f)(char*));
+int		ft_strlen(char *str);
 
 int		main(int argc, char **argv)
 {
-	int		fd;
-	int		ret;
-
-	ret = -1;
-	if (argc == 1)
-		write(1, "File name missing.\n", 19);
-	else if (argc > 2)
-		write(1, "Too many arguments.\n", 20);
-	else
-	{
-		fd = open(argv[1], O_RDONLY);
-		ft_display_file(fd);
-		close(fd);
-		ret = 0;
-	}
-	return (ret);
+	(void)argc;
+	printf("%d\n", ft_count_if(argv, &ft_strlen));
+	return 0;
 }

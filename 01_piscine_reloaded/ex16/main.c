@@ -5,31 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 01:25:53 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/19 17:14:07 by kemesure         ###   ########.fr       */
+/*   Created: 2017/11/19 15:15:23 by kemesure          #+#    #+#             */
+/*   Updated: 2017/11/19 15:22:16 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_display_file.h"
+#include <string.h>
 
-void	ft_display_file(int fd);
+int		ft_strlen(char *str);
 
-int		main(int argc, char **argv)
+int		main()
 {
-	int		fd;
-	int		ret;
-
-	ret = -1;
-	if (argc == 1)
-		write(1, "File name missing.\n", 19);
-	else if (argc > 2)
-		write(1, "Too many arguments.\n", 20);
-	else
-	{
-		fd = open(argv[1], O_RDONLY);
-		ft_display_file(fd);
-		close(fd);
-		ret = 0;
-	}
-	return (ret);
+	printf("   strlen : %d\n", strlen("bonjour\n"));
+	printf("ft_strlen : %d\n", ft_strlen("bonjour\n"));
+	return (0);
 }

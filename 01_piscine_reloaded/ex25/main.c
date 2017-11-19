@@ -6,11 +6,9 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:34:02 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/16 19:05:59 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 16:41:50 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-typedef		void (*ptrfct)(char);
 
 void	ft_putnbr(int nb);
 void	ft_foreach(int *tab, int lenght, void(*f)(int));

@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 19:22:57 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/16 20:59:13 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 17:05:59 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_count_if(char **tab, int(*f)(char*))
 	i = 0;
 	while (tab[i])
 	{
-		if (f(tab[i]))
+		if (f(tab[i]) == 1)
 			count++;
 		i++;
 	}
