@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 01:25:53 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/19 19:11:20 by kemesure         ###   ########.fr       */
+/*   Created: 2017/11/19 14:04:28 by kemesure          #+#    #+#             */
+/*   Updated: 2017/11/21 09:42:37 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_display_file.h"
+/*
+** RETIRER LES DEUX PREMIERS INCLUDES
+*/
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-int		main(int argc, char **argv)
+char	*ft_strdup(char *src)
 {
-	int		fd;
-	int		ret;
+	char	*dest;
+	int		i;
 
-	ret = -1;
-	if (argc == 1)
-		write(1, "File name missing.\n", 19);
-	else if (argc > 2)
-		write(1, "Too many arguments.\n", 20);
-	else
+	i = 0;
+	dest = (char *)malloc(sizeof(*src));
+	while (src[i])
 	{
-		fd = open(argv[1], O_RDONLY);
-		ft_display_file(fd);
-		close(fd);
-		ret = 0;
+		dest[i] = src[i];
+		i++;
 	}
-	return (ret);
+	dest[i] = '\0';
+	return (dest);
+}
+
+int		main(void)
+{
+	printf("   strdup : %s\n", strdup("Bonjour"));
+	printf("ft_strdup : %s\n", ft_strdup("Bonjour"));
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 21:36:22 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/19 18:46:56 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/19 19:11:30 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <unistd.h>
+
+void	ft_display_file(int fd);
 
 #endif
