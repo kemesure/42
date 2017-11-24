@@ -6,12 +6,12 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:11:57 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/19 02:12:37 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/23 17:13:21 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __LIBFT_H__
-# define __LIBFT_H__
+#ifndef LIBFT_H
+# define LIBFT_H
 
 #include <string.h>	/* pour mem* et str*	*/
 #include <stdlib.h>	/* pour atoi 			*/
@@ -31,16 +31,16 @@ char	*ft_strncpy(char *dest, const char *src, size_t n);
 char	*ft_strcat(char *dest, const char *src);
 char	*ft_strncat(char *dest, const char *src, size_t n);
 /*
-**	PAS DE MAN
-**	size_t	ft_strlcat(char *dest, const char *src, size_t n);
+**	PAS DE MAN STRLCAT
 */
+size_t	ft_strlcat(char *dest, const char *src, size_t n);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*strstr(const char *haystack, const char *needle);
 /*
-**	PAS DE MAN
-**	char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
+**	PAS DE MAN STRNSTR
 */
+char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 

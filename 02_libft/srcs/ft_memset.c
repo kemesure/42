@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/19 14:04:28 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/23 17:29:30 by kemesure         ###   ########.fr       */
+/*   Created: 2017/11/24 16:03:19 by kemesure          #+#    #+#             */
+/*   Updated: 2017/11/24 19:33:29 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "../includes/libft.h"
 
-char	*ft_strdup(const char *src)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	char	*dest;
 	int		i;
+	char	*ptr;
 
 	i = 0;
-	dest = (char *)malloc(sizeof(*src));
-	while (src[i])
+	s = (char *)malloc(n);
+	ptr = s;
+	while (n + 1 != 0)
 	{
-		dest[i] = src[i];
-		i++;
+		ptr[i] = c;
+		n--;
 	}
-	dest[i] = '\0';
-	return (dest);
 }
 
 int		main(void)
 {
-	printf("   strdup : %s\n",    strdup("Bonjour"));
-	printf("ft_strdup : %s\n", ft_strdup("Bonjour"));
+	char	*s;
+
+	s = (char *)malloc(42);
+	strcpy(src, "bonjour");
+	printf("   memset(\"bonjour\", 110, 4) : \"%s\"\n", s,    memset(s, 110, 4));
+	printf("ft_memset(\"bonjour\", 110, 4) : \"%s\"\n", s, ft_memset(s, 110, 4));
 	return (0);
 }
