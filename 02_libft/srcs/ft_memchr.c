@@ -1,48 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/24 16:03:19 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/25 13:51:48 by kemesure         ###   ########.fr       */
+/*   Created: 2017/11/25 14:44:08 by kemesure          #+#    #+#             */
+/*   Updated: 2017/11/25 15:11:00 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "../includes/libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int		i;
+	size_t	i;
 	char	*ptr;
 
 	i = 0;
-	ptr = b;
-	while (len != 0)
+	ptr = (char *)s;
+	while (ptr[i] && n != 0)
 	{
-		ptr[i] = c;
-		len--;
+		if (ptr[i] == c)
+			return (ptr + i);
 		i++;
+		n--;
 	}
-	return (b);
+	return (NULL);
 }
 
 int		main(void)
 {
-	char	*b1;
-	char	*b2;
+	char	*s1;
+	char	*s2;
 	int		c;
-	size_t	len;
+	size_t	n;
 
-	b1 = (char *)malloc(42);
-	b2 = (char *)malloc(42);
-	c = 'b';
-	len = 3;
-	strcpy(b1, "bonjour");
-	strcpy(b2, "bonjour");
-	printf("   memset(\"%s\", 110, 4) : \"%s\"\n", b1, (char *)   memset(b1, c, len));
-	printf("ft_memset(\"%s\", 110, 4) : \"%s\"\n", b2, (char *)ft_memset(b2, c, len));
+	s1 = (char *)malloc(42);
+	s2 = (char *)malloc(42);
+	c = 'n';
+	n = 3;
+	strcpy(s1, "bonjour");
+	strcpy(s2, "bonjour");
+	printf("   memchr : \"%s\"\n", (char *)   memchr(s1, c, n));
+	printf("        s = \"%s\"\n", s1);
+	printf("ft_memchr : \"%s\"\n", (char *)ft_memchr(s2, c, n));
+	printf("        s = \"%s\"\n", s2);
 	return (0);
 }

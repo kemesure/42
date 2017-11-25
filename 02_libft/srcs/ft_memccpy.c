@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:52:27 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/24 23:27:20 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/25 14:14:05 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,37 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 
 int		main(void)
 {
-	char	*dest;
+	char	*dest1;
+	char	*dest2;
+	char	*dest3;
+	char	*dest4;
+	char	*dest5;
+	char	*dest6;
 	char	*src;
 	size_t	n;
 
 	src  = malloc(42);
-	dest = (char *)malloc(42);
+	dest1 = (char *)malloc(42);
+	dest2 = (char *)malloc(42);
+	dest3 = (char *)malloc(42);
+	dest4 = (char *)malloc(42);
+	dest5 = (char *)malloc(42);
+	dest6 = (char *)malloc(42);
 	strcpy(src, "bonjour");
-	n1 = 7;
-	printf("   memccpy(dest, \"%s\", 110, %d) : \"%s\"\n", src, n, (char *)   memccpy(dest, src, 110, n));
-	printf("ft_memccpy(dest, \"%s\", 110, %d) : \"%s\"\n", src, n, (char *)ft_memccpy(dest, src, 110, n));
+	n = 7;
+	printf("   memccpy(dest, \"%s\", 110, %zu) : \"%s\"\n", src, n, (char *)   memccpy(dest1, src, 110, n));
+	printf("dest = \"%s\"\n", dest1);
+	printf("ft_memccpy(dest, \"%s\", 110, %zu) : \"%s\"\n", src, n, (char *)ft_memccpy(dest2, src, 110, n));
+	printf("dest = \"%s\"\n", dest2);
 	printf("\n");
-	printf("   memccpy(dest, \"%s\",   0, %d) : \"%s\"\n", src, n, (char *)   memccpy(dest, src,   0, n));
-	printf("ft_memccpy(dest, \"%s\",   0, %d) : \"%s\"\n", src, n, (char *)ft_memccpy(dest, src,   0, n));
+	printf("   memccpy(dest, \"%s\",   0, %zu) : \"%s\"\n", src, n, (char *)   memccpy(dest3, src,   0, n));
+	printf("dest = \"%s\"\n", dest3);
+	printf("ft_memccpy(dest, \"%s\",   0, %zu) : \"%s\"\n", src, n, (char *)ft_memccpy(dest4, src,   0, n));
+	printf("dest = \"%s\"\n", dest4);
 	printf("\n");
-	printf("   memccpy(dest, \"%s\", 110, %d) : \"%s\"\n", src, n, (char *)   memccpy(dest, src, 110, n));
-	printf("ft_memccpy(dest, \"%s\", 110, %d) : \"%s\"\n", src, n, (char *)ft_memccpy(dest, src, 110, n));
+	printf("   memccpy(dest, \"%s\", 110, %zu) : \"%s\"\n", src, n, (char *)   memccpy(dest5, src, 110, n));
+	printf("dest = \"%s\"\n", dest5);
+	printf("ft_memccpy(dest, \"%s\", 110, %zu) : \"%s\"\n", src, n, (char *)ft_memccpy(dest6, src, 110, n));
+	printf("dest = \"%s\"\n", dest6);
 	return (0);
 }

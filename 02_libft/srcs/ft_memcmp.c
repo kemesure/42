@@ -1,48 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/24 16:03:19 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/25 13:51:48 by kemesure         ###   ########.fr       */
+/*   Created: 2017/11/25 15:11:54 by kemesure          #+#    #+#             */
+/*   Updated: 2017/11/25 15:33:29 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "../includes/libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	int		i;
-	char	*ptr;
+	char	*ptr1;
+	char	*ptr2;
 
 	i = 0;
-	ptr = b;
-	while (len != 0)
+	ptr1 = (char *)s1;
+	ptr2 = (char *)s2;
+	while (ptr1[i] && ptr2[i] && n != 0)
 	{
-		ptr[i] = c;
-		len--;
+		if (ptr1[i] != ptr2[i])
+			return (ptr1[i] - ptr2[i]);
 		i++;
+		n--;
 	}
-	return (b);
+	return (0);
 }
 
 int		main(void)
 {
-	char	*b1;
-	char	*b2;
-	int		c;
-	size_t	len;
+	char	*s1;
+	char	*s2;
+	size_t	n;
 
-	b1 = (char *)malloc(42);
-	b2 = (char *)malloc(42);
-	c = 'b';
-	len = 3;
-	strcpy(b1, "bonjour");
-	strcpy(b2, "bonjour");
-	printf("   memset(\"%s\", 110, 4) : \"%s\"\n", b1, (char *)   memset(b1, c, len));
-	printf("ft_memset(\"%s\", 110, 4) : \"%s\"\n", b2, (char *)ft_memset(b2, c, len));
+	s1 = (char *)malloc(42);
+	s2 = (char *)malloc(42);
+	n = 4;
+	strcpy(s1, "bonjour");
+	strcpy(s2, "bonbons");
+	printf("   memcmp : \"%d\"\n",    memcmp(s1, s2, n));
+	printf("ft_memcmp : \"%d\"\n", ft_memcmp(s1, s2, n));
 	return (0);
 }

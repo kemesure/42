@@ -6,7 +6,7 @@
 #    By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/19 01:56:29 by kemesure          #+#    #+#              #
-#    Updated: 2017/11/24 20:24:01 by kemesure         ###   ########.fr        #
+#    Updated: 2017/11/25 16:57:32 by kemesure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,17 +80,17 @@ GCH = ./includes/libft.h.gch
 
 all: $(NAME)
 $(NAME):
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N01) $(SRC01)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N01) $(SRC01)
 #	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N02) $(SRC02)
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N03) $(SRC03)
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N04) $(SRC04)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N05) $(SRC05)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N06) $(SRC06)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N07) $(SRC07)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N05) $(SRC05)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N06) $(SRC06)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N07) $(SRC07)
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N08) $(SRC08)
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N09) $(SRC09)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N10) $(SRC10)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N11) $(SRC11)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N10) $(SRC10)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N11) $(SRC11)
 #	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N12) $(SRC12)
 #	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N13) $(SRC13)
 #	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N14) $(SRC14)

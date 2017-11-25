@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 15:35:40 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/23 17:28:04 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/25 12:19:32 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	ft_strlen(const char *str)
 
 int		main(void)
 {
-	printf("   strlen : %d\n",    strlen("bonjour\n"));
-	printf("ft_strlen : %d\n", ft_strlen("bonjour\n"));
+	printf("   strlen : %zu\n",    strlen("bonjour\n"));
+	printf("ft_strlen : %zu\n", ft_strlen("bonjour\n"));
 	return (0);
 }
