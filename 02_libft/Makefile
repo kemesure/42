@@ -6,7 +6,7 @@
 #    By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/19 01:56:29 by kemesure          #+#    #+#              #
-#    Updated: 2017/11/25 16:57:32 by kemesure         ###   ########.fr        #
+#    Updated: 2017/11/25 17:15:22 by kemesure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ $(NAME):
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N09) $(SRC09)
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N10) $(SRC10)
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N11) $(SRC11)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N12) $(SRC12)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N12) $(SRC12)
 #	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N13) $(SRC13)
 #	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N14) $(SRC14)
 #	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N15) $(SRC15)
