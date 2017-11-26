@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 16:35:45 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/23 17:43:50 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/26 16:41:21 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_strcmp(const char *s1, const char *s2)
 		i++;
 	return (s1[i] - s2[i]);
 }
-
+/*
 int		main(void)
 {
 	char	*s1;
@@ -42,3 +42,4 @@ int		main(void)
 	printf("ft_strcmp de %s et %s = %d\n",   s2, s4, ft_strcmp(s2, s4));
 	return (0);
 }
+*/
