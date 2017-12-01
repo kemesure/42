@@ -6,7 +6,7 @@
 #    By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/19 01:56:29 by kemesure          #+#    #+#              #
-#    Updated: 2017/11/26 16:46:01 by kemesure         ###   ########.fr        #
+#    Updated: 2017/11/28 16:38:53 by kemesure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,12 +93,12 @@ $(NAME):
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N11) $(SRC11)
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N12) $(SRC12)
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N13) $(SRC13)
-	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N14) $(SRC14)
+###	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N14) $(SRC14)
 #	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N15) $(SRC15)
 #	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N16) $(SRC16)
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N17) $(SRC17) $(SRC19)
 #	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N18) $(SRC18)
-	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N19) $(SRC19)
+###	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N19) $(SRC19)
 #	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N20) $(SRC20)
 #	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N21) $(SRC21)
 #	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N22) $(SRC22)

@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 15:11:54 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/25 15:33:29 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/11/28 18:14:40 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 	while (ptr1[i] && ptr2[i] && n != 0)
 	{
 		if (ptr1[i] != ptr2[i])
-			return (ptr1[i] - ptr2[i]);
+			return (1);
 		i++;
 		n--;
 	}
