@@ -6,7 +6,7 @@
 #    By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/19 01:56:29 by kemesure          #+#    #+#              #
-#    Updated: 2017/11/28 16:38:53 by kemesure         ###   ########.fr        #
+#    Updated: 2017/12/02 21:24:29 by kemesure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,21 +93,21 @@ $(NAME):
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N11) $(SRC11)
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N12) $(SRC12)
 	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N13) $(SRC13)
-###	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N14) $(SRC14)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N15) $(SRC15)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N16) $(SRC16)
-	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N17) $(SRC17) $(SRC19)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N18) $(SRC18)
-###	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N19) $(SRC19)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N20) $(SRC20)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N21) $(SRC21)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N22) $(SRC22)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N23) $(SRC23)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N24) $(SRC24)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N25) $(SRC25)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N26) $(SRC26)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N27) $(SRC27)
-#	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N28) $(SRC28)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N14) $(SRC14)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N15) $(SRC15)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N16) $(SRC16)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N17) $(SRC17)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N18) $(SRC18)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N19) $(SRC19)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N20) $(SRC20)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N21) $(SRC21)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N22) $(SRC22)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N23) $(SRC23)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N24) $(SRC24)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N25) $(SRC25)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N26) $(SRC26)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N27) $(SRC27)
+	gcc $(FLAGS) -I $(HEADER) $(OPT) $(N28) $(SRC28)
 
 clean:
 	/bin/rm -f $(GCH)
