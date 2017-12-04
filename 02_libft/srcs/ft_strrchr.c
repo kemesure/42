@@ -6,11 +6,10 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 13:46:56 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/02 13:58:55 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/03 16:11:18 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../includes/libft.h"
 
 char	*ft_strrchr(const char *s, int c)
@@ -29,17 +28,4 @@ char	*ft_strrchr(const char *s, int c)
 		size--;
 	}
 	return (NULL);
-}
-
-int		main(void)
-{
-	char	*s;
-	char	c;
-
-	s = (char *)malloc(42);
-	c = 'm';
-	strcpy(s, "abcdefghijklmnopqrstuvwxyz mmm ...");
-	printf("   strrchr : %s\n",    strrchr(s, c));
-	printf("ft_strrchr : %s\n", ft_strrchr(s, c));
-	return (0);
 }

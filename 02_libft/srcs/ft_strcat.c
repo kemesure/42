@@ -6,11 +6,10 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 17:12:07 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/26 15:37:04 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/03 16:02:04 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../includes/libft.h"
 
 char	*ft_strcat(char *restrict s1, const char *restrict s2)
@@ -36,23 +35,4 @@ char	*ft_strcat(char *restrict s1, const char *restrict s2)
 	}
 	ptr1[i] = '\0';
 	return (s1);
-}
-
-int		main(void)
-{
-	char	*dst1;
-	char	*dst2;
-	char	*src;
-
-	dst1 = malloc(42);
-	dst2 = malloc(42);
-	src = (char *)malloc(42);
-	strcpy(src, "Bonjour");
-	strcpy(dst1, "Salut");
-	strcpy(dst2, "Salut");
-	printf("   strcat : \"%s\"\n",    strcat(dst1, src));
-	printf("      dst = \"%s\"\n", dst1);
-	printf("ft_strcat : \"%s\"\n", ft_strcat(dst2, src));
-	printf("      dst = \"%s\"\n", dst2);
-	return (0);
 }

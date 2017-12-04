@@ -6,11 +6,10 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 14:04:28 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/23 17:29:30 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/03 16:04:54 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../includes/libft.h"
 
 char	*ft_strdup(const char *src)
@@ -27,11 +26,4 @@ char	*ft_strdup(const char *src)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
-
-int		main(void)
-{
-	printf("   strdup : %s\n",    strdup("Bonjour"));
-	printf("ft_strdup : %s\n", ft_strdup("Bonjour"));
-	return (0);
 }

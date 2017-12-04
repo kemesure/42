@@ -6,11 +6,10 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 14:44:08 by kemesure          #+#    #+#             */
-/*   Updated: 2017/11/25 15:11:00 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/04 15:40:27 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../includes/libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
@@ -28,24 +27,4 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		n--;
 	}
 	return (NULL);
-}
-
-int		main(void)
-{
-	char	*s1;
-	char	*s2;
-	int		c;
-	size_t	n;
-
-	s1 = (char *)malloc(42);
-	s2 = (char *)malloc(42);
-	c = 'n';
-	n = 3;
-	strcpy(s1, "bonjour");
-	strcpy(s2, "bonjour");
-	printf("   memchr : \"%s\"\n", (char *)   memchr(s1, c, n));
-	printf("        s = \"%s\"\n", s1);
-	printf("ft_memchr : \"%s\"\n", (char *)ft_memchr(s2, c, n));
-	printf("        s = \"%s\"\n", s2);
-	return (0);
 }
