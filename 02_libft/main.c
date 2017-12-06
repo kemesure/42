@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 13:25:56 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/06 18:35:00 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/06 19:53:08 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -399,11 +399,15 @@ int	main(void)
 	printf("------------------------------------------STRLCAT\n");
 	char	*dst5;
 	char	*dst6;
+	char	*dst42;
+	char	*dst43;
 	char	*src6;
 	size_t	size;
 
 	dst5 = malloc(42);
 	dst6 = malloc(42);
+	dst42 = malloc(42);
+	dst43 = malloc(42);
 	src6 = (char *)malloc(42);
 	size = 3;
 	strcpy(src6, "Bonjour");
@@ -411,8 +415,13 @@ int	main(void)
 	strcpy(dst6, "Salut");
 	printf("   strlcat : \"%lu\"\n",    strlcat(dst5, src6, size));
 	printf("       dst = \"%s\"\n", dst5);
-	printf("ft_strlcat : \"%lu\"\n", ft_strlcat(dst6, src6, n));
+	printf("ft_strlcat : \"%lu\"\n", ft_strlcat(dst6, src6, size));
 	printf("       dst = \"%s\"\n", dst6);
+	size = 4;
+	printf("   strlcat : \"%lu\"\n",    strlcat(dst42, "thx to ntoniolo for this test !", size));
+	printf("       dst = \"%s\"\n", dst42);
+	printf("ft_strlcat : \"%lu\"\n", ft_strlcat(dst43, "thx to ntoniolo for this test !", size));
+	printf("       dst = \"%s\"\n", dst43);
 	/*
 		STRLEN
 	*/
