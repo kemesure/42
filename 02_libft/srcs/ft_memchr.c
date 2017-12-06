@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 14:44:08 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/04 15:40:27 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/06 14:58:12 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	i = 0;
 	ptr = (char *)s;
-	while (ptr[i] && n != 0)
+	while (i < n)
 	{
 		if (ptr[i] == c)
 			return (ptr + i);
 		i++;
-		n--;
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 13:25:56 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/04 16:29:57 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/06 18:35:00 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 	/*
 		ATOI
 	*/
-	printf("------------------------------------------------------------------------------------ATOI\n");
+	printf("------------------------------------------ATOI------------------------------------------\n");
 	char	*s1;
 	char	*s2;
 	char	*s3;
@@ -59,12 +59,11 @@ int	main(void)
 	/*
 		BZERO
 	*/
+	printf("------------------------------------------BZERO\n");
+//	char	*s5;
+//	char	*s6;
 	size_t	n;
-	/*printf("------------------------------------------------------------------------------------BZERO\n");
-	char	*s5;
-	char	*s6;
-	size_t	n;
-
+/*
 	s5 = (char *)malloc(42);
 	s6 = (char *)malloc(42);
 	n = 3;
@@ -75,11 +74,10 @@ int	main(void)
 		printf("s(   bzero) = \"%s\"\n", s5 + n);
 		printf("s(ft_bzero) = \"%s\"\n", s6 + n);
 	}
-	*/
-	/*
+*/	/*
 		ISALNUM
 	*/
-	printf("-------------------------------------------------------------------------------------");
+	printf("------------------------------------------ISALNUM\n");
 	int		c;
 
 	c = 0;
@@ -95,7 +93,7 @@ int	main(void)
 	/*
 		ISALPHA
 	*/
-	printf("-------------------------------------------------------------------------------------");
+	printf("------------------------------------------ISALPHA\n");
 	c = 0;
 	while (c <= 127)
 	{
@@ -109,6 +107,7 @@ int	main(void)
 	/*
 		ISASCII
 	*/
+	printf("------------------------------------------ISASCII\n");
 	c = 0;
 	while (c <= 127)
 	{
@@ -122,6 +121,7 @@ int	main(void)
 	/*
 		ISDIGIT
 	*/
+	printf("------------------------------------------ISDIGIT\n");
 	c = 0;
 	while (c <= 127)
 	{
@@ -135,6 +135,7 @@ int	main(void)
 	/*
 		ISPRINT
 	*/
+	printf("------------------------------------------ISPRINT\n");
 	c = 0;
 	while (c <= 127)
 	{
@@ -148,6 +149,7 @@ int	main(void)
 	/*
 		MEMCCPY
 	*/
+	printf("------------------------------------------MEMCCPY\n");
 	char	*dest1;
 	char	*dest2;
 	char	*dest3;
@@ -182,7 +184,7 @@ int	main(void)
 	/*
 		MEMCHR
 	*/
-	printf("------------------------------------------MEMCHR------------------------------------------\n");
+	printf("------------------------------------------MEMCHR\n");
 	char	*s7;
 	char	*s8;
 
@@ -196,25 +198,42 @@ int	main(void)
 	printf("        s = \"%s\"\n", s7);
 	printf("ft_memchr : \"%s\"\n", (char *)ft_memchr(s8, c, n));
 	printf("        s = \"%s\"\n", s8);
-	printf("------------------------------------------MEMCHR------------------------------------------\n");
+	printf("------------------------------------------MEMCHR\n");
 	/*
 		MEMCMP
 	*/
-	printf("---------------------------- CEST ICI ----------------------------\n");
+	printf("------------------------------------------MEMCMP\n");
 	char	*s9;
 	char	*s10;
+	char	*s31;
+	char	*s32;
+	char	*s33;
+	char	*s34;
 
 	s9 = (char *)malloc(42);
 	s10 = (char *)malloc(42);
-	n = 7;
-	strcpy(s9, "\xff\xaa\xde\x12OLOL");
-	strcpy(s10, "\xff\xaa\xde\x12MACOSX");
-	printf("   memcmp : \"%d\"\n",    memcmp("\xff\xaa\xde\x12OLOL", "\xff\xaa\xde\x12MACOSX", n));
-	printf("ft_memcmp : \"%d\"\n", ft_memcmp("\xff\xaa\xde\x12OLOL", "\xff\xaa\xde\x12MACOSX", n));
-	printf("---------------------------- CEST ICI ----------------------------\n");
+	s31 = (char *)malloc(42);
+	s32 = (char *)malloc(42);
+	s33 = (char *)malloc(42);
+	s34 = (char *)malloc(42);
+	strcpy(s9, "\xff\xaa\xde\xffMACOSX\xff");
+	strcpy(s10, "\xff\xaa\xde\x02");
+	strcpy(s31, "\xff\xaa\xde\200");
+	strcpy(s32, "\xff\xaa\xde\0");
+	strcpy(s33, "\xff\0\0\xaa\0\xde\xffMACOSX\xff");
+	strcpy(s34, "\xff\0\0\xaa\0\xde\x00MBS");
+	n = 8;
+	printf("   memcmp : \"%d\"\n",    memcmp(s9, s10, n));
+	printf("ft_memcmp : \"%d\"\n", ft_memcmp(s9, s10, n));
+	printf("   memcmp : \"%d\"\n",    memcmp(s31, s32, n));
+	printf("ft_memcmp : \"%d\"\n", ft_memcmp(s31, s32, n));
+	n = 9;
+	printf("   memcmp : \"%d\"\n",    memcmp(s33, s34, n));
+	printf("ft_memcmp : \"%d\"\n", ft_memcmp(s33, s34, n));
 	/*
 		MEMCPY
 	*/
+	printf("------------------------------------------MEMCPY\n");
 	char	*dest7;
 	char	*src2;
 	size_t	n0;
@@ -272,7 +291,7 @@ int	main(void)
 	/*
 		MEMMOVE
 	*/
-	printf("------------------------------------------MEMMOVE------------------------------------------\n");
+	printf("------------------------------------------MEMMOVE\n");
 //	char	*dest8;
 //	char	*dest9;
 	char	*src3;
@@ -288,10 +307,10 @@ int	main(void)
 	strcpy(src3, "123456789");
 	printf("ft_memmove : \"%s\"\n", (char *)ft_memmove(src3 + 2, src3 + 4, len));
 	printf("      dest = \"%s\"\n", src3);
-	printf("------------------------------------------MEMMOVE------------------------------------------\n");
 	/*
 		MEMSET
 	*/
+	printf("------------------------------------------MEMSET\n");
 	char	*b1;
 	char	*b2;
 
@@ -306,6 +325,7 @@ int	main(void)
 	/*
 		STRCAT
 	*/
+	printf("------------------------------------------STRCAT\n");
 	char	*dst1;
 	char	*dst2;
 	char	*src4;
@@ -323,17 +343,19 @@ int	main(void)
 	/*
 		STRCHR
 	*/
+	printf("------------------------------------------STRCHR\n");
 	char	*s11;
 	char	c1;
 
 	s11 = (char *)malloc(42);
-	c1 = 'm';
-	strcpy(s11, "abcdefghijklmnopqrstuvwxyz mmm ...");
+	c1 = '\0';
+	strcpy(s11, "there is so \0ma\0ny \0 \\0 in t\0his stri\0ng !\0\0\0\0");
 	printf("   strchr : %s\n",    strchr(s11, c1));
 	printf("ft_strchr : %s\n", ft_strchr(s11, c1));
 	/*
 		STRCMP
 	*/
+	printf("------------------------------------------STRCMP------------------------------------------\n");
 	char	*s12;
 	char	*s13;
 	char	*s14;
@@ -352,6 +374,7 @@ int	main(void)
 	/*
 		STRCPY
 	*/
+	printf("------------------------------------------STRCPY\n");
 	char	*dst3;
 	char	*dst4;
 	char	*src5;
@@ -367,11 +390,13 @@ int	main(void)
 	/*
 		STRDUP
 	*/
+	printf("------------------------------------------STRDUP------------------------------------------\n");
 	printf("   strdup : %s\n",    strdup("Bonjour"));
 	printf("ft_strdup : %s\n", ft_strdup("Bonjour"));
 	/*
 		STRLCAT
 	*/
+	printf("------------------------------------------STRLCAT\n");
 	char	*dst5;
 	char	*dst6;
 	char	*src6;
@@ -391,11 +416,13 @@ int	main(void)
 	/*
 		STRLEN
 	*/
+	printf("------------------------------------------STRLEN\n");
 	printf("   strlen : %zu\n",    strlen("bonjour\n"));
 	printf("ft_strlen : %zu\n", ft_strlen("bonjour\n"));
 	/*
 		STRNCAT
 	*/
+	printf("------------------------------------------STRNCAT\n");
 	char	*dst7;
 	char	*dst8;
 	char	*src7;
@@ -414,6 +441,7 @@ int	main(void)
 	/*
 		STRNCMP
 	*/
+	printf("------------------------------------------STRNCMP------------------------------------------\n");
 	char	*s16;
 	char	*s17;
 	char	*s18;
@@ -433,15 +461,16 @@ int	main(void)
 	/*
 		STRNCPY
 	*/
+	printf("------------------------------------------STRNCPY------------------------------------------\n");
 	char	*dst9;
 	char	*dst10;
 	char	*src8;
 
-	dst9 = malloc(42);
-	dst10 = malloc(42);
-	src8 = (char *)malloc(42);
-	strcpy(src8, "bonjour");
-	len = 4;
+	dst9 = malloc(30);
+	dst10 = malloc(30);
+	src8 = (char *)malloc(30);
+	strcpy(src8, "stars");
+	len = 29;
 	printf("   strncpy : \"%s\"\n",    strncpy(dst9, src8, len));
 	printf("       dst = \"%s\"\n", dst9);
 	printf("ft_strncpy : \"%s\"\n", ft_strncpy(dst10, src8, len));
@@ -449,11 +478,14 @@ int	main(void)
 	/*
 		STRNSTR
 	*/
+	printf("------------------------------------------STRNSTR------------------------------------------\n");
 	char	*s20;
 	char	*s21;
 	char	*s22;
 	char	*s23;
 	char	*s24;
+	char	*s35;
+	char	*s36;
 
 	n = 4;
 	s20 = (char *)malloc(42);
@@ -461,10 +493,14 @@ int	main(void)
 	s22 = (char *)malloc(42);
 	s23 = (char *)malloc(0);
 	s24 = (char *)malloc(42);
+	s35 = (char *)malloc(42);
+	s36 = (char *)malloc(42);
 	strcpy(s20, "bonjour");
 	strcpy(s21, "bon");
 	strcpy(s22, "nj");
 	strcpy(s24, "o");
+	strcpy(s35, "oh no not the empty string !");
+	strcpy(s36, "");
 	printf("   strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s20, s21, n,    strnstr(s20, s21, n));
 	printf("ft_strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s20, s21, n, ft_strnstr(s20, s21, n));
 	printf("\n");
@@ -482,9 +518,14 @@ int	main(void)
 	printf("\n");
 	printf("   strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s24, s23, n,    strnstr(s24, s23, n));
 	printf("ft_strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s24, s23, n, ft_strnstr(s24, s23, n));
+	n = strlen(s35);
+	printf("\n");
+	printf("   strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s35, s36, n,    strnstr(s35, s36, n));
+	printf("ft_strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s35, s36, n, ft_strnstr(s35, s36, n));
 	/*
 		STRRCHR
 	*/
+	printf("------------------------------------------STRRCHR\n");
 	char	*s25;
 
 	s25 = (char *)malloc(42);
@@ -495,6 +536,7 @@ int	main(void)
 	/*
 		STRSTR
 	*/
+	printf("------------------------------------------STRSTR\n");
 	char	*s26;
 	char	*s27;
 	char	*s28;
@@ -530,6 +572,7 @@ int	main(void)
 	/*
 		TOLOWER
 	*/
+	printf("------------------------------------------TOLOWER\n");
 	c = 0;
 	printf("int | tolower | ft_tolower\n");
 	while (c <= 127)
@@ -540,6 +583,7 @@ int	main(void)
 	/*
 		TOUPPER
 	*/
+	printf("------------------------------------------TOUPPER\n");
 	c = 0;
 	printf("int | toupper | ft_toupper\n");
 	while (c <= 127)
