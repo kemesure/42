@@ -6,12 +6,11 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 15:54:57 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/06 19:58:13 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/09 15:53:12 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-#include <stdio.h>
 
 size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t size)
 {

@@ -6,13 +6,12 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 13:55:07 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/04 17:08:23 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/09 15:55:28 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-#include <stdio.h>
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char	*ptr1;

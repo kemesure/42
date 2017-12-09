@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 13:25:56 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/09 01:39:45 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/09 17:53:55 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,30 @@
 
 int	main(void)
 {
+	printf(" __________________________________________________\n");
+	printf("|                     PARTIE 1                     |\n");
+	printf("|__________________________________________________|\n\n\n");
 	/*
 		ATOI
 	*/
-	printf("------------------------------------------ATOI------------------------------------------\n");
+	printf("------------------------------------------ATOI\n");
 	char	*s1;
 	char	*s2;
 	char	*s3;
 	char	*s4;
 
 	s1 = (char *)malloc(42);
-	strcpy(s1, " \t \n \v \r 42 ");
+	strcpy(s1, " \t \n \v \r 2147483647 ");
 	s2 = (char *)malloc(42);
 	strcpy(s2, " \t \n \v \r +42 ");
 	s3 = (char *)malloc(42);
-	strcpy(s3, " \t \n \v \r -42 ");
+	strcpy(s3, " \t \n \v \r -2147483648 ");
 	s4 = (char *)malloc(42);
 	strcpy(s4, " \t \n \v \r -+42 ");
 	if (atoi(s1) != ft_atoi(s1))
 	{
-		printf("   atoi(\" \\t \\n \\v \\r 42 \") : %d\n",    atoi(s1));
-		printf("ft_atoi(\" \\t \\n \\v \\r 42 \") : %d\n", ft_atoi(s1));
+		printf("   atoi(\" \\t \\n \\v \\r 2147483647 \") : %d\n",    atoi(s1));
+		printf("ft_atoi(\" \\t \\n \\v \\r 2147483647 \") : %d\n", ft_atoi(s1));
 		printf("\n");
 	}
 	if (atoi(s2) != ft_atoi(s2))
@@ -46,8 +49,8 @@ int	main(void)
 	}
 	if (atoi(s3) != ft_atoi(s3))
 	{
-		printf("   atoi(\" \\t \\n \\v \\r -42 \") : %d\n",    atoi(s3));
-		printf("ft_atoi(\" \\t \\n \\v \\r -42 \") : %d\n", ft_atoi(s3));
+		printf("   atoi(\" \\t \\n \\v \\r -2147483648 \") : %d\n",    atoi(s3));
+		printf("ft_atoi(\" \\t \\n \\v \\r -2147483648 \") : %d\n", ft_atoi(s3));
 		printf("\n");
 	}
 	if (atoi(s4) != ft_atoi(s4))
@@ -60,21 +63,23 @@ int	main(void)
 		BZERO
 	*/
 	printf("------------------------------------------BZERO\n");
-//	char	*s5;
-//	char	*s6;
+	char	*s5;
+	char	*s6;
 	size_t	n;
-/*
+
 	s5 = (char *)malloc(42);
 	s6 = (char *)malloc(42);
 	n = 3;
 	strcpy(s5, "bonjour");
 	strcpy(s6, "bonjour");
-	if (memcmp(bzero(s5, n) ,ft_bzero(s6, n), n) != 0)
+	bzero(s5, n);
+	ft_bzero(s6, n);
+	if (s5 == s6 && s5 + n == s6 + n)
 	{
 		printf("s(   bzero) = \"%s\"\n", s5 + n);
 		printf("s(ft_bzero) = \"%s\"\n", s6 + n);
 	}
-*/	/*
+	/*
 		ISALNUM
 	*/
 	printf("------------------------------------------ISALNUM\n");
@@ -85,7 +90,7 @@ int	main(void)
 	{
 		if (isalnum(c) != ft_isalnum(c))
 		{
-			printf("   isascii(%c) : %d\n", c,    isalnum(c));
+			printf("   isalnum(%c) : %d\n", c,    isalnum(c));
 			printf("ft_isalnum(%c) : %d\n", c, ft_isalnum(c));
 		}
 		c++;
@@ -167,28 +172,34 @@ int	main(void)
 	dest6 = (char *)malloc(42);
 	strcpy(src1, "bonjour");
 	n = 7;
+	printf("dest1 \"%s\", dest2 \"%s\"\n", dest1, dest2);
 	if (memccpy(dest1, src1, 110, n) != ft_memccpy(dest2, src1, 110, n))
 	{
-		printf("   memccpy(dest, \"%s\", 110, %zu) : \"%s\"\n", src1, n, (char *)   memccpy(dest1, src1, 110, n));
-		printf("dest = \"%s\"\n", dest1);
-		printf("ft_memccpy(dest, \"%s\", 110, %zu) : \"%s\"\n", src1, n, (char *)ft_memccpy(dest2, src1, 110, n));
-		printf("dest = \"%s\"\n", dest2);
+		printf("   memccpy(\"%s\", \"%s\", 110, %zu) : \"%s\"\n", dest1, src1, n, (char *)   memccpy(dest1, src1, 110, n));
+		printf("dest1 = \"%s\"\n", dest1);
+		printf("ft_memccpy(\"%s\", \"%s\", 110, %zu) : \"%s\"\n", dest2, src1, n, (char *)ft_memccpy(dest2, src1, 110, n));
+		printf("dest2 = \"%s\"\n", dest2);
 		printf("\n");
 	}
 	if (memccpy(dest3, src1,   0, n) != ft_memccpy(dest4, src1,   0, n))
 	{
-		printf("   memccpy(dest, \"%s\",   0, %zu) : \"%s\"\n", src1, n, (char *)   memccpy(dest3, src1,   0, n));
-		printf("dest = \"%s\"\n", dest3);
-		printf("ft_memccpy(dest, \"%s\",   0, %zu) : \"%s\"\n", src1, n, (char *)ft_memccpy(dest4, src1,   0, n));
-		printf("dest = \"%s\"\n", dest4);
+		strcpy(dest3, "");
+		strcpy(dest4, "");
+		printf("   memccpy(\"%s\", \"%s\",   0, %zu) : \"%s\"\n", dest3, src1, n, (char *)   memccpy(dest3, src1,   0, n));
+		printf("dest3 = \"%s\"\n", dest3);
+		printf("ft_memccpy(\"%s\", \"%s\",   0, %zu) : \"%s\"\n", dest4, src1, n, (char *)ft_memccpy(dest4, src1,   0, n));
+		printf("dest4 = \"%s\"\n", dest4);
 		printf("\n");
 	}
+	n = 4;
 	if (memccpy(dest5, src1, 110, n) != ft_memccpy(dest6, src1, 110, n))
 	{
-		printf("   memccpy(dest, \"%s\", 110, %zu) : \"%s\"\n", src1, n, (char *)   memccpy(dest5, src1, 110, n));
-		printf("dest = \"%s\"\n", dest5);
-		printf("ft_memccpy(dest, \"%s\", 110, %zu) : \"%s\"\n", src1, n, (char *)ft_memccpy(dest6, src1, 110, n));
-		printf("dest = \"%s\"\n", dest6);
+		strcpy(dest5, "");
+		strcpy(dest6, "");
+		printf("   memccpy(\"%s\", \"%s\", 110, %zu) : \"%s\"\n", dest5, src1, n, (char *)   memccpy(dest5, src1, 110, n));
+		printf("dest5 = \"%s\"\n", dest5);
+		printf("ft_memccpy(\"%s\", \"%s\", 110, %zu) : \"%s\"\n", dest6, src1, n, (char *)ft_memccpy(dest6, src1, 110, n));
+		printf("dest6 = \"%s\"\n", dest6);
 		printf("\n");
 	}
 	/*
@@ -424,7 +435,7 @@ int	main(void)
 	/*
 		STRCMP
 	*/
-	printf("------------------------------------------STRCMP------------------------------------------\n");
+	printf("------------------------------------------STRCMP\n");
 	char	*s12;
 	char	*s13;
 	char	*s14;
@@ -471,7 +482,7 @@ int	main(void)
 	/*
 		STRDUP
 	*/
-	printf("------------------------------------------STRDUP------------------------------------------\n");
+	printf("------------------------------------------STRDUP\n");
 	if (strdup("Bonjour") != ft_strdup("Bonjour"))
 	{
 		printf("   strdup : %s\n",    strdup("Bonjour"));
@@ -497,19 +508,19 @@ int	main(void)
 	strcpy(src6, "Bonjour");
 	strcpy(dst5, "Salut");
 	strcpy(dst6, "Salut");
-//	if (strlcat(dst5, src6, size) != ft_strlcat(dst6, src6, size))
-//	{
-//		printf("   strlcat : \"%d\"\n",    strlcat(dst5, src6, size));
-//		printf("       dst = \"%s\"\n", dst5);
-		printf("ft_strlcat : \"%d\"\n", ft_strlcat(dst6, src6, size));
+	if (strlcat(dst5, src6, size) != ft_strlcat(dst6, src6, size))
+	{
+		printf("   strlcat : \"%zu\"\n",    strlcat(dst5, src6, size));
+		printf("       dst = \"%s\"\n", dst5);
+		printf("ft_strlcat : \"%zu\"\n", ft_strlcat(dst6, src6, size));
 		printf("       dst = \"%s\"\n", dst6);
-//	}
+	}
 	size = 4;
 	if (ft_strlcat(dst42, "thx to ntoniolo for this test !", size) != ft_strlcat(dst43, "thx to ntoniolo for this test !", size))
 	{
-//		printf("   strlcat : \"%d\"\n",    strlcat(dst42, "thx to ntoniolo for this test !", size));
-//		printf("       dst = \"%s\"\n", dst42);
-		printf("ft_strlcat : \"%d\"\n", ft_strlcat(dst43, "thx to ntoniolo for this test !", size));
+		printf("   strlcat : \"%zu\"\n",    strlcat(dst42, "thx to ntoniolo for this test !", size));
+		printf("       dst = \"%s\"\n", dst42);
+		printf("ft_strlcat : \"%zu\"\n", ft_strlcat(dst43, "thx to ntoniolo for this test !", size));
 		printf("       dst = \"%s\"\n", dst43);
 	}
 	/*
@@ -546,7 +557,7 @@ int	main(void)
 	/*
 		STRNCMP
 	*/
-	printf("------------------------------------------STRNCMP------------------------------------------\n");
+	printf("------------------------------------------STRNCMP\n");
 	char	*s16;
 	char	*s17;
 	char	*s18;
@@ -575,7 +586,7 @@ int	main(void)
 	/*
 		STRNCPY
 	*/
-	printf("------------------------------------------STRNCPY------------------------------------------\n");
+	printf("------------------------------------------STRNCPY\n");
 	char	*dst9;
 	char	*dst10;
 	char	*src8;
@@ -595,7 +606,7 @@ int	main(void)
 	/*
 		STRNSTR
 	*/
-	printf("------------------------------------------STRNSTR------------------------------------------\n");
+	printf("------------------------------------------STRNSTR\n");
 	char	*s20;
 	char	*s21;
 	char	*s22;
@@ -618,49 +629,49 @@ int	main(void)
 	strcpy(s24, "o");
 	strcpy(s35, "oh no not the empty string !");
 	strcpy(s36, "");
-//	if (strnstr(s20, s21, n) != ft_strnstr(s20, s21, n))
-//	{
-//		printf("   strnstr(\"%s\", \"%s\", %d) : \"%s\"\n", s20, s21, n,    strnstr(s20, s21, n));
-		printf("ft_strnstr(\"%s\", \"%s\", %d) : \"%s\"\n", s20, s21, n, ft_strnstr(s20, s21, n));
+	if (strnstr(s20, s21, n) != ft_strnstr(s20, s21, n))
+	{
+		printf("   strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s20, s21, n,    strnstr(s20, s21, n));
+		printf("ft_strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s20, s21, n, ft_strnstr(s20, s21, n));
 		printf("\n");
-//	}
-//	if (strnstr(s20, s22, n) != ft_strnstr(s20, s22, n))
-//	{
-//		printf("   strnstr(\"%s\", \"%s\", %d) : \"%s\"\n", s20, s22, n,    strnstr(s20, s22, n));
-		printf("ft_strnstr(\"%s\", \"%s\", %d) : \"%s\"\n", s20, s22, n, ft_strnstr(s20, s22, n));
+	}
+	if (strnstr(s20, s22, n) != ft_strnstr(s20, s22, n))
+	{
+		printf("   strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s20, s22, n,    strnstr(s20, s22, n));
+		printf("ft_strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s20, s22, n, ft_strnstr(s20, s22, n));
 		printf("\n");
-//	}
-//	if (strnstr(s20, s24, n) != ft_strnstr(s20, s24, n))
-//	{
-//		printf("   strnstr(\"%s\", \"%s\", %d) : \"%s\"\n", s20, s24, n,    strnstr(s20, s24, n));
-		printf("ft_strnstr(\"%s\", \"%s\", %d) : \"%s\"\n", s20, s24, n, ft_strnstr(s20, s24, n));
+	}
+	if (strnstr(s20, s24, n) != ft_strnstr(s20, s24, n))
+	{
+		printf("   strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s20, s24, n,    strnstr(s20, s24, n));
+		printf("ft_strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s20, s24, n, ft_strnstr(s20, s24, n));
 		printf("\n");
-//	}
-//	if (strnstr(s21, s24, n) != ft_strnstr(s21, s24, n))
-//	{
-//		printf("   strnstr(\"%s\", \"%s\", %d) : \"%s\"\n", s21, s24, n,    strnstr(s21, s24, n));
-		printf("ft_strnstr(\"%s\", \"%s\", %d) : \"%s\"\n", s21, s24, n, ft_strnstr(s21, s24, n));
+	}
+	if (strnstr(s21, s24, n) != ft_strnstr(s21, s24, n))
+	{
+		printf("   strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s21, s24, n,    strnstr(s21, s24, n));
+		printf("ft_strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s21, s24, n, ft_strnstr(s21, s24, n));
 		printf("\n");
-//	}
-//	if (strnstr(s22, s23, n) != ft_strnstr(s22, s23, n))
-//	{
-//		printf("   strnstr(\"%s\", \"%s\", %d) : \"%s\"\n", s22, s23, n,    strnstr(s22, s23, n));
-		printf("ft_strnstr(\"%s\", \"%s\", %d) : \"%s\"\n", s22, s23, n, ft_strnstr(s22, s23, n));
+	}
+	if (strnstr(s22, s23, n) != ft_strnstr(s22, s23, n))
+	{
+		printf("   strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s22, s23, n,    strnstr(s22, s23, n));
+		printf("ft_strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s22, s23, n, ft_strnstr(s22, s23, n));
 		printf("\n");
-//	}
-//	if (strnstr(s24, s23, n) != ft_strnstr(s24, s23, n))
-//	{
-//		printf("   strnstr(\"%s\", \"%s\", %d) : \"%s\"\n", s24, s23, n,    strnstr(s24, s23, n));
-		printf("ft_strnstr(\"%s\", \"%s\", %d) : \"%s\"\n", s24, s23, n, ft_strnstr(s24, s23, n));
+	}
+	if (strnstr(s24, s23, n) != ft_strnstr(s24, s23, n))
+	{
+		printf("   strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s24, s23, n,    strnstr(s24, s23, n));
+		printf("ft_strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s24, s23, n, ft_strnstr(s24, s23, n));
 		printf("\n");
-//	}
+	}
 	n = strlen(s35);
-//	if (strnstr(s35, s36, n) != ft_strnstr(s35, s36, n))
-//	{
-//		printf("   strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s35, s36, n,    strnstr(s35, s36, n));
+	if (strnstr(s35, s36, n) != ft_strnstr(s35, s36, n))
+	{
+		printf("   strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s35, s36, n,    strnstr(s35, s36, n));
 		printf("ft_strnstr(\"%s\", \"%s\", %zu) : \"%s\"\n", s35, s36, n, ft_strnstr(s35, s36, n));
 		printf("\n");
-//	}
+	}
 	/*
 		STRRCHR
 	*/
@@ -759,10 +770,64 @@ int	main(void)
 		}
 		c++;
 	}
+	printf("\n\n __________________________________________________\n");
+	printf("|                     PARTIE 2                     |\n");
+	printf("|__________________________________________________|\n\n\n");
 	/*
 		ITOA
 	*/
 	printf("------------------------------------------ITOA\n");
-	printf("ft_itoa(%d) : %s\n", -42, ft_itoa(-42));
+	printf("ft_itoa(%d) : %s\n", 2147483647, ft_itoa(2147483647));
+	/*
+		PUTCHAR
+	*/
+	printf("------------------------------------------PUTCHAR\n");
+	ft_putchar('c');
+	ft_putchar('o');
+	ft_putchar('u');
+	ft_putchar('c');
+	ft_putchar('o');
+	ft_putchar('u');
+	ft_putchar('\n');
+	/*
+		PUTSTR
+	*/
+	printf("------------------------------------------PUTSTR\n");
+	ft_putstr("bonjour\n");
+	/*
+		PUTSTR
+	*/
+	printf("------------------------------------------PUTNBR\n");
+	ft_putnbr(42);
+	ft_putchar('\n');
+	ft_putnbr(-42);
+	ft_putchar('\n');
+	ft_putnbr(2147483647);
+	ft_putchar('\n');
+//	ft_putnbr(-2147483648);
+//	ft_putchar('\n');
+	/*
+		MEMDEL
+	*/
+	printf("------------------------------------------MEMDEL\n");
+	void	*m = malloc(42);
+
+	ft_memdel(&m);
+	if (m == NULL)
+	{
+		printf("m = NULL\n");
+		free(m);
+	}
+	/*
+		MEMALLOC
+	*/
+	printf("------------------------------------------MEMALLOC\n");
+	void	*mem;
+
+	size = 42;
+	mem = ft_memalloc(size);
+	printf("ft_memalloc(%zu)\ntaille allouee a mem : %lu\n", size, sizeof(mem));
+
+	printf("\n\t\t\tEND\t\t\tEND\t\t\tEND\n\n");
 	return (0);
 }

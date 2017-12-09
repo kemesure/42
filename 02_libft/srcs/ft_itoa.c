@@ -6,28 +6,13 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 20:00:46 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/09 01:22:06 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/09 14:29:44 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int		ft_puiss(int nb, int puiss)
-{
-	int		nb2;
-
-	nb2 = nb;
-	if (puiss == 0)
-		return (1);
-	while (puiss != 0)
-	{
-		nb *= nb2;
-		puiss--;
-	}
-	return (nb);
-}
-
-char	*ft_itoa(int n)
+char	*ft_itoa(int n) // n = 2 147 483 647
 {
 	char	*str;
 	int		nb;
@@ -39,25 +24,27 @@ char	*ft_itoa(int n)
 	size = 0;
 	sign = 1;
 	i = 0;
-	if (n < 0)
+	if (n < 0) // FAUX n = 2 147 483 647
 	{
 		sign = -1;
 		n *= sign;
 		size++;
 	}
-	while (n / nb != 0)
+	while (n / nb != 0) // VRAI 2 147 483 647 / ? = ?
 	{
-		nb *= 10;
-		size++;
+		nb *= 10; // nb = 1 000 000 000 * 10 = 10 000 000 000 PAS POSSIBLE TROP GRAND
+		size++; // size = 10
 	}
-	str = (char *)malloc(size);
-	if (sign == -1)
+	str = (char *)malloc(size + 1); // str = 10 ou plus octets
+	if (str == NULL)
+		return (NULL);
+	if (sign == -1) // FAUX
 	{
 		str[0] = '-';
 		i++;
 		size--;
 	}
-	while (size-- >= 0)
+	while (--size >= 0)
 	{
 		str[i] = (n / ft_puiss(10, size)) % 10 + 48;
 		i++;
