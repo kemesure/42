@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:11:57 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/02 14:03:08 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/09 01:35:56 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 int		ft_atoi(const char *str);
+char	*ft_itoa(int n);
 void	ft_bzero(void *s, size_t n);
 
 int		ft_isalpha(int c);
