@@ -6,8 +6,20 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/09 15:51:50 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/10 13:54:38 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+
+void	ft_strclr(char *s)
+{
+	int		len;
+
+	len = ft_strlen(s);
+	while (len)
+	{
+		s[len] = '\0';
+		len--;
+	}
+}

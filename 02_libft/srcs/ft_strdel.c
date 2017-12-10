@@ -6,8 +6,14 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/09 15:52:06 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/10 13:48:13 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+
+void	ft_strdel(char **as)
+{
+	free(*as);
+	*as = NULL;
+}

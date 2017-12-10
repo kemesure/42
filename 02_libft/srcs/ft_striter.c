@@ -6,8 +6,20 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/09 15:52:28 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/10 16:04:35 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+
+void	ft_striter(char *s, void (*f)(char *))
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+	{
+		f(&s[i]);
+		i++;
+	}
+}

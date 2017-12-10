@@ -6,8 +6,31 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/09 15:54:23 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/10 18:55:59 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+/*---------------------------------EN  COURS----------------------------------*/
+char	**ft_strsplit(char const *s, char c)
+{
+	size_t	i;
+	size_t	j;
+	size_t	k;
+	char	**tab;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	while ()
+	{
+		i = 0;
+		while (s[k] && s[k] != c)
+		{
+			tab[j][i] = s[k];
+			i++;
+			k++;
+		}
+		j++;
+	}
+}
