@@ -6,12 +6,12 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/10 17:00:33 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/12 15:16:18 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-/*
+
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	unsigned int	i;
@@ -29,4 +29,3 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	str[i] = '\0';
 	return (str);
 }
-*/
