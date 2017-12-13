@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/09 14:13:11 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/13 19:19:56 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,5 @@
 
 void	ft_putnbr(int n)
 {
-	char	*nb;
-	
-	nb = ft_itoa(n);
-	ft_putstr(nb);
+	ft_putstr(ft_itoa(n));
 }
