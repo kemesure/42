@@ -6,13 +6,13 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 20:00:46 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/09 14:29:44 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/14 17:21:33 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_itoa(int n) // n = 2 147 483 647
+char	*ft_itoa(int n)
 {
 	char	*str;
 	int		nb;
@@ -24,31 +24,28 @@ char	*ft_itoa(int n) // n = 2 147 483 647
 	size = 0;
 	sign = 1;
 	i = 0;
-	if (n < 0) // FAUX n = 2 147 483 647
+	if (n == -2147483648 && (str = (char *)malloc(11)))
 	{
-		sign = -1;
+		if (str == NULL)
+			return (NULL);
+		ft_strcpy(str, "-2147483648");
+		return (str);
+	}
+	if (n < 0 && (sign = -1))
 		n *= sign;
+	if (n > 999999999)
+		size = 10;
+	else
+		while (n / nb != 0 && ++size)
+			nb *= 10;
+	if (sign == -1)
 		size++;
-	}
-	while (n / nb != 0) // VRAI 2 147 483 647 / ? = ?
-	{
-		nb *= 10; // nb = 1 000 000 000 * 10 = 10 000 000 000 PAS POSSIBLE TROP GRAND
-		size++; // size = 10
-	}
-	str = (char *)malloc(size + 1); // str = 10 ou plus octets
-	if (str == NULL)
+	if ((str = (char *)malloc(size + 1)) && str == NULL)
 		return (NULL);
-	if (sign == -1) // FAUX
-	{
+	if (sign == -1 && ++i)
 		str[0] = '-';
-		i++;
-		size--;
-	}
-	while (--size >= 0)
-	{
-		str[i] = (n / ft_puiss(10, size)) % 10 + 48;
-		i++;
-	}
+	while (size > i && ++i)
+		str[i - 1] = (n / ft_puiss(10, size - i)) % 10 + 48;
 	str[i] = '\0';
 	return (str);
 }
