@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 17:12:07 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/03 16:02:04 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/15 17:42:08 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ char	*ft_strcat(char *restrict s1, const char *restrict s2)
 	ptr1 = s1;
 	ptr2 = (char *)s2;
 	while (ptr1[i])
-	{
 		i++;
-	}
 	while (ptr2[j])
 	{
 		ptr1[i] = ptr2[j];

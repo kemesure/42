@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 13:25:56 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/14 17:57:41 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/15 15:51:36 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int	main(void)
 */	/*
 		PUTCHAR
 	*/
-	printf("------------------------------------------PUTCHAR\n");
+/*	printf("------------------------------------------PUTCHAR\n");
 	int		c = L'ø';
 	ft_putstr("caratere unicode : ");
 	ft_putchar(c);
 	ft_putchar('\n');
-	/*
+*/	/*
 		PUTSTR
 	*/
 /*	printf("------------------------------------------PUTSTR\n");
@@ -74,6 +74,24 @@ int	main(void)
 	size = 42;
 	mem = ft_memalloc(size);
 	printf("ft_memalloc(%zu)\ntaille allouee a mem : %lu\n", size, sizeof(mem));
+*/	/*
+		STRSPLIT
+	*/
+	printf("------------------------------------------STRSPLIT\n");
+	char	c;
+	char	*str = NULL;
+	char	**tab;
+//	int		i;
+
+	c = '*';
+	ft_strcpy(str, "a"); //*salut*les***etudiants*
+	tab = ft_strsplit(str, c);
+//	i = 0;
+/*	while (tab[i])
+	{
+		ft_putstr(tab[i]);
+		ft_putchar('\n');
+	}
 */
 	printf("\n END\t\t\tEND\t\t\tEND\n\n");
 	return (0);
