@@ -6,13 +6,13 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/10 18:42:23 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/16 13:15:45 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strtrim(char const *s) // s = " \n  \t  4\n2  \t  \n " len = 17 (7+3+7)
+char	*ft_strtrim(char const *s)
 {
 	char	*str;
 	size_t	i;
@@ -21,12 +21,12 @@ char	*ft_strtrim(char const *s) // s = " \n  \t  4\n2  \t  \n " len = 17 (7+3+7)
 
 	i = 0;
 	start = 0;
-	len = ft_strlen(s); // = 17
+	len = ft_strlen(s);
 	while (s[start] == ' ' || s[start] == '\n' || s[start] == '\t')
-		start++; // = 7
+		start++;
 	while (s[len - 1] == ' ' || s[len - 1] == '\n' || s[len - 1] == '\t')
-		len--; // = 10
-	len -= start; // len = 10 - 7 = 3
+		len--;
+	len -= start;
 	str = (char *)malloc(len + 1);
 	if (str == NULL)
 		return (NULL);

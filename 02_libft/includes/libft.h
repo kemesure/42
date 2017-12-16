@@ -6,17 +6,32 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:11:57 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/15 13:57:24 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/16 14:24:19 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <string.h>	/* pour mem* et str*	*/
-#include <stdlib.h>	/* pour atoi 			*/
-#include <ctype.h>	/* pour is* et to*		*/
-#include <unistd.h> /* pour putchar			*/
+/*
+**	pour mem* et str*
+*/
+# include <string.h>
+
+/*
+**	pour atoi
+*/
+# include <stdlib.h>
+
+/*
+**	pour is* et to*
+*/
+# include <ctype.h>
+
+/*
+**	pour putchar
+*/
+# include <unistd.h>
 
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
@@ -76,7 +91,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char const *s, int fd);
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-
 
 int		ft_puiss(int nb, int puiss);
 

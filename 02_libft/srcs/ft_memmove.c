@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 13:55:07 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/15 16:41:36 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/16 13:08:59 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char	*ptr1;
 	unsigned char	*ptr2;
-	size_t	i;
+	size_t			i;
 
 	i = 0;
 	ptr1 = (unsigned char *)dst;
