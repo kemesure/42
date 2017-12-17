@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 14:01:09 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/06 18:23:55 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/17 21:03:56 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	s1 = (char *)haystack;
 	s2 = (char *)needle;
 	i = 0;
+	if (s2[0] == '\0')
+		return (s1);
 	while ((s1[i] || !s2[0]) && len)
 	{
 		j = 0;

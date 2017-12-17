@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/16 14:10:24 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/17 19:04:41 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	**ft_strsplit(char const *s, char c)
 	size_t	len;
 	char	**tab;
 
+	if (s == NULL)
+		return (NULL);
 	tab = (void *)0;
 	i = 0;
 	j = 0;

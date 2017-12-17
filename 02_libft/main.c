@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 14:34:33 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/16 17:57:47 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/17 21:21:41 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,38 @@ int		main(void)
 	printf("--------------------------------------------STRNSTR\n");
 
 /*
-**	void			test_ft_strnstr_zero_len2(void *ptr) {
-**	typeof(strnstr)	*ft_strnstr = ptr;
-**	SET_EXPLANATION("your strnstr does not work with empty strings 2");
-**
-**	SANDBOX_RAISE(
-**			char	*s1 = "oh no not the empty string !";
-**			char	*s2 = "";
-**			size_t	max = strlen(s1);
-**
-**			char	*i1 = strnstr(s1, s2, max);
-**			char	*i2 = ft_strnstr(s1, s2, max);
-**			if (i1 == i2)
-**				exit(TEST_SUCCESS);
-**			SET_DIFF(i1, i2);
-**			exit(TEST_FAILED);
-**			);
-**	}
+	void			test_ft_strnstr_zero_len2(void *ptr) {
+	typeof(strnstr)	*ft_strnstr = ptr;
+	SET_EXPLANATION("your strnstr does not work with empty strings 2");
+
+	SANDBOX_RAISE(
+			char	*s1 = "oh no not the empty string !";
+			char	*s2 = "";
+			size_t	max = strlen(s1);
+
+			char	*i1 = strnstr(s1, s2, max);
+			char	*i2 = ft_strnstr(s1, s2, max);
+			if (i1 == i2)
+				exit(TEST_SUCCESS);
+			SET_DIFF(i1, i2);
+			exit(TEST_FAILED);
+			);
+	}
 */
+	char	*s1 = "oh no not the empty string !";
+	char	*s2 = "";
+	size_t	max = strlen(s1);
+	char	*i1 = strnstr(s1, s2, max);
+	char	*i2 = ft_strnstr(s1, s2, max);
+
+	if (i1 == i2)
+		printf(":)\n");
+	else
+		printf(":(\n");
+	printf("   strnstr(\"oh no not the empty string !\", \"\", %zu) = \"%s\"\n", max, i1);
+	printf("ft_strnstr(\"oh no not the empty string !\", \"\", %zu) = \"%s\"\n", max, i2);
+	printf("s1(\"oh no not the empty string !\") = \"%s\"\n", s1);
+	printf("s2(\"\") = \"%s\"\n", s2);
 
 	/*
 	**	STRCMP
@@ -181,6 +195,14 @@ int		main(void)
 			);
 	}
 */
+	char	*n1 = "\t\v\f\r\n \f-06050";
+	int		i3 = atoi(n1);
+	int		i4 = ft_atoi(n1);
+
+	if (i3 == i4)
+		printf(":)\natoi(\"-06050\") = ft_atoi(\"-06050\") = %d\n\n", ft_atoi(n1));
+	else
+		printf(":(\n   atoi(\"-06050\") = %d\nft_atoi(\"-06050\") = %d\n\n", atoi(n1), ft_atoi(n1));
 
 /*
 	void			test_ft_atoi_over_max_long(void *ptr) {
@@ -199,6 +221,13 @@ int		main(void)
 			);
 	}
 */
+	char	n2[40] = "99999999999999999999999999";
+	int		i5 = atoi(n2);
+	int		i6 = ft_atoi(n2);
+	if (i5 == i6)
+		printf(":)\natoi(\"99999999999999999999999999\") = ft_atoi(\"99999999999999999999999999\") = %d\n\n", ft_atoi(n2));
+	else
+		printf(":(\n   atoi(\"99999999999999999999999999\") = %d\nft_atoi(\"99999999999999999999999999\") = %d\n\n", atoi(n2), ft_atoi(n2));
 
 /*
 	void			test_ft_atoi_over_min_long(void *ptr) {
@@ -217,6 +246,57 @@ int		main(void)
 			);
 	}
 */
+	char	n3[40] = "-99999999999999999999999999";
+	int		i7 = atoi(n3);
+	int		i8 = ft_atoi(n3);
+	if (i7 == i8)
+		printf(":)\natoi(\"-99999999999999999999999999\") = ft_atoi(\"-99999999999999999999999999\") = %d\n", ft_atoi(n3));
+	else
+		printf(":(\n   atoi(\"-99999999999999999999999999\") = %d\nft_atoi(\"-99999999999999999999999999\") = %d\n", atoi(n3), ft_atoi(n3));
+
+/*
+	void			test_ft_atoi_string(void *ptr) {
+	typeof(atoi)	*ft_atoi = ptr;
+	SET_EXPLANATION("your atoi is not working with blanks 3");
+
+	SANDBOX_RAISE(
+			char	*n = "-123THERE IS A NYANCAT UNDER YOUR BED";
+
+			int		i1 = atoi(n);
+			int		i2 = ft_atoi(n);
+			if (i1 == i2)
+				exit(TEST_SUCCESS);
+			SET_DIFF_INT(i1, i2);
+			exit(TEST_FAILED);
+			);
+	}
+*/
+	char	n4[40] = "-123THERE IS A NYANCAT UNDER YOUR BED";
+	int		i9 = atoi(n4);
+	int		i10 = ft_atoi(n4);
+	if (i9 == i10)
+		printf(":)\natoi(\"-123THERE IS A NYANCAT UNDER YOUR BED\") = ft_atoi(\"-123THERE IS A NYANCAT UNDER YOUR BED\") = %d\n", ft_atoi(n4));
+	else
+		printf(":(\n   atoi(\"-123THERE IS A NYANCAT UNDER YOUR BED\") = %d\nft_atoi(\"-123THERE IS A NYANCAT UNDER YOUR BED\") = %d\n", atoi(n4), ft_atoi(n4));
+
+/*
+	TESTS
+*/
+	char	n5[40] = "9223372036854775806";
+	int		i11 = atoi(n5);
+	int		i12 = ft_atoi(n5);
+	if (i11 == i12)
+		printf(":)\natoi(\"9223372036854775806\") = ft_atoi(\"9223372036854775806\") = %d\n", ft_atoi(n5));
+	else
+		printf(":(\n   atoi(\"9223372036854775806\") = %d\nft_atoi(\"9223372036854775806\") = %d\n", atoi(n5), ft_atoi(n5));
+
+	char	n6[40] = "-9223372036854775807";
+	int		i13 = atoi(n6);
+	int		i14 = ft_atoi(n6);
+	if (i13 == i14)
+		printf(":)\natoi(\"-9223372036854775807\") = ft_atoi(\"-9223372036854775807\") = %d\n", ft_atoi(n6));
+	else
+		printf(":(\n   atoi(\"-9223372036854775807\") = %d\nft_atoi(\"-9223372036854775807\") = %d\n", atoi(n6), ft_atoi(n6));
 
 	/*
 	**	MEMALLOC
@@ -429,18 +509,9 @@ int		main(void)
 */
 
 	/*
-	**	PUTCHAR
+	**	TESTS
 	*/
-	printf("--------------------------------------------PUTCHAR\n");
-
-
-
-	/*
-	**	PUTCHAR_FD
-	*/
-	printf("-----------------------------------------PUTCHAR_FD\n");
-
-
+	printf("\n\n          END          END          END\n\n\n");
 
 	return (0);
 }

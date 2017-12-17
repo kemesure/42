@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/16 14:14:23 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/17 18:47:04 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	unsigned int	i;
 	char			*str;
 
+	if (s == NULL)
+		return (NULL);
 	str = (void *)0;
 	i = 0;
 	str = malloc(ft_strlen(s + start) - ft_strlen(s + len) + 1);

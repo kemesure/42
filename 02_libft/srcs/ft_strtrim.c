@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/16 13:15:45 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/17 19:03:08 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strtrim(char const *s)
 	size_t	len;
 	size_t	start;
 
+	if (s == NULL)
+		return (NULL);
 	i = 0;
 	start = 0;
 	len = ft_strlen(s);

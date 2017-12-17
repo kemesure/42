@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/13 19:05:04 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/17 19:46:21 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr(char const *s)
 {
 	int		i;
 
+	if (s == NULL)
+		return ;
 	i = 0;
 	while (s[i])
 	{
