@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/17 19:46:56 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/21 13:36:24 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,7 @@
 
 void	ft_strclr(char *s)
 {
-	int		len;
-
 	if (s == NULL)
 		return ;
-	len = ft_strlen(s);
-	while (len)
-	{
-		s[len] = '\0';
-		len--;
-	}
+	ft_memset(s, 0, ft_strlen(s));
 }

@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 14:34:33 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/17 21:21:41 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/21 14:15:04 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,21 @@ int		main(void)
 	r4 = ft_strlcat(sd2 + 2, sd2 + 4, 4);
 	r5 =    strlcat(sd3 + 4, sd3 + 2, 4);
 	r6 = ft_strlcat(sd4 + 4, sd4 + 2, 4);
-	printf("   strlcat(\"%s\", \"%s\", %d) = %zu\n", "", "thx to ntoniolo for this test !", 4, r1);
-	printf("ft_strlcat(\"%s\", \"%s\", %d) = %zu\n", "", "thx to ntoniolo for this test !", 4, r2);
-	printf("   strlcat(\"%s\", \"%s\", %d) = %zu\n", "2345", "45", 4, r3);
-	printf("ft_strlcat(\"%s\", \"%s\", %d) = %zu\n", "2345", "45", 4, r4);
-	printf("   strlcat(\"%s\", \"%s\", %d) = %zu\n", "45", "2345", 4, r5);
-	printf("ft_strlcat(\"%s\", \"%s\", %d) = %zu\n", "45", "2345", 4, r6);
+	if (r1 != r2)
+	{
+		printf("   strlcat(\"%s\", \"%s\", %d) = %zu\n", "", "thx to ntoniolo for this test !", 4, r1);
+		printf("ft_strlcat(\"%s\", \"%s\", %d) = %zu\n", "", "thx to ntoniolo for this test !", 4, r2);
+	}
+	if (r3 != r4)
+	{
+		printf("   strlcat(\"%s\", \"%s\", %d) = %zu\n", "2345", "45", 4, r3);
+		printf("ft_strlcat(\"%s\", \"%s\", %d) = %zu\n", "2345", "45", 4, r4);
+	}
+	if (r5 != r6)
+	{
+		printf("   strlcat(\"%s\", \"%s\", %d) = %zu\n", "45", "2345", 4, r5);
+		printf("ft_strlcat(\"%s\", \"%s\", %d) = %zu\n", "45", "2345", 4, r6);
+	}
 	/*
 	**	STRNSTR
 	*/
@@ -87,93 +96,6 @@ int		main(void)
 	printf("s2(\"\") = \"%s\"\n", s2);
 
 	/*
-	**	STRCMP
-	*/
-	printf("---------------------------------------------STRCMP\n");
-
-/*
-**	void			test_ft_strcmp_unsigned(void *ptr) {
-**	typeof(strcmp)	*ft_strcmp = ptr;
-**	SET_EXPLANATION("your strcmp does not cast in unsigned the diff");
-**
-**	SANDBOX_RAISE(
-**			char	*s1 = "\0";
-**			char	*s2 = "\200";
-**
-**			int		i1 = REG(strcmp(s1, s2));
-**			int		i2 = REG(ft_strcmp(s1, s2));
-**			if (i1 == i2)
-**				exit(TEST_SUCCESS);
-**			SET_DIFF_INT(i1, i2);
-**			exit(TEST_FAILED);
-**			);
-**	}
-*/
-
-/*
-**	void			test_ft_strcmp_ascii(void *ptr) {
-**	typeof(strcmp)	*ft_strcmp = ptr;
-**	SET_EXPLANATION("your strcmp does not work with non ascii chars");
-**
-**	SANDBOX_RAISE(
-**			char	*s1 = "\x12\xff\x65\x12\xbd\xde\xad";
-**			char	*s2 = "\x12\x02";
-**
-**			int		i1 = REG(strcmp(s1, s2));
-**			int		i2 = REG(ft_strcmp(s1, s2));
-**			if (i1 == i2)
-**				exit(TEST_SUCCESS);
-**			SET_DIFF_INT(i1, i2);
-**			exit(TEST_FAILED);
-**			);
-**	}
-*/
-
-	/*
-	**	STRNCMP
-	*/
-	printf("--------------------------------------------STRNCMP\n");
-
-/*
-**	void			test_ft_strncmp_cast(void *ptr) {
-**	typeof(strncmp)	*ft_strncmp = ptr;
-**	SET_EXPLANATION("your strncmp does not cast in unsigned char the diff");
-**
-**	SANDBOX_RAISE(
-**			char	*s1 = "\200";
-**			char	*s2 = "\0";
-**
-**			int		i1 = REG(strncmp(s1, s2, 1));
-**			int		i2 = REG(ft_strncmp(s1, s2, 1));
-**			if (i1 == i2)
-**				exit(TEST_SUCCESS);
-**			SET_DIFF_INT(i1, i2);
-**			exit(TEST_FAILED);
-**			);
-**	}
-*/
-
-/*
-**	void			test_ft_strncmp_ascii(void *ptr) {
-**	typeof(strncmp)	*ft_strncmp = ptr;
-**	SET_EXPLANATION("your strncmp does not work with non ascii chars");
-**
-**	SANDBOX_RAISE(
-**			char	*s1 = "\x12\xff\x65\x12\xbd\xde\xad";
-**			char	*s2 = "\x12\x02";
-**			size_t	size = 6;
-**
-**			int		i1 = REG(strncmp(s1, s2, size));
-**			int		i2 = REG(ft_strncmp(s1, s2, size));
-**			if (i1 == i2)
-**				exit(TEST_SUCCESS);
-**			SET_DIFF_INT(i1, i2);
-**			exit(TEST_FAILED);
-**			);
-**	}
-*/
-
-	/*
 	**	ATOI
 	*/
 	printf("-----------------------------------------------ATOI\n");
@@ -199,10 +121,8 @@ int		main(void)
 	int		i3 = atoi(n1);
 	int		i4 = ft_atoi(n1);
 
-	if (i3 == i4)
-		printf(":)\natoi(\"-06050\") = ft_atoi(\"-06050\") = %d\n\n", ft_atoi(n1));
-	else
-		printf(":(\n   atoi(\"-06050\") = %d\nft_atoi(\"-06050\") = %d\n\n", atoi(n1), ft_atoi(n1));
+	if (i3 != i4)
+		printf("   atoi(\"-06050\") = %d\nft_atoi(\"-06050\") = %d\n\n", atoi(n1), ft_atoi(n1));
 
 /*
 	void			test_ft_atoi_over_max_long(void *ptr) {
@@ -224,10 +144,8 @@ int		main(void)
 	char	n2[40] = "99999999999999999999999999";
 	int		i5 = atoi(n2);
 	int		i6 = ft_atoi(n2);
-	if (i5 == i6)
-		printf(":)\natoi(\"99999999999999999999999999\") = ft_atoi(\"99999999999999999999999999\") = %d\n\n", ft_atoi(n2));
-	else
-		printf(":(\n   atoi(\"99999999999999999999999999\") = %d\nft_atoi(\"99999999999999999999999999\") = %d\n\n", atoi(n2), ft_atoi(n2));
+	if (i5 != i6)
+		printf("   atoi(\"99999999999999999999999999\") = %d\nft_atoi(\"99999999999999999999999999\") = %d\n\n", atoi(n2), ft_atoi(n2));
 
 /*
 	void			test_ft_atoi_over_min_long(void *ptr) {
@@ -249,10 +167,8 @@ int		main(void)
 	char	n3[40] = "-99999999999999999999999999";
 	int		i7 = atoi(n3);
 	int		i8 = ft_atoi(n3);
-	if (i7 == i8)
-		printf(":)\natoi(\"-99999999999999999999999999\") = ft_atoi(\"-99999999999999999999999999\") = %d\n", ft_atoi(n3));
-	else
-		printf(":(\n   atoi(\"-99999999999999999999999999\") = %d\nft_atoi(\"-99999999999999999999999999\") = %d\n", atoi(n3), ft_atoi(n3));
+	if (i7 != i8)
+		printf("   atoi(\"-99999999999999999999999999\") = %d\nft_atoi(\"-99999999999999999999999999\") = %d\n", atoi(n3), ft_atoi(n3));
 
 /*
 	void			test_ft_atoi_string(void *ptr) {
@@ -274,10 +190,8 @@ int		main(void)
 	char	n4[40] = "-123THERE IS A NYANCAT UNDER YOUR BED";
 	int		i9 = atoi(n4);
 	int		i10 = ft_atoi(n4);
-	if (i9 == i10)
-		printf(":)\natoi(\"-123THERE IS A NYANCAT UNDER YOUR BED\") = ft_atoi(\"-123THERE IS A NYANCAT UNDER YOUR BED\") = %d\n", ft_atoi(n4));
-	else
-		printf(":(\n   atoi(\"-123THERE IS A NYANCAT UNDER YOUR BED\") = %d\nft_atoi(\"-123THERE IS A NYANCAT UNDER YOUR BED\") = %d\n", atoi(n4), ft_atoi(n4));
+	if (i9 != i10)
+		printf("   atoi(\"-123THERE IS A NYANCAT UNDER YOUR BED\") = %d\nft_atoi(\"-123THERE IS A NYANCAT UNDER YOUR BED\") = %d\n", atoi(n4), ft_atoi(n4));
 
 /*
 	TESTS
@@ -285,18 +199,14 @@ int		main(void)
 	char	n5[40] = "9223372036854775806";
 	int		i11 = atoi(n5);
 	int		i12 = ft_atoi(n5);
-	if (i11 == i12)
-		printf(":)\natoi(\"9223372036854775806\") = ft_atoi(\"9223372036854775806\") = %d\n", ft_atoi(n5));
-	else
-		printf(":(\n   atoi(\"9223372036854775806\") = %d\nft_atoi(\"9223372036854775806\") = %d\n", atoi(n5), ft_atoi(n5));
+	if (i11 != i12)
+		printf("   atoi(\"9223372036854775806\") = %d\nft_atoi(\"9223372036854775806\") = %d\n", atoi(n5), ft_atoi(n5));
 
 	char	n6[40] = "-9223372036854775807";
 	int		i13 = atoi(n6);
 	int		i14 = ft_atoi(n6);
-	if (i13 == i14)
-		printf(":)\natoi(\"-9223372036854775807\") = ft_atoi(\"-9223372036854775807\") = %d\n", ft_atoi(n6));
-	else
-		printf(":(\n   atoi(\"-9223372036854775807\") = %d\nft_atoi(\"-9223372036854775807\") = %d\n", atoi(n6), ft_atoi(n6));
+	if (i13 != i14)
+		printf("   atoi(\"-9223372036854775807\") = %d\nft_atoi(\"-9223372036854775807\") = %d\n", atoi(n6), ft_atoi(n6));
 
 	/*
 	**	MEMALLOC
@@ -327,100 +237,155 @@ int		main(void)
 			);
 	}
 */
+	size_t	size = 514;
+	char	*ret = ft_memalloc(size);
 
-	/*
-	**	STRNEW
-	*/
-	printf("---------------------------------------------STRNEW\n");
-
-/*
-	void			test_ft_strnew_free(void *ptr) {
-	void *	(*ft_strnew)(size_t) = ptr;
-	SET_EXPLANATION("your strnew don't allocate memory");
-
-	SANDBOX_RAISE(
-			free(ft_strnew(42));
-			);
-	}
-*/
-
-/*
-	void			test_ft_strnew_zero(void *ptr) {
-	void *	(*ft_strnew)(size_t) = ptr;
-	SET_EXPLANATION("your strnew does not set allocated mem to 0");
-
-	SANDBOX_RAISE(
-			size_t	size = 514;
-			MALLOC_MEMSET;
-			char	*ret = ft_strnew(size);
-			MALLOC_RESET;
-
-			for (size_t i = 0;i < size + 1;i++)
-				if (ret[i] != 0) {
-					SET_DIFF_INT(0, ret[i]);
-					exit(TEST_FAILED);
-				}
-			free(ret);
-			exit(TEST_SUCCESS);
-			);
-	}
-*/
-
-/*
-	void			test_ft_strnew_size(void *ptr) {
-	void *	(*ft_strnew)(size_t) = ptr;
-	SET_EXPLANATION("your strnew did not allocate the good size so the \\0 test can be false");
-
-	SANDBOX_RAISE(
-			size_t	size = 514;
-			int		ret_size;
-
-			MALLOC_SIZE;
-			char	*ret = ft_strnew(size);
-			MALLOC_RESET;
-
-			ret_size = get_last_malloc_size();
-			if (ret_size == (int)size + 1)
-				exit(TEST_SUCCESS);
-			free(ret);
-			SET_DIFF_INT((int)size + 1, ret_size);
-			exit(TEST_FAILED);
-			);
-	}
-*/
-
-	/*
-	**	STRCLR
-	*/
-	printf("---------------------------------------------STRCLR\n");
-
-/*
-	void			test_ft_strclr_basic(void *ptr) {
-	void	(*ft_strclr)(char *) = ptr;
-	SET_EXPLANATION("your strclr does not set to 0 the string");
-
-	SANDBOX_RAISE(
-			char	b[] = "strclr test !\r\n";
-			char	n[0xF0];
-			size_t	size = strlen(b);
-
-			memset(n, 0, size);
-			ft_strclr(b);
-			if (!memcmp(b, n, size))
-				exit(TEST_SUCCESS);
-			SET_DIFF_INT(0, memcmp(b, n, size));
-			exit(TEST_FAILED);
-			);
-
-	}
-*/
+	if (ret == NULL)
+		printf("ret = \"%s\"\n", ret);
 
 	/*
 	**	STRSUB
 	*/
 	printf("---------------------------------------------STRSUB\n");
 
+/*
+	void			test_ft_strsub_basic(void *ptr) {
+	char	*(*ft_strsub)(const char *, size_t, size_t) = ptr;
+	SET_EXPLANATION("your strsub does not work with valid input 1");
 
+	SANDBOX_RAISE(
+			char	*str = "i just want this part #############";
+			size_t	size = 22;
+
+			char	*ret = ft_strsub(str, 0, size);
+			if (!strncmp(ret, str, size)) {
+				free(ret);
+				exit(TEST_SUCCESS);
+			}
+			SET_DIFF("i just want this part", ret);
+			free(ret);
+			exit(TEST_FAILED);
+			);
+	}
+*/
+	char	*str = "i just want this part #############";
+	size = 22;
+	char	*ret2 = ft_strsub(str, 0, size);
+
+	if (!strncmp(ret2, str, size))
+		printf(":)\n");
+	else
+		printf(":(\nft_strsub(\"i just want this part #############\", 0, 22) = \"%s\"\n", ret2);
+	free(ret2);
+
+/*
+	void			test_ft_strsub_basic2(void *ptr) {
+	char	*(*ft_strsub)(const char *, size_t, size_t) = ptr;
+	SET_EXPLANATION("your strsub does not work with valid input 2");
+
+	SANDBOX_RAISE(
+			char	*str = "i just want this part #############";
+			size_t	size = 20;
+
+			char	*ret = ft_strsub(str, 5, size);
+			if (!strncmp(ret, str + 5, size)) {
+				free(ret);
+				exit(TEST_SUCCESS);
+			}
+			SET_DIFF("t want this part ###", ret);
+			free(ret);
+			exit(TEST_FAILED);
+			);
+	}
+*/
+
+/*
+	void			test_ft_strsub_size(void *ptr) {
+	char	*(*ft_strsub)(const char *, size_t, size_t) = ptr;
+	SET_EXPLANATION("your strsub did not allocate the good size so the \\0 test may be false");
+
+	SANDBOX_RAISE(
+			char	*str = "i just want this part #############";
+			size_t	size = 10;
+			int		ret_size;
+
+			MALLOC_SIZE;
+			ft_strsub(str, 5, size);
+			MALLOC_RESET;
+			ret_size = get_last_malloc_size();
+
+			if ((int)size + 1 == ret_size) {
+				exit(TEST_SUCCESS);
+			}
+			SET_DIFF_INT((int)size + 1, ret_size);
+			exit(TEST_FAILED);
+			);
+	}
+*/
+
+/*
+	void			test_ft_strsub_zero(void *ptr) {
+	char	*(*ft_strsub)(const char *, size_t, size_t) = ptr;
+	SET_EXPLANATION("your strsub does not set \\0 to the end of the string");
+
+	SANDBOX_RAISE(
+			char	str[] = "i just want this part #############";
+			size_t	size = 20;
+
+			MALLOC_MEMSET;
+			char	*ret = ft_strsub(str, 5, size);
+			MALLOC_RESET;
+			str[size + 5] = 0;
+			if (!memcmp(ret, str + 5, size + 1)) {
+				free(ret);
+				exit(TEST_SUCCESS);
+			}
+			SET_DIFF("t want this part ###", ret);
+			free(ret);
+			exit(TEST_FAILED);
+			);
+	}
+*/
+
+/*
+	void			test_ft_strsub_all(void *ptr) {
+	char	*(*ft_strsub)(const char *, size_t, size_t) = ptr;
+	SET_EXPLANATION("your strsub does not work for a whole string");
+
+	SANDBOX_RAISE(
+			char	*s = "all of this !";
+			size_t	size = strlen(s);
+
+			char	*ret = ft_strsub(s, 0, size);
+
+			if (!strcmp(s, ret)) {
+				free(ret);
+				exit(TEST_SUCCESS);
+			}
+			SET_DIFF(s, ret);
+			free(ret);
+			exit(TEST_FAILED);
+			);
+	}
+*/
+
+/*
+	void			test_ft_strsub_electric_memory(void *ptr) {
+	char	*(*ft_strsub)(const char *, size_t, size_t) = ptr;
+	SET_EXPLANATION("your strsub crash cause it read too many bytes !");
+
+	SANDBOX_RAISE(
+			const size_t	size = 10;
+			char	*str = electric_alloc(size);
+
+			strcpy(str, "YOLO !!!!");
+
+			ft_strsub(str, 0, size);
+
+			exit(TEST_SUCCESS);
+			);
+	}
+*/
 
 	/*
 	**	STRTRIM
