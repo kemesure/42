@@ -6,46 +6,76 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 20:00:46 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/23 23:17:11 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/24 17:31:29 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_itoa(int n) // -2147483647
+void	ft_intlen(int n, int *len, int *sign) // n = 4  &  *len = 5  &  sign = 0
 {
-	char	*str;
-	int		nb;
-	int		size;
-	int		sign;
+	if (n == -2147483648) // FAUX
+	{
+		*len = 12;
+		return ;
+	}
+	else if (n < 0) // FAUX
+	{
+		n *= -1;
+		sign++;
+	}
+	if (n == 0) // FAUX
+		*len = 2;
+	else // VRAI
+	{
+		if (n / 10 != 0) // FAUX 4 / 10 = 0
+			ft_intlen(n / 10, len + 1, sign);
+	}
+}
+
+void	ft_itoa_assignment(int n, char *str, int sign, int len) // n = 42042  &  str  &  sign = 0  &  len = 5
+{
 	int		i;
 
-	nb = 1;
-	size = 0;
-	sign = 1;
 	i = 0;
-	if (n == -2147483648 && (str = (char *)malloc(11))) // FAUX
+	if (sign == 1) // FAUX
 	{
-		if (str == NULL)
-			return (NULL);
-		ft_strcpy(str, "-2147483648\0");
-		return (str);
+		str[i] = '-';
+		n *= -1;
+		i++;
+		// GERER LE CAS D'ERREUR OU FT_PUISS RETOURNE 10¹⁰ > MAX_INT
+		while (i <= len)
+		{
+			str[i] = (n / ft_puiss(10, len - i)) % 10 + '0';
+			i++;
+		}
 	}
-	if (n < 0 && (sign = - 1)) // VRAI donc sign = - 1
-		n *= sign; // n = 2147483647
-	if (n > 999999999) // VRAI 2 147 483 647 > 999 999 999
-		size = 10;
-	else // FAUX
-		while (n / nb != 0 && ++size)
-			nb *= 10;
-	if (sign == - 1) // VRAI sign = - 1
-		size++; // size = 11
-	if ((str = (char *)malloc(size + 1)) && str == NULL) // str = 12 octets && FAUX
+	else
+	{
+		// GERER LE CAS D'ERREUR OU FT_PUISS RETOURNE 10¹⁰ > MAX_INT
+		while (i < len) // FAUX 5 < 5
+		{
+			str[i] = (n / ft_puiss(10, len - i - 1)) % 10 + '0'; // str = "42042"
+			i++; // i = 5
+		}
+	}
+	str[i] = '\0'; // str = "42042\0"
+}
+
+char	*ft_itoa(int n) // n = 42042
+{
+	char	*str;
+	int		len;
+	int		sign;
+
+	len = 1;
+	sign = 0;
+	if (n == -2147483648) // FAUX
+		return (ft_strdup("-2147483648"));
+	ft_intlen(n, &len, &sign); // len = 5  &  sign = 0
+	str = malloc(len + 1 + sign); // str = 6 octets
+	if (str == NULL)
 		return (NULL);
-	if (sign == - 1 && ++i) // VRAI et i = 1
-		str[0] = '-';
-	while (size > i && ++i) // FAUX 11 !> 11 (i = 11 c'est le while d'avant)
-		str[i - 1] = (n / ft_puiss(10, size - i)) % 10 + 48; // str = "-2147483647"
-	str[i] = '\0'; // str = "-2147483647\0"
+	ft_itoa_assignment(n, str, sign, len); // str = "42042\0"
 	return (str);
 }
