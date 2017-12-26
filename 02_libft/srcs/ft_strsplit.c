@@ -6,13 +6,13 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/23 01:11:49 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/26 14:54:57 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_allocation(char const *s, char c, char **tab)
+void	ft_allocation(char const *s, char c, char **tab, int *nul)
 {
 	size_t	i;
 	size_t	j;
@@ -31,7 +31,7 @@ void	ft_allocation(char const *s, char c, char **tab)
 		{
 			tab[i] = (char *)malloc(len - j + 1);
 			if (tab[i] == NULL)
-				return (NULL);
+				*nul = 1;
 		}
 		i++;
 		j = len;
@@ -67,11 +67,15 @@ void	ft_assignment(char const *s, char c, char **tab)
 char	**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
+	int		nul;
 
+	nul = 0;
 	if (s == NULL)
 		return (NULL);
 	tab = (void *)0;
-	ft_allocation(s, c, tab);
+	ft_allocation(s, c, tab, &nul);
+	if (nul == 1)
+		return (NULL);
 	ft_assignment(s, c, tab);
 	return (tab);
 }
