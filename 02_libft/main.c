@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 14:34:33 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/21 14:15:04 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/28 16:02:44 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -432,24 +432,22 @@ int		main(void)
 			);
 	}
 */
+			char	*i15 = ft_itoa(-623);
+			char	*i16 = ft_itoa(156);
+			char	*i17 = ft_itoa(-0);
 
-/*
-	void			test_ft_itoa_malloc_null(void *ptr) {
-	char	*(*ft_itoa)(int) = ptr;
-	SET_EXPLANATION("you did not protect your malloc 2");
-
-	SANDBOX_RAISE(
-			MALLOC_NULL;
-			char	*i1 = ft_itoa(-1234);
-			MALLOC_RESET;
-
-			if (!i1)
-				exit(TEST_SUCCESS);
-			SET_DIFF(NULL, i1);
-			exit(TEST_FAILED);
-			);
-	}
-*/
+			if (strcmp(i15, "-623"))
+			{
+				printf("ft_itoa(\"%s\") = \"%s\"\n", "-623", ft_itoa(-623));
+			}
+			if (strcmp(i16, "156"))
+			{
+				printf("ft_itoa(\"%s\") = \"%s\"\n", "156", ft_itoa(156));
+			}
+			if (strcmp("0", i17))
+			{
+				printf("ft_itoa(\"%s\") = \"%s\"\n", "0", ft_itoa(-0));
+			}
 
 /*
 	void			test_ft_itoa_size2(void *ptr) {
