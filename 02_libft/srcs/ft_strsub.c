@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/21 13:49:12 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/29 15:22:04 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	str = (void *)0;
 	i = 0;
-	str = malloc(ft_strlen(s + start) - ft_strlen(s + len) + 1);
+	str = (char *)malloc(len + 1);
 	if (str == NULL)
 		return (NULL);
 	while (i < len)
 	{
-		str[i] = s[ft_strlen(s + start) + i];
+		str[i] = s[start + i];
 		i++;
 	}
 	str[i] = '\0';
