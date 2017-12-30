@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 14:34:33 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/29 16:36:38 by kemesure         ###   ########.fr       */
+/*   Updated: 2017/12/30 17:33:39 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,7 +301,7 @@ int		main(void)
 	**	STRSPLIT
 	*/
 	printf("-------------------------------------------STRSPLIT\n");
-
+/*  ----------------------------SEGFAULT---------------------------- au moment de l'assignation
 	char	*s = "      split       this for   me  !       ";
 	char	**r = ft_strsplit(s, ' ');
 	while (*r)
@@ -309,7 +309,7 @@ int		main(void)
 		printf("%s\n", *r);
 		r++;
 	}
-
+*/
 // SEGMENTATION FAULT :
 /*
 **	char	**ret3 = (char*[6]){"split", "this", "for", "me", "!", NULL};
@@ -366,6 +366,21 @@ int		main(void)
 	/*
 	**	TESTS
 	*/
+
+	ft_putnbr(-2147483648);
+	ft_putnbr(-2147483647);
+	ft_putnbr(-2000000000);
+	ft_putnbr(-1000000000);
+	ft_putnbr(-999999999);
+	ft_putnbr(-42);
+	ft_putnbr(0);
+	ft_putnbr(42);
+	ft_putnbr(999999999);
+	ft_putnbr(1000000000);
+	ft_putnbr(2000000000);
+	ft_putnbr(2147483646);
+	ft_putnbr(2147483647);
+
 	printf("\n\n          END          END          END\n\n\n");
 
 	return (0);
