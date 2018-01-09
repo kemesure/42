@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 13:54:27 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/06 17:58:29 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/08 14:58:31 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,11 @@
 **	similaire à la fonction ft_memdel de la partie obligatoire).
 */
 
-//	**alst adresse à laquelle se trouve l'adresse du maillon
-//	*alst  adresse du maillon
-//	alst   valeur du maillon
-//				 (adresse d'un pointeur sur maillon, fonction del)
 void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
 	if (*alst == NULL)
 		return ;
-	del(*alst->content, *alst->content_size);
-	free(*alst->content);
+	del((*alst)->content, (*alst)->content_size);
+	free(*alst);
 	*alst = NULL;
 }

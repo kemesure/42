@@ -6,11 +6,15 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 13:54:55 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/06 15:37:39 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/08 15:26:59 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+
+/*
+**	Parcourt la liste lst en appliquant à chaque maillon la fonction f.
+*/
 
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {

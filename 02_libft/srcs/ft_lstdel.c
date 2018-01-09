@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 13:54:52 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/06 17:55:11 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/08 15:05:28 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,15 @@
 **	la partie obligatoire).
 */
 
-//	**alst adresse à laquelle se trouve l'adresse du maillon
-//	*alst  adresse du maillon
-//	alst   valeur du maillon
-//				 (adresse d'un pointeur sur maillon, fonction del)
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
 	if (*alst == NULL)
 		return ;
 	while (*alst)
 	{
-		del(*alst, sizeof(*alst));
-		alst++;
-//		*alst = *alst->next;
+		del((*alst)->content, (*alst)->content_size);
+		free(*alst);
+		*alst = (*alst)->next;
 	}
-	free(*alst);
 	*alst = NULL;
 }

@@ -12,31 +12,57 @@
 
 #include "../includes/libft.h"
 
+/* A RETIRER */
+#include <stdio.h>
+/* A RETIRER */
+
 char	*ft_strtrim(char const *s)
 {
 	char	*str;
-	size_t	i;
 	size_t	len;
-	size_t	start;
+	size_t	i;
+	size_t	j;
 
 	if (s == NULL)
 		return (NULL);
 	i = 0;
-	start = 0;
-	len = ft_strlen(s);
-	while (s[start] == ' ' || s[start] == '\n' || s[start] == '\t')
-		start++;
-	while (s[len - 1] == ' ' || s[len - 1] == '\n' || s[len - 1] == '\t')
-		len--;
-	len -= start;
-	str = (char *)malloc(len + 1);
+	len = 0;
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
+		i++;
+	printf("while 1\n");
+	if (s[i] == '\0')
+		return ("\0");
+	j = i;
+	while (s[j])
+	{
+		len = j;
+		while ((j = len) && s[len] != '\0' && s[len] != ' '
+				&& s[len] != '\n' && s[len] != '\t')
+			len++;
+		printf("while 2.1\n");
+		while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
+			j++;
+		printf("while 2.2\n");
+	}
+	printf("while 2\n");
+	str = (char *)malloc(len - i + 1);
 	if (str == NULL)
 		return (NULL);
-	while (i < len)
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	str[i] = '\0';
+	j = -1;
+	while (i + ++j < len)
+		str[j] = s[i + j];
+	printf("while 3\n");
+	str[j] = '\0';
+	printf("end\n");
 	return (str);
 }
+/*     A TESTER
+
+        char *s1 = "Hello \t  Please\n Trim me !";
+        char *s2 = "Hello \t  Please\n Trim me !";
+        char *ret = ft_strtrim(s1);
+
+        if (!strcmp(ret, s2))
+                exit(TEST_SUCCESS);
+        exit(TEST_FAILED);
+*/

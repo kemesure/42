@@ -6,40 +6,53 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 13:54:57 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/06 17:12:34 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/08 17:11:52 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
+/*
+**	Parcourt la liste lst en appliquant à chaque maillon la fonction
+**	f et crée une nouvelle liste “fraiche” avec malloc(3) ré-
+**	sultant des applications successives. Si une allocation échoue,
+**	la fonction renvoie NULL.
+*/
+
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*fresh_lst;
+	t_list	*end;
+	t_list	*start;
 
+	end = NULL;
 	while (lst)
 	{
-		f(lst);
-		fresh_lst = (t_list *)malloc(sizeof(lst));
+		fresh_lst = f(lst);
 		if (fresh_lst == NULL)
 			return (NULL);
-		if (lst->content == NULL)
+		if (end == NULL)
 		{
-			fresh_lst->content = NULL;
-			fresh_lst->content_size = 0; // doute
+			end = fresh_lst;
+			start = fresh_lst;
 		}
 		else
 		{
-			fresh_lst->content = malloc(lst->content_size);
-			if ((void *)fresh_lst->content == NULL)
-				return (NULL);
-			fresh_lst->content_size = (size_t)malloc(lst->content_size);
-			if ((void *)fresh_lst->content_size == NULL)
-				return (NULL);
-			fresh_lst->next = (t_list *)malloc(sizeof(lst->next));
-			if (fresh_lst->next == NULL)
-				return (NULL);
+			end->next = fresh_lst;
+			end = end->next;
 		}
 		lst = lst->next;
 	}
-	return (fresh_lst);
+	return (start);
 }
+
+/*
+			struct my_struct;
+			t_struct *struct_ptr;
+
+			ptr = &my_struct;
+
+			my_struct.a;
+			(*ptr).a;
+			ptr->a;
+*/
