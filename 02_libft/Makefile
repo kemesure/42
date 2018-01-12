@@ -6,7 +6,7 @@
 #    By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/19 01:56:29 by kemesure          #+#    #+#              #
-#    Updated: 2017/12/21 01:42:12 by kemesure         ###   ########.fr        #
+#    Updated: 2018/01/12 16:48:58 by kemesure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRC = ./srcs/ft_atoi.c ./srcs/ft_bzero.c ./srcs/ft_memset.c ./srcs/ft_memcpy.c \
 
 OBJ = $(SRC:./srcs/%.c=%.o)
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 GCH = ./includes/libft.h.gch
 
