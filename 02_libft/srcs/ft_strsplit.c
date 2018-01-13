@@ -12,9 +12,6 @@
 
 #include "../includes/libft.h"
 
-// s = "      split       this for   me  !       ", c = ' '
-//     "01234567890123456789012345678901234567890"
-//     "0         1         2         3         4"
 char	**ft_allocation_nb_word(char const *s, char c)
 {
 	size_t	j;
@@ -41,9 +38,6 @@ char	**ft_allocation_nb_word(char const *s, char c)
 	return (tab);
 }
 
-// s = "      split       this for   me  !       ", c = ' ', **tab
-//     "01234567890123456789012345678901234567890"
-//     "0         1         2         3         4"
 char	**ft_allocation_size_of_word(char const *s, char c, char **tab)
 {
 	size_t	i;
@@ -63,18 +57,15 @@ char	**ft_allocation_size_of_word(char const *s, char c, char **tab)
 		{
 			tab[i] = (char *)malloc(len - j + 1);
 			if (tab[i] == NULL)
-				return NULL;
+				return (NULL);
+			i++;
 		}
-		i++;
 		j = len;
 	}
 	tab[i] = NULL;
 	return (tab);
 }
 
-// s = "      split       this for   me  !       ", c = ' ', **tab
-//     "01234567890123456789012345678901234567890"
-//     "0         1         2         3         4"
 void	ft_assignment(char const *s, char c, char **tab)
 {
 	size_t	i;
@@ -94,20 +85,15 @@ void	ft_assignment(char const *s, char c, char **tab)
 			i++;
 		}
 		if (i)
-			tab[j][i] = '\0';
+			tab[j++][i] = '\0';
 		k += i;
-		j++;
 	}
 }
 
-// s = "      split       this for   me  !       ", c = ' '
-//     "01234567890123456789012345678901234567890"
-//     "0         1         2         3         4"
 char	**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
 
-//	printf("s = \"%s\"\n", );
 	if (s == NULL)
 		return (NULL);
 	tab = ft_allocation_nb_word(s, c);

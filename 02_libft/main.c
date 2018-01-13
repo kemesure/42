@@ -22,22 +22,39 @@ int		main(void)
 	**	STRNSTR
 	*/
 	printf("--------------------------------------------STRNSTR\n");
+/*
+	void			test_ft_strnstr_same_ptr(void *ptr) {
+	typeof(strnstr)	*ft_strnstr = ptr;
 
-	char	*s1 = "oh no not the empty string !";
-	char	*s2 = "";
+	SET_EXPLANATION("I'M HEEEEEEEEEERE 🌈")
+	SANDBOX_RAISE(
+			char	*s1 = "AAAAAAAAAAAAA";
+			size_t	max = strlen(s1);
+
+			char	*i1 = strnstr(s1, s1, max);
+			char	*i2 = ft_strnstr(s1, s1, max);
+			printf("\ni1=%s %p\ni2=%s %p\n", i1, i1, i2, i2);
+			if (i1 == i2)
+			{
+				printf("x_x\n");
+				exit(TEST_SUCCESS);
+			}
+			SET_DIFF(i1, i2);
+			exit(TEST_FAILED);
+			);
+	}
+*/
+	char	*s1 = "AAAAAAAAAAAAA";
 	size_t	max = strlen(s1);
-	char	*i1 = strnstr(s1, s2, max);
-	char	*i2 = ft_strnstr(s1, s2, max);
+	char	*i1 = strnstr(s1, s1, max);
+	char	*i2 = ft_strnstr(s1, s1, max);
 
+	printf("i1 = \"%s\"\n", i1);
+	printf("i2 = \"%s\"\n", i2);
 	if (i1 == i2)
 		printf(":)\n");
 	else
-	{
-		printf("   strnstr(\"oh no not the empty string !\", \"\", %zu) = \"%s\"\n", max, i1);
-		printf("ft_strnstr(\"oh no not the empty string !\", \"\", %zu) = \"%s\"\n", max, i2);
-		printf("s1(\"oh no not the empty string !\") = \"%s\"\n", s1);
-		printf("s2(\"\") = \"%s\"\n", s2);
-	}
+		printf(":(\n");
 
 	/*
 	**	STRSPLIT
@@ -61,8 +78,10 @@ int		main(void)
 		r++;
 		ret++;
 	}
-	printf("r   = \"%s\"\n", *r);
-	printf("ret = \"%s\"\n", *ret);
+	if (*r == *ret)
+		printf(":)\n");
+	else
+		printf(":(\n");
 
 
 

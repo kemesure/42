@@ -45,14 +45,3 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	}
 	return (start);
 }
-
-/*
-			struct my_struct;
-			t_struct *struct_ptr;
-
-			ptr = &my_struct;
-
-			my_struct.a;
-			(*ptr).a;
-			ptr->a;
-*/

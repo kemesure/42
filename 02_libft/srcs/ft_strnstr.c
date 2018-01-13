@@ -22,11 +22,10 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	s1 = (char *)haystack;
 	s2 = (char *)needle;
 	i = 0;
-	if (!s2[0])
+	if (!s2[0] || s1 == s2)
 		return (s1);
-	while (s1[i] && len)
+	while (s1[i] && len && !(j = 0))
 	{
-		j = 0;
 		if ((s1[i + j] == s2[j] || !s2[j]) && len)
 			while ((s1[i + j] == s2[j] || !s2[j]) && len)
 			{

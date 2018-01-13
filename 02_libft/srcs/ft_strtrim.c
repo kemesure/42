@@ -12,6 +12,24 @@
 
 #include "../includes/libft.h"
 
+char	*ft_allocation(char const *s, size_t *i, size_t *j, size_t *len)
+{
+	char	*str;
+
+	while (s[*j])
+	{
+		*len = *j;
+		while (s[*len] != '\0' && s[*len] != ' ' &&
+				s[*len] != '\n' && s[*len] != '\t')
+			(*len)++;
+		*j = *len;
+		while (s[*j] == ' ' || s[*j] == '\n' || s[*j] == '\t')
+			(*j)++;
+	}
+	str = (char *)malloc(*len - *i + 1);
+	return (str);
+}
+
 char	*ft_strtrim(char const *s)
 {
 	char	*str;
@@ -28,21 +46,15 @@ char	*ft_strtrim(char const *s)
 	if (s[i] == '\0')
 		return ("\0");
 	j = i;
-	while (s[j])
-	{
-		len = j;
-		while (((j = len) || !(j = len)) && s[len] != '\0' && s[len] != ' '
-				&& s[len] != '\n' && s[len] != '\t')
-			len++;
-		while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
-			j++;
-	}
-	str = (char *)malloc(len - i + 1);
+	str = ft_allocation(s, &i, &j, &len);
 	if (str == NULL)
 		return (NULL);
-	j = -1;
-	while (i + ++j < len)
+	j = 0;
+	while (i + j < len)
+	{
 		str[j] = s[i + j];
+		j++;
+	}
 	str[j] = '\0';
 	return (str);
 }

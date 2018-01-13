@@ -23,7 +23,7 @@ void	ft_putnbr_fd(int n, int fd)
 	int		i;
 	int		j;
 
-	i = - 1;
+	i = -1;
 	j = 0;
 	if (n == -2147483648)
 	{
