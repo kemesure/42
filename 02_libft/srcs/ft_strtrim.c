@@ -6,13 +6,13 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/17 19:03:08 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/14 15:25:36 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_allocation(char const *s, size_t *i, size_t *j, size_t *len)
+static char		*ft_allocation(char const *s, size_t *i, size_t *j, size_t *len)
 {
 	char	*str;
 
@@ -30,7 +30,7 @@ char	*ft_allocation(char const *s, size_t *i, size_t *j, size_t *len)
 	return (str);
 }
 
-char	*ft_strtrim(char const *s)
+char			*ft_strtrim(char const *s)
 {
 	char	*str;
 	size_t	len;

@@ -6,36 +6,47 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 14:01:09 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/21 12:03:07 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/16 16:47:37 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
+/*
+	DESCRIPTION :
+	La fonction strnstr() localise la premiere occurrence de la chaine needle
+	(terminee par '\0') dans la chaine haystack (terminee par '\0'), ou pas plus
+	de len caracteres sont cherches. Les caracteres qui apparaissent apres un
+	'\0' ne sont pas cherches.
+
+	RETURN VALUES :
+	Si needle est une chaine vide, haystack est retourne;
+	si needle n'apparait pas dans haystack, NULL est retourne;
+	sinon un pointeur sur le premier caractere de la premiere occurrence de
+	needle est retourne.
+*/
+
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	char	*s1;
 	char	*s2;
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 
 	s1 = (char *)haystack;
 	s2 = (char *)needle;
 	i = 0;
-	if (!s2[0] || s1 == s2)
+	if (s2[0] == '\0')
 		return (s1);
-	while (s1[i] && len && !(j = 0))
+	while (len > i && s1[i])
 	{
-		if ((s1[i + j] == s2[j] || !s2[j]) && len)
-			while ((s1[i + j] == s2[j] || !s2[j]) && len)
-			{
-				if (!s2[j])
-					return (s1 + i);
-				j++;
-				len--;
-			}
-		else
-			len--;
+		j = 0;
+		while (s2[j] == '\0' || (len > i + j && s1[i + j] == s2[j]))
+		{
+			if (s2[j] == '\0')
+				return (s1 + i);
+			j++;
+		}
 		i++;
 	}
 	return (NULL);

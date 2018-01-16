@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/30 18:28:43 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:59:50 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,5 @@ void	ft_putnbr(int n)
 	ft_putstr(str);
 	ft_putchar('\n');
 }
+
+// PUTNBR(0) NE RENVOIE RIEN

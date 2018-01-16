@@ -6,13 +6,13 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/02 15:32:34 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/14 15:25:25 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	**ft_allocation_nb_word(char const *s, char c)
+static char		**ft_allocation_nb_word(char const *s, char c)
 {
 	size_t	j;
 	size_t	k;
@@ -38,7 +38,7 @@ char	**ft_allocation_nb_word(char const *s, char c)
 	return (tab);
 }
 
-char	**ft_allocation_size_of_word(char const *s, char c, char **tab)
+static char		**ft_allocation_size_of_word(char const *s, char c, char **tab)
 {
 	size_t	i;
 	size_t	j;
@@ -66,7 +66,7 @@ char	**ft_allocation_size_of_word(char const *s, char c, char **tab)
 	return (tab);
 }
 
-void	ft_assignment(char const *s, char c, char **tab)
+static void		ft_assignment(char const *s, char c, char **tab)
 {
 	size_t	i;
 	size_t	j;
@@ -90,7 +90,7 @@ void	ft_assignment(char const *s, char c, char **tab)
 	}
 }
 
-char	**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
 

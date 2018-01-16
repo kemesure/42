@@ -6,7 +6,7 @@
 #    By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/19 01:56:29 by kemesure          #+#    #+#              #
-#    Updated: 2018/01/12 16:48:58 by kemesure         ###   ########.fr        #
+#    Updated: 2018/01/16 15:57:53 by kemesure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRC = ./srcs/ft_atoi.c ./srcs/ft_bzero.c ./srcs/ft_memset.c ./srcs/ft_memcpy.c \
 ./srcs/ft_strequ.c ./srcs/ft_strjoin.c ./srcs/ft_strtrim.c ./srcs/ft_putchar.c \
 ./srcs/ft_strsub.c ./srcs/ft_putstr.c ./srcs/ft_putnbr.c ./srcs/ft_putendl.c \
 ./srcs/ft_lstnew.c ./srcs/ft_lstdel.c ./srcs/ft_lstadd.c ./srcs/ft_lstiter.c \
-./srcs/ft_lstmap.c ./srcs/ft_putchar_fd.c ./srcs/ft_putendl_fd.c 
+./srcs/ft_lstmap.c ./srcs/ft_putchar_fd.c ./srcs/ft_putendl_fd.c \
+./srcs/ft_intlen.c
 
 OBJ = $(SRC:./srcs/%.c=%.o)
 

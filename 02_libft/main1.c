@@ -6,14 +6,14 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 14:04:32 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/16 14:34:34 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/14 13:53:15 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
 
-int	main(void)
+static int	main(void)
 {
 	printf(" __________________________________________________\n");
 	printf("|                     PARTIE 1                     |\n");

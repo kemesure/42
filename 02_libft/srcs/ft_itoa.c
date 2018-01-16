@@ -6,39 +6,13 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 20:00:46 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/30 16:16:40 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/14 15:24:13 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_intlen(int n, int *len, int *sign)
-{
-	if (n == -2147483648)
-	{
-		*len = 11;
-		return ;
-	}
-	if (n < 0)
-	{
-		n *= -1;
-		*sign += 1;
-	}
-	if (n == 0)
-		*len = 1;
-	else if (n > 999999999)
-		*len = 10;
-	else
-	{
-		if (n / 10 != 0)
-		{
-			*len += 1;
-			ft_intlen(n / 10, len, sign);
-		}
-	}
-}
-
-void	ft_itoa_assignment(int n, char *str, int sign, int len)
+static void		ft_itoa_assignment(int n, char *str, int sign, int len)
 {
 	int		i;
 
@@ -65,7 +39,7 @@ void	ft_itoa_assignment(int n, char *str, int sign, int len)
 	str[i] = '\0';
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	char	*str;
 	int		len;
