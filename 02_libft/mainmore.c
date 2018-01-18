@@ -6,14 +6,14 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/14 14:44:13 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/18 14:41:37 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/18 16:20:03 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
 
-static int		main(void)
+int		main(void)
 {
 	printf(" __________________________________________________\n");
 	printf("|                    MORE TESTS                    |\n");

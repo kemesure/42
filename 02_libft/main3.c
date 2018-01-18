@@ -6,14 +6,14 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 15:34:53 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/14 13:53:33 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/18 16:19:49 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
 
-static int		main(void)
+int		main(void)
 {
 	ft_putstr(" __________________________________________________\n");
 	ft_putstr("|                     PARTIE 3                     |\n");
