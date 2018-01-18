@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/14 14:44:13 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/16 17:58:40 by kemesure         ###   ########.fr       */
+/*   Created: 2017/12/16 14:34:33 by kemesure          #+#    #+#             */
+/*   Updated: 2018/01/17 22:42:42 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,154 +15,461 @@
 
 int		main(void)
 {
-	printf(" __________________________________________________\n");
-	printf("|                    MORE TESTS                    |\n");
-	printf("|__________________________________________________|\n\n\n");
+	printf(" _________________________________________________\n");
+	printf("|                      TESTS                      |\n");
+	printf("|_________________________________________________|\n\n\n");
 	/*
-		MEMCHR
+	**	STRLCAT
 	*/
-	printf("----------------------------------------------MEMCHR\n");
-	char			ctab[11];
-	int				itab[11];
-	unsigned long	ltab[11];
-	size_t			j;
-	int				i;
+	printf("--------------------------------------------STRLCAT\n");
+	char	dst1[4] = "";
+	char	dst2[4] = "";
+	char	sd1[42] = "012345";
+	char	sd2[42] = "012345";
+	char	sd3[42] = "012345";
+	char	sd4[42] = "012345";
+	size_t	r1;
+	size_t	r2;
+	size_t	r3;
+	size_t	r4;
+	size_t	r5;
+	size_t	r6;
 
-	i = -300;
-	ft_memchr(NULL, 0, 0);
-	while (i < 300)
+	r1 =    strlcat(dst1, "thx to ntoniolo for this test !", 4);
+	r2 = ft_strlcat(dst2, "thx to ntoniolo for this test !", 4);
+	r3 =    strlcat(sd1 + 2, sd1 + 4, 4);
+	r4 = ft_strlcat(sd2 + 2, sd2 + 4, 4);
+	r5 =    strlcat(sd3 + 4, sd3 + 2, 4);
+	r6 = ft_strlcat(sd4 + 4, sd4 + 2, 4);
+	if (r1 != r2)
 	{
-		j = 0;
-		while (j < 11)
+		printf("   strlcat(\"%s\", \"%s\", %d) = %zu\n", "", "thx to ntoniolo for this test !", 4, r1);
+		printf("ft_strlcat(\"%s\", \"%s\", %d) = %zu\n", "", "thx to ntoniolo for this test !", 4, r2);
+	}
+	else
+		printf(":)\n");
+	if (r3 != r4)
+	{
+		printf("   strlcat(\"%s\", \"%s\", %d) = %zu\n", "2345", "45", 4, r3);
+		printf("ft_strlcat(\"%s\", \"%s\", %d) = %zu\n", "2345", "45", 4, r4);
+	}
+	else
+		printf(":)\n");
+	if (r5 != r6)
+	{
+		printf("   strlcat(\"%s\", \"%s\", %d) = %zu\n", "45", "2345", 4, r5);
+		printf("ft_strlcat(\"%s\", \"%s\", %d) = %zu\n", "45", "2345", 4, r6);
+	}
+	else
+		printf(":)\n");
+	/*
+	**	STRNSTR
+	*/
+	printf("--------------------------------------------STRNSTR\n");
+
+	char	*s1 = "oh no not the empty string !";
+	char	*s2 = "";
+	size_t	max = strlen(s1);
+	char	*i1 = strnstr(s1, s2, max);
+	char	*i2 = ft_strnstr(s1, s2, max);
+
+	if (i1 == i2)
+		printf(":)\n");
+	else
+	{
+		printf("   strnstr(\"oh no not the empty string !\", \"\", %zu) = \"%s\"\n", max, i1);
+		printf("ft_strnstr(\"oh no not the empty string !\", \"\", %zu) = \"%s\"\n", max, i2);
+		printf("s1(\"oh no not the empty string !\") = \"%s\"\n", s1);
+		printf("s2(\"\") = \"%s\"\n", s2);
+	}
+
+	/*
+	**	ATOI
+	*/
+	printf("-----------------------------------------------ATOI\n");
+
+	char	*n1 = "\t\v\f\r\n \f-06050";
+	int		i3 = atoi(n1);
+	int		i4 = ft_atoi(n1);
+
+	if (i3 != i4)
+		printf("   atoi(\"-06050\") = %d\nft_atoi(\"-06050\") = %d\n\n", atoi(n1), ft_atoi(n1));
+	else
+		printf(":)\n");
+/*
+**
+*/
+	char	n2[40] = "99999999999999999999999999";
+	int		i5 = atoi(n2);
+	int		i6 = ft_atoi(n2);
+	if (i5 != i6)
+		printf("   atoi(\"99999999999999999999999999\") = %d\nft_atoi(\"99999999999999999999999999\") = %d\n\n", atoi(n2), ft_atoi(n2));
+	else
+		printf(":)\n");
+/*
+**
+*/
+	char	n3[40] = "-99999999999999999999999999";
+	int		i7 = atoi(n3);
+	int		i8 = ft_atoi(n3);
+	if (i7 != i8)
+		printf("   atoi(\"-99999999999999999999999999\") = %d\nft_atoi(\"-99999999999999999999999999\") = %d\n", atoi(n3), ft_atoi(n3));
+	else
+		printf(":)\n");
+
+/*
+**
+*/
+	char	n4[40] = "-123THERE IS A NYANCAT UNDER YOUR BED";
+	int		i9 = atoi(n4);
+	int		i10 = ft_atoi(n4);
+	if (i9 != i10)
+		printf("   atoi(\"-123THERE IS A NYANCAT UNDER YOUR BED\") = %d\nft_atoi(\"-123THERE IS A NYANCAT UNDER YOUR BED\") = %d\n", atoi(n4), ft_atoi(n4));
+	else
+		printf(":)\n");
+
+/*
+	TESTS
+*/
+	char	n5[40] = "9223372036854775806";
+	int		i11 = atoi(n5);
+	int		i12 = ft_atoi(n5);
+	if (i11 != i12)
+		printf("   atoi(\"9223372036854775806\") = %d\nft_atoi(\"9223372036854775806\") = %d\n", atoi(n5), ft_atoi(n5));
+	else
+		printf(":)\n");
+
+	char	n6[40] = "-9223372036854775807";
+	int		i13 = atoi(n6);
+	int		i14 = ft_atoi(n6);
+	if (i13 != i14)
+		printf("   atoi(\"-9223372036854775807\") = %d\nft_atoi(\"-9223372036854775807\") = %d\n", atoi(n6), ft_atoi(n6));
+	else
+		printf(":)\n");
+/*
+	LES DERNIERS TESTS :D
+*/
+	printf("ft_atoi(\"%s\") = %d\n", "3000000000", ft_atoi("3000000000"));
+	printf("   atoi(\"%s\") = %d\n", "3000000000",    atoi("3000000000"));
+
+	/*
+	**	MEMALLOC
+	*/
+	printf("-------------------------------------------MEMALLOC\n");
+
+/*
+**
+*/
+	size_t	size = 514;
+	char	*ret = ft_memalloc(size);
+
+	if (ret == NULL)
+		printf("ret = \"%s\"\n", ret);
+	else
+		printf(":)\n");
+
+	/*
+	**	STRSUB
+	*/
+	printf("---------------------------------------------STRSUB\n");
+
+/*
+**
+*/
+	char	*str = "i just want this part #############";
+	size = 22;
+	char	*ret2 = ft_strsub(str, 0, size);
+
+	if (!ft_strncmp(ret2, str, size))
+		printf(":)\n");
+	else
+		printf("ft_strsub(\"i just want this part #############\", 0, 22) = \"%s\"\n", ret2);
+	free(ret2);
+
+/*
+	void			test_ft_strsub_basic2(void *ptr) {
+	char	*(*ft_strsub)(const char *, size_t, size_t) = ptr;
+	SET_EXPLANATION("your strsub does not work with valid input 2");
+
+	SANDBOX_RAISE(
+			char	*str = "i just want this part #############";
+			size_t	size = 20;
+
+			char	*ret = ft_strsub(str, 5, size);
+			if (!strncmp(ret, str + 5, size)) {
+				free(ret);
+				exit(TEST_SUCCESS);
+			}
+			SET_DIFF("t want this part ###", ret);
+			free(ret);
+			exit(TEST_FAILED);
+			);
+	}
+*/
+
+/*
+	void			test_ft_strsub_size(void *ptr) {
+	char	*(*ft_strsub)(const char *, size_t, size_t) = ptr;
+	SET_EXPLANATION("your strsub did not allocate the good size so the \\0 test may be false");
+
+	SANDBOX_RAISE(
+			char	*str = "i just want this part #############";
+			size_t	size = 10;
+			int		ret_size;
+
+			MALLOC_SIZE;
+			ft_strsub(str, 5, size);
+			MALLOC_RESET;
+			ret_size = get_last_malloc_size();
+
+			if ((int)size + 1 == ret_size) {
+				exit(TEST_SUCCESS);
+			}
+			SET_DIFF_INT((int)size + 1, ret_size);
+			exit(TEST_FAILED);
+			);
+	}
+*/
+
+/*
+	void			test_ft_strsub_zero(void *ptr) {
+	char	*(*ft_strsub)(const char *, size_t, size_t) = ptr;
+	SET_EXPLANATION("your strsub does not set \\0 to the end of the string");
+
+	SANDBOX_RAISE(
+			char	str[] = "i just want this part #############";
+			size_t	size = 20;
+
+			MALLOC_MEMSET;
+			char	*ret = ft_strsub(str, 5, size);
+			MALLOC_RESET;
+			str[size + 5] = 0;
+			if (!memcmp(ret, str + 5, size + 1)) {
+				free(ret);
+				exit(TEST_SUCCESS);
+			}
+			SET_DIFF("t want this part ###", ret);
+			free(ret);
+			exit(TEST_FAILED);
+			);
+	}
+*/
+
+/*
+	void			test_ft_strsub_all(void *ptr) {
+	char	*(*ft_strsub)(const char *, size_t, size_t) = ptr;
+	SET_EXPLANATION("your strsub does not work for a whole string");
+
+	SANDBOX_RAISE(
+			char	*s = "all of this !";
+			size_t	size = strlen(s);
+
+			char	*ret = ft_strsub(s, 0, size);
+
+			if (!strcmp(s, ret)) {
+				free(ret);
+				exit(TEST_SUCCESS);
+			}
+			SET_DIFF(s, ret);
+			free(ret);
+			exit(TEST_FAILED);
+			);
+	}
+*/
+
+/*
+	void			test_ft_strsub_electric_memory(void *ptr) {
+	char	*(*ft_strsub)(const char *, size_t, size_t) = ptr;
+	SET_EXPLANATION("your strsub crash cause it read too many bytes !");
+
+	SANDBOX_RAISE(
+			const size_t	size = 10;
+			char	*str = electric_alloc(size);
+
+			strcpy(str, "YOLO !!!!");
+
+			ft_strsub(str, 0, size);
+
+			exit(TEST_SUCCESS);
+			);
+	}
+*/
+
+	/*
+	**	STRTRIM
+	*/
+	printf("--------------------------------------------STRTRIM\n");
+/*
+	void			test_ft_strtrim_blank(void *ptr) {
+	char *		(*ft_strtrim)(const char *) = ptr;
+	SET_EXPLANATION("your strtrim does not work with full blank input");
+
+	SANDBOX_RAISE(
+			char	*s1 = "  \t \t \n   \n\n\n\t";
+			char	*s2 = "";
+
+			char	*ret = ft_strtrim(s1);
+			if (!strcmp(ret, s2))
+				exit(TEST_SUCCESS);
+			SET_DIFF(s2, ret);
+			exit(TEST_FAILED);
+			);
+	}
+*/
+	char	*s3 = "  \t \t \n  4 2 \n\n\n\t";
+	char	*s4 = "4 2";
+	char	*ret3 = ft_strtrim(s3);
+	if (!strcmp(ret3, s4))
+		printf(":)\n");
+	else
+		printf(":(\n");
+
+/*     A TESTER
+
+        char *s1 = "Hello \t  Please\n Trim me !";
+        char *s2 = "Hello \t  Please\n Trim me !";
+        char *ret = ft_strtrim(s1);
+
+        if (!strcmp(ret, s2))
+                exit(TEST_SUCCESS);
+        exit(TEST_FAILED);
+*/
+	char *s5 = "Hello \t  Please\n Trim me !";
+	char *s6 = "Hello \t  Please\n Trim me !";
+	char *ret4 = ft_strtrim(s5);
+
+	if (!strcmp(ret4, s6))
+		printf(":)\n");
+	else
+		printf(":(\n");
+/*
+	TESTS FIN
+*/
+	char			str42[] = "  \t    \t\nBon\t \njour\t\n  \n     ";
+	char			str43[] = "Bonjour";
+	char			str44[] = "  \t\t\t   ";
+	char			*r42;
+
+	ft_strtrim(NULL);
+	r42 = ft_strtrim(str42);
+	printf("_____ TEST 1 : _____\n");
+	if (ft_strcmp(r42, "Bon\t \njour"))
+	{
+		printf(":(\n");
+		printf("ft_strtrim(\"%s\") = \"%s\"\n", str42, r42);
+		printf("   strtrim(\"%s\") = \"Bon\\t \\njour\"\n", str42);
+		free(r42);
+		return (0);
+	}
+	free(r42);
+	r42 = ft_strtrim(str43);
+	printf("_____ TEST 2 : _____\n");
+    if (strcmp(r42, "Bonjour") || (str43 == r42))
+    {
+        printf(":(\n");
+        printf("ft_strtrim(\"%s\") = \"%s\"\n", str43, r42);
+		printf("   strtrim(\"%s\") = \"%s\"\n", str43, "Bonjour");
+		free(r42);
+        return (0);
+    }
+    free(r42);
+	r42 = ft_strtrim(str44);
+	printf("_____ TEST 3 : _____\n");
+    if (strcmp(r42, "") || (str44 == r42))
+    {
+        printf(":(\n");
+        printf("ft_strtrim(\"%s\") = \"%s\"\n", str44, r42);
+		printf("   strtrim(\"%s\") = \"\"\n", str44);
+		free(r42);
+        return (0);
+    }
+    free(r42);
+	/*
+	**	STRSPLIT
+	*/
+	printf("-------------------------------------------STRSPLIT\n");
+
+	char	*s = "      split       this for   me  !       ";
+	char	**r = ft_strsplit(s, ' ');
+	char	**ret5 = (char*[6]){"split", "this", "for", "me", "!", NULL};
+
+	while (*r)
+	{
+		if (ft_strcmp(*r, *ret5))
 		{
-			ctab[j] = (char)rand();
-			itab[j] = rand();
-			ltab[j] = (unsigned long)rand() * 10000;
-			j++;
+			printf(":(\n");
+			printf("r    = \"%s\"\n", *r);
+			printf("ret5 = \"%s\"\n", *ret5);
 		}
-		if ((memchr(ctab, i, sizeof(ctab)) != ft_memchr(ctab, i, sizeof(ctab)))
-			|| ((memchr(itab, i, sizeof(itab)) != ft_memchr(itab, i, sizeof(itab))))
-			|| (memchr(ltab, i, sizeof(ltab)) != ft_memchr(ltab, i, sizeof(ltab))))
+		else
+			printf(":)\n");
+		r++;
+		ret5++;
+	}
+	printf("r    = \"%s\"\n", *r);
+	printf("ret5 = \"%s\"\n", *ret5);
+
+/*
+	char	**ret3 = (char*[6]){"split", "this", "for", "me", "!", NULL};
+
+	char	*s = "      split       this for   me  !       ";
+	char	**r = ft_strsplit(s, ' ');
+	printf("%d\n", strcmp(*r, *ret3));
+	printf("  r = \"%s\"\nret = \"%s\"\n\n", *r, *ret3);
+*/
+/*	while (*r)
+	{
+		if (strcmp(*r, *ret3))
 		{
-			printf(":(\n");				// J'ai modifier
-			break;
+			printf("  r = \"%s\"\nret = \"%s\"\n\n", *r, *ret3);
 		}
-		++i;
+		else
+			printf(":)\n");
+		r++;
+		ret3++;
 	}
-	printf("Si pas de :(, c'est GOOD :)\n\n");
-
-
+*/
 	/*
-		STRNSTR
+	**	ITOA
 	*/
-	printf("---------------------------------------------STRNSTR\n");
-	printf("------------------- TEST1 -------------------\n");
-	char	buf[11];
+	printf("-----------------------------------------------ITOA\n");
 
-	ft_bzero(buf, 11);
-	ft_strcpy(buf, "un deux 9");
-	buf[9] = '6'; // buf = "un deux 96"
-	if (strnstr(buf, "6", 10) == ft_strnstr(buf, "6", 10))
+/*
+**
+*/
+	char	*i15 = ft_itoa(-623);
+	char	*i16 = ft_itoa(156);
+	char	*i17 = ft_itoa(-0);
+
+	if (strcmp(i15, "-623"))
+	{
+		printf("ft_itoa(\"%s\") = \"%s\"\n", "-623", ft_itoa(-623));
+	}
+	else
 		printf(":)\n");
-	else
+	if (strcmp(i16, "156"))
 	{
-		printf(":(\n");
-		printf("ft_strnstr(\"%s\", \"6\", 10) = \"%s\"\n", buf, ft_strnstr(buf, "6", 10));
-		printf("   strnstr(\"%s\", \"6\", 10) = \"%s\"\n", buf,    strnstr(buf, "6", 10));
+		printf("ft_itoa(\"%s\") = \"%s\"\n", "156", ft_itoa(156));
 	}
-	printf("------------------- TEST2 -------------------\n");
-	char	*buf2 = "ozarabozaraboze123";
-
-	if (ft_strnstr(buf2, "ozaraboze", 15) == strnstr(buf2, "ozaraboze", 15))
+	else
 		printf(":)\n");
-	else
+	if (strcmp("0", i17))
 	{
-		printf(":(\n");
-		printf("ft_strnstr(\"%s\", \"ozaraboze\", 15) = \"%s\"\n", buf2, ft_strnstr(buf2, "ozaraboze", 15));
-		printf("   strnstr(\"%s\", \"ozaraboze\", 15) = \"%s\"\n", buf2,    strnstr(buf2, "ozaraboze", 15));
-
+		printf("ft_itoa(\"%s\") = \"%s\"\n", "0", ft_itoa(-0));
 	}
-	printf("------------------- TEST3 -------------------\n");
-	char	buf3[10];
-
-	ft_bzero(buf3, 10);
-	ft_strcpy(buf3, "un deux 9"); // buf3 = "un deux 9"
-	if (strnstr(buf3, "9", 3) == ft_strnstr(buf3, "9", 3))
+	else
 		printf(":)\n");
-	else
-	{
-		printf(":(\n");
-		printf("ft_strnstr(\"%s\", \"9\", 3) = \"%s\"\n", buf3, ft_strnstr(buf3, "9", 3));
-		printf("   strnstr(\"%s\", \"9\", 3) = \"%s\"\n", buf3,    strnstr(buf3, "9", 3));
-	}
-	printf("------------------- TEST4 -------------------\n");
-	char	buf4[10];
 
-	ft_bzero(buf4, 10);
-	ft_strcpy(buf4, "un deux 9");
-	if (ft_strnstr(buf4, "deux", 5) == strnstr(buf4, "deux", 5))
-		printf(":)\n\n");
-	else
-	{
-		printf(":(\n");
-		printf("ft_strnstr(\"%s\", \"deux\", 5) = \"%s\"\n", buf4, ft_strnstr(buf4, "deux", 5));
-		printf("   strnstr(\"%s\", \"deux\", 5) = \"%s\"\n\n", buf4,    strnstr(buf4, "deux", 5));
-	}
-
+/*
+**
+*/
 
 	/*
-		PUTNBR
+	**	TESTS
 	*/
-	printf("----------------------------------------------PUTNBR\n");
-	int		out;
-	int		p[2];
-	char	buf5[100];
-
-	out = dup(1);
-	pipe(p);
-	dup2(p[1], 1);
-	ft_putnbr(0);
-	ft_putnbr(1);
-	ft_putnbr(-1);
-	ft_putnbr(12300);
-	ft_putnbr(10203);
-	ft_putnbr(-56);
-	ft_putnbr(2147483647);
-	ft_putnbr(-2147483648);
-	dup2(out, 1);
-	buf5[read(p[0], buf5, 100)] = 0;
-	close(p[0]);
-	close(p[1]);
-	close(out);
-	if (strcmp(buf5, "01-11230010203-562147483647-2147483648") == 0)
-		printf(":)\n");
-	else
-	{
-		printf(":(\n");
-		printf("ft_putnbr :\n0\n1\n-1\n12300\n10203\n-56\n2147483647\n-2147483648\n\n");
-		printf("   putnbr :\n%s\n", buf5);
-	}
 
 
-	/*
-		PUTNBR_FD
-	*/
-	printf("-------------------------------------------PUTNBR_FD\n");
+	printf("\n\n          END          END          END\n\n\n");
 
-
-	/*
-		STRNEQU
-	*/
-	printf("---------------------------------------------STRNEQU\n");
-
-
-	/*
-		LSTADD
-	*/
-	printf("----------------------------------------------LSTADD\n");
-
-
-
-	printf("\n END\t\t\tEND\t\t\tEND\n\n");
 	return (0);
 }

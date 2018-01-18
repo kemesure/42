@@ -6,24 +6,24 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 14:01:09 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/16 16:47:37 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/18 14:47:14 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
 /*
-	DESCRIPTION :
-	La fonction strnstr() localise la premiere occurrence de la chaine needle
-	(terminee par '\0') dans la chaine haystack (terminee par '\0'), ou pas plus
-	de len caracteres sont cherches. Les caracteres qui apparaissent apres un
-	'\0' ne sont pas cherches.
-
-	RETURN VALUES :
-	Si needle est une chaine vide, haystack est retourne;
-	si needle n'apparait pas dans haystack, NULL est retourne;
-	sinon un pointeur sur le premier caractere de la premiere occurrence de
-	needle est retourne.
+**	DESCRIPTION :
+**	La fonction strnstr() localise la premiere occurrence de la chaine needle
+**	(terminee par '\0') dans la chaine haystack (terminee par '\0'), ou pas plus
+**	de len caracteres sont cherches. Les caracteres qui apparaissent apres un
+**	'\0' ne sont pas cherches.
+**
+**	RETURN VALUES :
+**	Si needle est une chaine vide, haystack est retourne;
+**	si needle n'apparait pas dans haystack, NULL est retourne;
+**	sinon un pointeur sur le premier caractere de la premiere occurrence de
+**	needle est retourne.
 */
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)

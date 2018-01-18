@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/17 19:50:50 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/17 20:29:17 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_striter(char *s, void (*f)(char *))
 {
 	size_t	i;
 
-	if (s == NULL)
+	if (s == NULL || f == NULL)
 		return ;
 	i = 0;
 	while (s[i])

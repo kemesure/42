@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 16:31:05 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/17 19:42:12 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/18 14:44:33 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,5 @@ int		ft_atoi(const char *str)
 		nb += (str[i] - 48) * ft_puiss(10, puiss - i - 1);
 		i++;
 	}
-	if (nb * sign > 2147483647)
-		return (0);
-	if (nb * sign < -2147483648)
-		return (-1);
 	return ((int)nb * sign);
 }
