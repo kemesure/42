@@ -6,11 +6,11 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 20:00:46 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/14 15:24:13 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/18 17:19:06 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 static void		ft_itoa_assignment(int n, char *str, int sign, int len)
 {

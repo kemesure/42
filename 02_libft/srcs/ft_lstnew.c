@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 /*
 **	Alloue (avec malloc(3)) et retourne un maillon “frais”. Les

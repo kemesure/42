@@ -6,11 +6,11 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 16:31:05 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/18 14:44:33 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/18 19:56:13 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 #include <stdio.h>
 
 int		ft_atoi(const char *str)

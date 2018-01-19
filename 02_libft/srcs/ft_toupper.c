@@ -6,11 +6,11 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 21:10:15 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/03 16:14:31 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/18 21:00:18 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 int		ft_toupper(int c)
 {
