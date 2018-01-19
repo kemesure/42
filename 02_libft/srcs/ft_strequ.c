@@ -6,11 +6,24 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/17 18:42:17 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/19 16:19:11 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+**	DESCRIPTION :
+**	Compare lexicographiquement s1 et s2. Si les deux chaines
+**	sont égales, la fonction retourne 1, ou 0 sinon.
+**
+**	Param. #1 La première des deux chaines à comparer.
+**
+**	Param. #2 La seconde des deux chaines à comparer.
+**
+**	RETURN VALUE :
+**	1 ou 0 selon que les deux chaines sont égales ou non.
+*/
 
 int		ft_strequ(char const *s1, char const *s2)
 {

@@ -6,11 +6,16 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 14:04:28 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/06 18:47:46 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/19 16:15:46 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+**	DESCRIPTION :
+**	Copie la source dans une destination malloquee et retourne la destination.
+*/
 
 char	*ft_strdup(const char *src)
 {

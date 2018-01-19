@@ -6,11 +6,20 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/17 19:45:20 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/19 14:26:42 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+**	DESCRIPTION :
+**	Prend en paramètre l’adresse d’un pointeur dont la zone pointée doit être
+**	libérée avec free(3), puis le pointeur est mis à NULL.
+**
+**	Param. #1 L’adresse d’un pointeur dont il faut libérer la mémoire puis le
+**	mettre à NULL.
+*/
 
 void	ft_memdel(void **ap)
 {

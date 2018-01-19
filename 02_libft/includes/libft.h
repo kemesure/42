@@ -6,31 +6,14 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:11:57 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/21 00:40:27 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/19 13:51:08 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-/*
-**	pour mem* et str*
-*/
-# include <string.h>
-
-/*
-**	pour atoi
-*/
 # include <stdlib.h>
-
-/*
-**	pour is* et to*
-*/
-# include <ctype.h>
-
-/*
-**	pour putchar
-*/
 # include <unistd.h>
 
 typedef struct		s_list
