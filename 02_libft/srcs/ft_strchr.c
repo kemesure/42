@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 12:31:17 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/19 16:05:19 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/22 13:45:54 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,10 @@ char	*ft_strchr(const char *s, int c)
 	int		i;
 	char	*ptr;
 
-	i = 0;
+	i = -1;
 	ptr = (char *)s;
-	while (ptr[i] || c == '\0')
-	{
+	while (ptr[++i] || c == '\0')
 		if (ptr[i] == c)
 			return (ptr + i);
-		i++;
-	}
 	return (NULL);
 }

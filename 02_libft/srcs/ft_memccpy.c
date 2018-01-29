@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:52:27 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/19 14:13:34 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/22 13:45:38 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 **	est retourne. La source et la destination ne doivent pas overlap.
 */
 
-void	*ft_memccpy(void *restrict dst, const void *restrict src, int c,
-					size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	size_t			i;
 	unsigned char	*ptr1;

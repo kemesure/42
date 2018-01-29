@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 15:35:12 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/19 16:09:47 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/22 13:45:58 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,11 @@ char	*ft_strcpy(char *dst, const char *src)
 	char	*ptr1;
 	char	*ptr2;
 
-	i = 0;
+	i = -1;
 	ptr1 = dst;
 	ptr2 = (char *)src;
-	while (ptr2[i])
-	{
+	while (ptr2[++i])
 		ptr1[i] = ptr2[i];
-		i++;
-	}
 	ptr1[i] = '\0';
 	return (dst);
 }

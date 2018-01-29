@@ -6,7 +6,7 @@
 #    By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/19 01:56:29 by kemesure          #+#    #+#              #
-#    Updated: 2018/01/18 21:08:37 by kemesure         ###   ########.fr        #
+#    Updated: 2018/01/29 15:22:20 by kemesure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,9 @@ SRC = $(addprefix ./srcs/, $(SRC_FILE))
 
 OBJ = $(SRC:%.c=%.o)
 
-FLAGS = -Wall -Wextra -Werror
+CC = clang
 
-GCH = ./includes/libft.h.gch
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 $(NAME): $(OBJ)
@@ -39,7 +39,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 %.o: %.c
-	gcc $(FLAGS) -I includes -o $@ -c $< 
+	$(CC) $(FLAGS) -I includes -o $@ -c $< 
 
 clean:
 	/bin/rm -f $(GCH) $(OBJ)

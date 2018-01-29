@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:48:35 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/09 12:49:20 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/22 13:45:44 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int		ft_puiss(int nb, int puiss)
 		return (1);
 	if (puiss == 1)
 		return (nb);
-	while (puiss > 1)
-	{
+	++puiss;
+	while (--puiss > 1)
 		ret *= nb;
-		puiss--;
-	}
 	return (ret);
 }

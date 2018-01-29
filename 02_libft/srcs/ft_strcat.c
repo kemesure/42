@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 17:12:07 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/19 15:58:51 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/22 13:45:53 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 **	Concatene s1 et s2 et retourne le resultat avec un '\0' a la fin.
 */
 
-char	*ft_strcat(char *restrict s1, const char *restrict s2)
+char	*ft_strcat(char *s1, const char *s2)
 {
 	int		i;
 	int		j;

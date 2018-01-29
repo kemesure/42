@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 19:46:42 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/16 13:06:53 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/22 13:45:28 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int		ft_isalnum(int c)
 {
-	if (ft_isalpha(c) == 1 || ft_isdigit(c) == 1)
-		return (1);
-	return (0);
+	return (ft_isalpha(c) == 1 || ft_isdigit(c) == 1);
 }

@@ -6,13 +6,13 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 15:36:54 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/19 18:09:51 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/22 13:46:08 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *restrict s1, const char *restrict s2, size_t n)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
 	int		i;
 	int		j;
@@ -29,8 +29,8 @@ char	*ft_strncat(char *restrict s1, const char *restrict s2, size_t n)
 	while (ptr2[++j] && n - 1)
 	{
 		ptr1[i] = ptr2[j];
-		i++;
-		n--;
+		++i;
+		--n;
 	}
 	ptr1[i] = '\0';
 	return (s1);

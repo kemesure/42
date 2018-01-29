@@ -6,11 +6,30 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/14 15:25:25 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/22 13:46:18 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+**	DESCRIPTION :
+**	Alloue (avec malloc(3)) et retourne un tableau de chaines de caractères
+**	“fraiches” (toutes terminées par un ’\0’, le tableau également donc)
+**	résultant de la découpe de s selon le caractère c. Si l’allocation echoue,
+**	la fonction retourne NULL.
+**
+**	EXEMPLE :
+**	ft_strsplit("*salut*les***etudiants*", ’*’)
+**	renvoie le tableau ["salut", "les", "etudiants"].
+**
+**	Param. #1 La chaine de caractères à découper.
+**
+**	Param. #2 Le caractère selon lequel découper la chaine.
+**
+**	RETURN VALUE :
+**	Le tableau de chaines de caractères “fraiches” résultant de la découpe.
+*/
 
 static char		**ft_allocation_nb_word(char const *s, char c)
 {
@@ -24,17 +43,15 @@ static char		**ft_allocation_nb_word(char const *s, char c)
 	while (s[j])
 	{
 		while (s[j] && s[j] == c)
-			j++;
+			++j;
 		len = j;
 		while (s[len] && s[len] != c)
-			len++;
+			++len;
 		if (len != j)
-			k++;
+			++k;
 		j = len;
 	}
 	tab = (char **)malloc(sizeof(char *) * (k + 1));
-	if (tab == NULL)
-		return (NULL);
 	return (tab);
 }
 
@@ -49,16 +66,16 @@ static char		**ft_allocation_size_of_word(char const *s, char c, char **tab)
 	while (s[j])
 	{
 		while (s[j] && s[j] == c)
-			j++;
+			++j;
 		len = j;
 		while (s[len] && s[len] != c)
-			len++;
+			++len;
 		if (len != j)
 		{
 			tab[i] = (char *)malloc(len - j + 1);
 			if (tab[i] == NULL)
 				return (NULL);
-			i++;
+			++i;
 		}
 		j = len;
 	}

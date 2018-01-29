@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/19 18:04:26 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/22 13:46:06 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	if (s == NULL)
 		return (NULL);
 	i = -1;
-	str = malloc(ft_strlen(s) + 1);
+	str = (char *)malloc(ft_strlen(s) + 1);
 	if (str == NULL)
 		return (NULL);
 	while (s[++i])

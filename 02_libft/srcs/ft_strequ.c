@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/19 16:19:11 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/22 13:46:00 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_strequ(char const *s1, char const *s2)
 		return (0);
 	i = 0;
 	while (s1[i] && s2[i] && s1[i] == s2[i])
-		i++;
+		++i;
 	if (s1[i] == s2[i])
 		return (1);
 	else

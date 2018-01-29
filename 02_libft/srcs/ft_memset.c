@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 16:03:19 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/15 17:38:44 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/22 13:45:43 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,9 @@ void	*ft_memset(void *b, int c, size_t len)
 	size_t	i;
 	char	*ptr;
 
-	i = 0;
+	i = -1;
 	ptr = b;
-	while (i < len)
-	{
+	while (++i < len)
 		ptr[i] = c;
-		i++;
-	}
 	return (b);
 }

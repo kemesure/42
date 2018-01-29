@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 13:03:12 by kemesure          #+#    #+#             */
-/*   Updated: 2017/12/03 15:51:11 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/22 13:45:27 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ void	ft_bzero(void *s, size_t n)
 
 	ptr = s;
 	n2 = n;
-	while (n + 1 != 0)
-	{
+	++n;
+	while (--n + 1 != 0)
 		if (n != n2)
 			ptr[n] = 0;
-		n--;
-	}
 }

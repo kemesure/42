@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 23:26:12 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/08 17:23:09 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/01/22 13:45:37 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 {
 	t_list	*new;
 
-	new = (t_list *)malloc(sizeof(t_list));
+	new = malloc(sizeof(t_list));
 	if (new == NULL)
 		return (NULL);
 	if (content == NULL)
