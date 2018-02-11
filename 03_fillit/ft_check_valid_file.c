@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 12:27:40 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/30 13:56:05 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/02/11 17:58:00 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,48 +36,90 @@ int		ft_check_valid_file(int fd)
 	int				i;
 	int				j;
 	int				diese;
+	unsigned char	tab[16][5];
 
 	diese = 0;
-	ft_memset(buf, '0', 1); // initialisation de buf a '0'
-//	read(fd, &buf, 1); // buf = '.'
-//	if (buf != '.' && buf != '#' && buf != '\n') // faux
-//		return (-1);
-//	else if (buf == "#")
-//		++diese;
+	ft_memset(buf, '0', 1);
 	i = 0;
 	j = 0;
-	// tant qu'on a pas fini de lire tout le fichier
-	while (i + j < 84 && buf != '\0') // 63 < 84 && buf = '\n' donc VRAI
+//*********************************************************************************//
+
+
+	while (i + 1 % 21) // 20+1 % 21 = 0
 	{
-		// tant que la piece de tetriminos n'a pas fini d'etre lue
-		// Modification de while (i + 1 % 23 != 0) par :
-		while (i + j + 1 % 21 != 0) // 84 % 21 = 0
+		while (i + 1 % 5) // 19+1 % 5 = 0
 		{
-			// tant que la ligne n'a pas finie d'etre lue
-			while (i + 1 % 5 != 0) // 80 % 5 = 0
-			{
-				read(fd, &buf, 1); // buf = '.'
-				if (buf != '.' && buf != '#') // FAUX
-					return (-1);
-				else if (buf == "#") // FAUX
-					++diese; // diese = 4
-				++i; // i = 79
-			}
-			read(fd, &buf, 1); // buf = '\n'
+			read(fd, tab[j], 4);
+			tab[j][4] = '\0';
+			read(fd, &buf, 1);
 			if (buf != '\n')
 				return (-1);
-			++i; // i = 80
+			++j; // j = 16
+			++i; // i = 19
 		}
 		read(fd, &buf, 1); // buf = '\0'
-		if (diese != 4) // FAUX diese = 4
+		if (buf != '\n' || buf != '\0')
+			return (-1);
+		++i; // i = 20
+	}
+	if (buf != '\0')
+		return (-1);
+	/*
+	**	tab =
+	**	0	....
+	**	1	####
+	**	2	....
+	**	3	....
+	**	4	##..
+	**	5	.##.
+	**	6	....
+	**	7	....
+	**	8	....
+	**	9	..#.
+	**	10	.##.
+	**	11	..#.
+	**	12	....
+	**	13	#...
+	**	14	##..
+	**	15	#...
+	**		0123
+	*/
+
+
+//*********************************************************************************//
+	// tant qu'on a pas fini de lire tout le fichier
+	while (i + j < 84 && buf != '\0')
+	{
+		// tant que la piece de tetriminos n'a pas fini d'etre lue
+		while (i + j + 1 % 21 != 0)
+		{
+			// tant que la ligne n'a pas finie d'etre lue
+			while (i + 1 % 5 != 0)
+			{
+				read(fd, &buf, 1);
+				tab[i / 5][i % 5] = buf;
+				if (buf != '.' && buf != '#')
+					return (-1);
+				else if (buf == "#")
+					++diese;
+				++i;
+			}
+			read(fd, &buf, 1);
+			if (buf != '\n')
+				return (-1);
+			tab[i / 5][i % 5] = '\0';
+			++i;
+		}
+		read(fd, &buf, 1);
+		if (diese != 4)
 			return (-1);
 		// Si tout vas bien
-		else if (i + j + 1 == 84 && buf == '\0') // VRAI
-			return (0); // -----------------------------> RETURN 0
+		else if (i + j + 1 == 84 && buf == '\0')
+			return (0);
 		if (buf != '\n')
 			return (-1);
 		diese = 0;
-		++j; // j = 3
+		++j;
 	}
 }
 
