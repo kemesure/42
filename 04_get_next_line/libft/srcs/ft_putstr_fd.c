@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/29 17:25:15 by kemesure          #+#    #+#             */
-/*   Updated: 2018/02/04 19:34:28 by kemesure         ###   ########.fr       */
+/*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
+/*   Updated: 2018/01/22 13:45:52 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
-/*
-**	Fonctions autorisees : read, malloc et free
-*/
-# include "./libft/includes/libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-# define BUFF_SIZE 32
+#include "libft.h"
 
-typedef struct		s_struct
+void	ft_putstr_fd(char const *s, int fd)
 {
-	char			saved[BUFF_SIZE + 1];
-	int				b1;
-	int				b2;
-}					t_struct;
-
-#endif
+	if (s == NULL)
+		return ;
+	write(fd, s, ft_strlen(s));
+}

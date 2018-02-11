@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/29 17:25:15 by kemesure          #+#    #+#             */
-/*   Updated: 2018/02/04 19:34:28 by kemesure         ###   ########.fr       */
+/*   Created: 2017/11/25 17:12:07 by kemesure          #+#    #+#             */
+/*   Updated: 2018/02/04 12:32:08 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#include "libft.h"
+
 /*
-**	Fonctions autorisees : read, malloc et free
+**	DESCRIPTION :
+**	Concatene s1 et s2 et retourne le resultat avec un '\0' a la fin.
 */
-# include "./libft/includes/libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-# define BUFF_SIZE 32
 
-typedef struct		s_struct
+char	*ft_strcat(char *s1, const char *s2)
 {
-	char			saved[BUFF_SIZE + 1];
-	int				b1;
-	int				b2;
-}					t_struct;
+	int		i;
+	int		j;
+	char	*ptr1;
+	char	*ptr2;
 
-#endif
+	j = -1;
+	ptr1 = s1;
+	ptr2 = (char *)s2;
+	i = ft_strlen(ptr1);
+	while (ptr2[++j])
+		ptr1[i + j] = ptr2[j];
+	ptr1[i + j] = '\0';
+	return (s1);
+}

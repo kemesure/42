@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/29 17:25:15 by kemesure          #+#    #+#             */
-/*   Updated: 2018/02/04 19:34:28 by kemesure         ###   ########.fr       */
+/*   Created: 2017/11/26 13:03:12 by kemesure          #+#    #+#             */
+/*   Updated: 2018/01/22 13:45:27 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
-/*
-**	Fonctions autorisees : read, malloc et free
-*/
-# include "./libft/includes/libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-# define BUFF_SIZE 32
+#include "libft.h"
 
-typedef struct		s_struct
+void	ft_bzero(void *s, size_t n)
 {
-	char			saved[BUFF_SIZE + 1];
-	int				b1;
-	int				b2;
-}					t_struct;
+	char	*ptr;
+	size_t	n2;
 
-#endif
+	ptr = s;
+	n2 = n;
+	++n;
+	while (--n + 1 != 0)
+		if (n != n2)
+			ptr[n] = 0;
+}

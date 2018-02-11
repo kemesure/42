@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/29 17:25:15 by kemesure          #+#    #+#             */
-/*   Updated: 2018/02/04 19:34:28 by kemesure         ###   ########.fr       */
+/*   Created: 2017/11/25 15:35:12 by kemesure          #+#    #+#             */
+/*   Updated: 2018/02/02 21:41:53 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#include "libft.h"
+
 /*
-**	Fonctions autorisees : read, malloc et free
+**	DESCRIPTION :
+**	Copie la source dans la destination et retourne la destination.
 */
-# include "./libft/includes/libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-# define BUFF_SIZE 32
 
-typedef struct		s_struct
+char	*ft_strcpy(char *dst, const char *src)
 {
-	char			saved[BUFF_SIZE + 1];
-	int				b1;
-	int				b2;
-}					t_struct;
+	int		i;
+	char	*ptr1;
+	char	*ptr2;
 
-#endif
+	i = -1;
+	ptr1 = dst;
+	ptr2 = (char *)src;
+	while (ptr2[++i])
+		ptr1[i] = ptr2[i];
+	ptr1[i] = '\0';
+	return (dst);
+}

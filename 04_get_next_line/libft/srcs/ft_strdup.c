@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/29 17:25:15 by kemesure          #+#    #+#             */
-/*   Updated: 2018/02/04 19:34:28 by kemesure         ###   ########.fr       */
+/*   Created: 2017/11/19 14:04:28 by kemesure          #+#    #+#             */
+/*   Updated: 2018/01/22 13:46:00 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#include "libft.h"
+
 /*
-**	Fonctions autorisees : read, malloc et free
+**	DESCRIPTION :
+**	Copie la source dans une destination malloquee et retourne la destination.
 */
-# include "./libft/includes/libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-# define BUFF_SIZE 32
 
-typedef struct		s_struct
+char	*ft_strdup(const char *src)
 {
-	char			saved[BUFF_SIZE + 1];
-	int				b1;
-	int				b2;
-}					t_struct;
+	char	*dest;
+	size_t	len;
 
-#endif
+	len = ft_strlen(src);
+	dest = (char *)malloc(len + 1);
+	if (dest == NULL)
+		return (NULL);
+	ft_strcpy(dest, src);
+	dest[len] = '\0';
+	return (dest);
+}

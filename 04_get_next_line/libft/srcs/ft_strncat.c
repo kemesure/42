@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/29 17:25:15 by kemesure          #+#    #+#             */
-/*   Updated: 2018/02/04 19:34:28 by kemesure         ###   ########.fr       */
+/*   Created: 2017/11/26 15:36:54 by kemesure          #+#    #+#             */
+/*   Updated: 2018/01/22 13:46:08 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
-/*
-**	Fonctions autorisees : read, malloc et free
-*/
-# include "./libft/includes/libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-# define BUFF_SIZE 32
+#include "libft.h"
 
-typedef struct		s_struct
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	char			saved[BUFF_SIZE + 1];
-	int				b1;
-	int				b2;
-}					t_struct;
+	int		i;
+	int		j;
+	char	*ptr1;
+	char	*ptr2;
 
-#endif
+	i = 0;
+	j = -1;
+	n++;
+	ptr1 = s1;
+	ptr2 = (char *)s2;
+	while (ptr1[i])
+		++i;
+	while (ptr2[++j] && n - 1)
+	{
+		ptr1[i] = ptr2[j];
+		++i;
+		--n;
+	}
+	ptr1[i] = '\0';
+	return (s1);
+}
