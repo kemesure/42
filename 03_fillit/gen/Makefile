@@ -3,40 +3,29 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+         #
+#    By: bsissoko <bsissoko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/19 01:56:29 by kemesure          #+#    #+#              #
-#    Updated: 2018/02/15 15:35:08 by kemesure         ###   ########.fr        #
+#    Created: 2018/01/22 10:06:09 by bsissoko          #+#    #+#              #
+#    Updated: 2018/01/23 11:55:29 by bsissoko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = get_next_line
+.PHONY: all clean fclean re
 
-HEADER = get_next_line.h
-
-SRC = get_next_line.c
-
-OBJ = $(SRC:%.c=%.o)
-
-CC = clang
+NAME = generate_grids
 
 FLAGS = -Wall -Wextra -Werror
 
-all: libft.a $(NAME)
+SRC =	./f_random.c generate_grids.c
 
-libft.a:
-	$(MAKE) -C libft
+all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(FLAGS) -o $@ -include $(HEADER) -L ./libft/ -lft $(OBJ)
+$(NAME):
+	gcc $(FLAGS) $(SRC) -L../libft -lft
 
 clean:
-	$(MAKE) clean -C libft
-	/bin/rm -f $(OBJ)
 
 fclean: clean
-	$(MAKE) fclean -C libft
 	/bin/rm -f $(NAME)
 
 re: fclean all
-	$(MAKE) re -C libft

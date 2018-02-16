@@ -6,19 +6,22 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 12:27:40 by kemesure          #+#    #+#             */
-/*   Updated: 2018/02/11 17:58:00 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/02/12 17:42:48 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 /*
-**	Si le fichier contient des caracteres '.', '#' et '\n' c'est bon.
+**	Si le fichier contient des caracteres '.', '#', '\n' et un '\0' c'est bon.
 **	Sinon, si il contient d'autres caracteres la fonction return -1.
 **	Si il y a 4 '#' c'est bon.
 **	Sinon la fonction return -1.
 **	Si les 4 '#' correspondent a une des 19 pieces valides la fonction return 0.
 **	Sinon la fonction return -1.
+**	Pour savoir si la piece est valide :
+**	On nomme k, un compteur de caracteres '#' se situant en haut, en bas, a gauche et a droite des 4 caracteres '#'.
+**	Un tetriminos est valide si k >= 6.
 */
 
 /*
@@ -30,96 +33,101 @@
 **	"23456 78901 23456 78901 2 34567 89012 34567 89012 3 "
 **	"         5           6            7           8     "
 */
-int		ft_check_valid_file(int fd)
+
+int		ft_check_valid_file(int fd, unsigned char ***tab)
 {
+	// Il y a trop de variables mais ca ira mieux en decoupant en plusieurs fonctions
 	unsigned char	buf;
 	int				i;
 	int				j;
+	int				k;
 	int				diese;
-	unsigned char	tab[16][5];
 
 	diese = 0;
-	ft_memset(buf, '0', 1);
 	i = 0;
 	j = 0;
-//*********************************************************************************//
-
-
-	while (i + 1 % 21) // 20+1 % 21 = 0
+	k = 0;
+	// Tant que le fichier n'a pas fini d'etre lu
+	// Je sais j'ai mis 21 c'est pour des fichiers qui contiennent que 4 tetriminos
+	// Il faut changer cette valeur par une variable
+	while (i + 1 % 21)
 	{
-		while (i + 1 % 5) // 19+1 % 5 = 0
+		// Tant que la ligne n'a pas finie d'etre lue
+		while (i + 1 % 5)
 		{
-			read(fd, tab[j], 4);
-			tab[j][4] = '\0';
+			read(fd, *tab[j], 4);
+			*tab[j][4] = '\0';
 			read(fd, &buf, 1);
-			if (buf != '\n')
+			if (buf != '\n') // CHECK ERROR 4 caracteres par ligne suivi par '\n'
 				return (-1);
-			++j; // j = 16
-			++i; // i = 19
+			++j;
+			++i;
 		}
-		read(fd, &buf, 1); // buf = '\0'
-		if (buf != '\n' || buf != '\0')
+		read(fd, &buf, 1);
+		if (buf != '\n' || buf != '\0') // CHECK ERROR ligne vide toutes les 5 lignes
 			return (-1);
-		++i; // i = 20
+		++i;
 	}
-	if (buf != '\0')
+	if (buf != '\0') // CHECK ERROR '/0' a la fin du fichier
 		return (-1);
 	/*
-	**	tab =
+	**	*tab =
+	**		0123
 	**	0	....
 	**	1	####
 	**	2	....
 	**	3	....
+	**
 	**	4	##..
 	**	5	.##.
 	**	6	....
 	**	7	....
+	**
 	**	8	....
 	**	9	..#.
 	**	10	.##.
 	**	11	..#.
+	**
 	**	12	....
 	**	13	#...
 	**	14	##..
 	**	15	#...
-	**		0123
 	*/
-
-
-//*********************************************************************************//
-	// tant qu'on a pas fini de lire tout le fichier
-	while (i + j < 84 && buf != '\0')
+	j = 0;
+	// Tant qu'il reste des pieces a lire
+	while (*tab[j])
 	{
-		// tant que la piece de tetriminos n'a pas fini d'etre lue
-		while (i + j + 1 % 21 != 0)
+		i = 0;
+		// Tant que la ligne n'a pas finie d'etre lue
+		while (*tab[j][i])
 		{
-			// tant que la ligne n'a pas finie d'etre lue
-			while (i + 1 % 5 != 0)
-			{
-				read(fd, &buf, 1);
-				tab[i / 5][i % 5] = buf;
-				if (buf != '.' && buf != '#')
-					return (-1);
-				else if (buf == "#")
-					++diese;
-				++i;
-			}
-			read(fd, &buf, 1);
-			if (buf != '\n')
+			if (*tab[j][i] != '.' && *tab[j][i] != '#') // CHECK ERROR caractere invalide
 				return (-1);
-			tab[i / 5][i % 5] = '\0';
+			else if (*tab[j][i] == "#")
+			{
+				if (j % 4 != 0 && *tab[j - 1][i] == '#')
+					++k;
+				if (j % 4 != 3 && *tab[j + 1][i] == '#')
+					++k;
+				if (i != 0 && *tab[j][i - 1] == '#')
+					++k;
+				if (i != 3 && *tab[j][i + 1] == '#')
+					++k;
+				++diese;
+			}
 			++i;
 		}
-		read(fd, &buf, 1);
-		if (diese != 4)
-			return (-1);
-		// Si tout vas bien
-		else if (i + j + 1 == 84 && buf == '\0')
-			return (0);
-		if (buf != '\n')
-			return (-1);
-		diese = 0;
 		++j;
+		// Si on a lu une piece
+		if (j % 4 == 0)
+		{
+			if (diese != 4)	// CHECK ERROR il faut 4 '#' pour faire une piece valide
+				return (-1);
+			if (k < 6)		// CHECK ERROR piece invalide
+				return (-1);
+			diese = 0;
+			k = 0;
+		}
 	}
 }
 
