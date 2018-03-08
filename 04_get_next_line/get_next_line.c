@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:25:12 by kemesure          #+#    #+#             */
-/*   Updated: 2018/02/11 13:33:31 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/03/08 17:45:20 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,129 @@
 #include <stdio.h>
 // ___A RETIRER___
 
-// txt.txt =                       |                                |                                 |
-// "abcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\n\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nceci est la derniere ligne... c est fini"
-// "0123456789012345678901234567890123456 789012345678901234567890123 456789012345678901234567890 123456789..."
-// "0         1         2         3          4         5         6          7         8         9          ..."
+// txt.txt =                       |                                |                                 |                               |                                  |                                |                                   |                               |                                |
+// "abcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\n\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\n\n\n\nabcdefghijklmnopqrstuvwxyz0123456789\nceci est la derniere ligne... c'est fini"
+// "0123456789012345678901234567890123456 789012345678901234567890123 456789012345678901234567890 1234567890123456789012345678901234567 890123456789012345678901234 5 678901234567890123456789012 3456789012345678901234567890123456789 0 1 2 3456789012345678901234567890123456789 0123456789012345678901234567890123456789"
+// "0         1         2         3          4         5         6          7         8         9          0         1         2          3         4         5           6         7         8          9         0         1          2            3         4         5          6         7         8         9         "
+// "0                                                                                                      1                                                                                                       2                                                                                                        "
+int		get_next_line(const int fd, char **line)
+{ // 3eme appel de la fonction gnl, *line = "abcdefghijklmnopqrstuvwxyz\0\0...\0"
+	static unsigned int		nbc = 0;
+	char					*buff;
+	int						i;
+	int						j;
 
+	i = -1;
+	j = -1;
+	if (*line) // VRAI
+	{
+		printf("\t\t\tSAUVEGARDE DU RESTE DU BUFFER\n");
+		while ((*line)[++i]) // (*line)[36] = '\0'
+			;
+// *line = "abcdefghijklmnopqrstuvwxyz\n123456789\0abcdefghijklmnopqrstuvwxyz\n\0"
+		while ((*line)[++i]) // (*line)[64] = '\0'
+			(*line)[++j] = (*line)[i];
+		(*line)[++j] = (*line)[i]; // *line = "abcdefghijklmnopqrstuvwxyz\n\0..."
+		printf("\t*line = \"%s\"\n", *line);
+		i = -1;
+		//     (*line) [26]  = '\n'
+		while ((*line)[++i] != '\n' && (*line)[i])
+			;
+		if ((*line)[i] == '\n')
+		{
+			(*line)[i] = '\0'; // *line = "abcdefghijklmnopqrstuvwxyz\0\0...\0"
+			return (1);
+		}
+		i = -1;
+	}
+	if (!(buff = (char *)malloc(BUFF_SIZE + 1))) // buff = 33 octets
+		return (-1);
+	printf("\t\t\tLECTURE DU FICHIER\n");
+	// Les 32 caracteres suivants du fichier sont copies dans buff
+	// buff    = "abcdefghijklmnopqrstuvwxyz012345"
+	if (read(fd, buff, BUFF_SIZE) == 0) // 32 != 0 FAUX car pas fini de lire
+		return (0);
+	// buff    = "abcdefghijklmnopqrstuvwxyz012345\0"
+	//           "012345678901234567890123456789012 "
+	//           "0         1         2         3   "
+	buff[BUFF_SIZE] = '\0';
+	printf("\tbuff = \"%s\"\n", buff);
+	//                          buff[32] = '\0'
+	while (buff[++i] != '\n' && buff[i] != '\0')
+		++nbc; // nbc = 32
+	// QUE CE PASSE T IL SI nbc = 0 ?
+	printf("\t%u %% %d = %u\n", nbc, BUFF_SIZE, nbc % BUFF_SIZE);
+	if (nbc % BUFF_SIZE == 0) // 32 % 32 = 0 donc VRAI
+	{
+		// *line = "abcdefghijklmnopqrstuvwxyz012345\0"
+		*line = ft_strdup(buff);
+		if (!*line)
+			return (-1);
+		printf("\t*line = \"%s\"\n", *line);
+		// Ajouter la suite a *line
+		printf("\t%u %% %d = %u\n", nbc, BUFF_SIZE, nbc % BUFF_SIZE);
+		while (nbc % BUFF_SIZE == 0)
+		{
+			printf("\t\t\tLECTURE DU FICHIER\n");
+			// buff = "6789\nabcdefghijklmnopqrstuvwxyz\n"
+			if (read(fd, buff, BUFF_SIZE) == 0) // 32 != 0 FAUX car pas fini de lire
+				return (0);
+			// buff = "6789\nabcdefghijklmnopqrstuvwxyz\n\0"
+			//        "01234 567890123456789012345678901 2 "
+			//        "0          1         2         3    "
+			buff[BUFF_SIZE] = '\0';
+			printf("\tbuff = \"%s\"\n", buff);
+			// *line = "abcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\n\0"
+			//         "0123456789012345678901234567890123456 789012345678901234567890123 4 "
+			//         "0         1         2         3          4         5         6      "
+
+			*line = ft_strjoin(*line, buff);
+			if (!*line)
+				return (-1);
+			printf("\t*line = \"%s\"\n", *line);
+
+			// vient d'etre rajoute
+			char *newvar = ft_strdup(*line);
+			// free(*line);
+			//
+
+
+			// *line = ft_strjoin(newvar, buff);
+			// *line = malloc(42);
+			// *line = ft_strdup("AABCDCDCD");
+			// *line = ft_strdup("AABCDCDCD");
+
+			// printf("\t*line -> \"%s\" ======> %c \n", *line, *line[0]);
+
+			// [TEST]
+	/*		printf("BBBBB\n");
+			char d = (*line)[0]; // <= SEGFAULT
+			printf("CCCCC\n");
+			printf("EEEE\n");
+			char c = (*line)[1]; // line[0][1] *line[1]
+			printf("AAAAA\n");
+	*/		// for (int i = 0; i < 30; i++) {
+			// 	printf("======> %c \n", *line[i]);
+			// }
+
+	//		printf("\t(*line)[%d]  '%c'\n", i, (*line)[i]);
+			//     line[36]   = '\n'
+			while ((*line)[i] != '\n' && (*line)[i])
+			{
+				++nbc; // nbc = 36
+				++i;   //   i = 36
+	//			printf("\t(*line)[%d] = '%c'\n", i, (*line)[i]);
+			}
+			printf("\t%u %% %d = %u\n", nbc, BUFF_SIZE, nbc % BUFF_SIZE);
+		}
+	}
+	// Il faut tout enlever a partir de '\n'
+	if (nbc % BUFF_SIZE != 0) // VRAI 4 != 0
+		(*line)[i] = '\0';
+	return (1);
+}
+
+/*
 int		get_next_line(const int fd, char **line)
 {
 	// s.saved = "",	  s.b1 = 1		s.b2 = 1
@@ -112,6 +230,7 @@ int		get_next_line(const int fd, char **line)
 	}
 	return (0);
 }
+*/
 
 int		main(int ac, char **av)
 {
@@ -121,16 +240,18 @@ int		main(int ac, char **av)
 	int		gnl;
 
 	i = 0;
-	fd = open(av[1], O_RDONLY); // open "txt/txt.txt"
+	gnl = 1;
+	fd = open(av[1], O_RDONLY); // open "txt/longtxt.txt"
 	if (fd == -1)
 		return (-1);
-	while(i < 12)
+	while(i < 12 && gnl == 1)
 	{
 		gnl = get_next_line(fd, &line);
  		if (gnl != 1)
 			printf("GNL return : %d\n", gnl);
 		printf("line = \"%s\"\n", line);
 		++i;
+		printf("------------------------------------------------------------------------------------\n");
 	}
 //	printf("i = %d\n", i);
 	return (0);

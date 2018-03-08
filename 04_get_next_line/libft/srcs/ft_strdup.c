@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 14:04:28 by kemesure          #+#    #+#             */
-/*   Updated: 2018/01/22 13:46:00 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/03/04 14:54:34 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 **	Copie la source dans une destination malloquee et retourne la destination.
 */
 
+// src  = "abcdefghijklmnopqrstuvwxyz012345\0"
+//        "012345678901234567890123456789012 "
+//        "0         1         2         3   "
 char	*ft_strdup(const char *src)
 {
 	char	*dest;
@@ -30,3 +33,4 @@ char	*ft_strdup(const char *src)
 	dest[len] = '\0';
 	return (dest);
 }
+// dest = "abcdefghijklmnopqrstuvwxyz012345\0"

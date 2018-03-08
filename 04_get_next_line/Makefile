@@ -6,7 +6,7 @@
 #    By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/19 01:56:29 by kemesure          #+#    #+#              #
-#    Updated: 2018/02/15 15:35:08 by kemesure         ###   ########.fr        #
+#    Updated: 2018/03/04 18:00:20 by kemesure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJ = $(SRC:%.c=%.o)
 
 CC = clang
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 all: libft.a $(NAME)
 
