@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:25:12 by kemesure          #+#    #+#             */
-/*   Updated: 2018/03/08 17:45:20 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/03/10 18:48:53 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,217 +42,123 @@
 #include <stdio.h>
 // ___A RETIRER___
 
-// txt.txt =                       |                                |                                 |                               |                                  |                                |                                   |                               |                                |
-// "abcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\n\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmnopqrstuvwxyz0123456789\n\n\n\nabcdefghijklmnopqrstuvwxyz0123456789\nceci est la derniere ligne... c'est fini"
-// "0123456789012345678901234567890123456 789012345678901234567890123 456789012345678901234567890 1234567890123456789012345678901234567 890123456789012345678901234 5 678901234567890123456789012 3456789012345678901234567890123456789 0 1 2 3456789012345678901234567890123456789 0123456789012345678901234567890123456789"
-// "0         1         2         3          4         5         6          7         8         9          0         1         2          3         4         5           6         7         8          9         0         1          2            3         4         5          6         7         8         9         "
-// "0                                                                                                      1                                                                                                       2                                                                                                        "
 int		get_next_line(const int fd, char **line)
-{ // 3eme appel de la fonction gnl, *line = "abcdefghijklmnopqrstuvwxyz\0\0...\0"
+{
 	static unsigned int		nbc = 0;
 	char					*buff;
+	char					*buff2;
+	int						rd;
 	int						i;
 	int						j;
 
 	i = -1;
 	j = -1;
-	if (*line) // VRAI
+	if (*line)
 	{
-		printf("\t\t\tSAUVEGARDE DU RESTE DU BUFFER\n");
-		while ((*line)[++i]) // (*line)[36] = '\0'
+		//printf("\t\t\tSAUVEGARDE DU RESTE DU BUFFER\n");
+		while ((*line)[++i])
 			;
-// *line = "abcdefghijklmnopqrstuvwxyz\n123456789\0abcdefghijklmnopqrstuvwxyz\n\0"
-		while ((*line)[++i]) // (*line)[64] = '\0'
+		while ((*line)[++i])
 			(*line)[++j] = (*line)[i];
-		(*line)[++j] = (*line)[i]; // *line = "abcdefghijklmnopqrstuvwxyz\n\0..."
-		printf("\t*line = \"%s\"\n", *line);
+		(*line)[++j] = '\0';
+		//printf("\t*line = \"%s\"\n", *line);
 		i = -1;
-		//     (*line) [26]  = '\n'
 		while ((*line)[++i] != '\n' && (*line)[i])
 			;
 		if ((*line)[i] == '\n')
 		{
-			(*line)[i] = '\0'; // *line = "abcdefghijklmnopqrstuvwxyz\0\0...\0"
+			(*line)[i] = '\0';
 			return (1);
 		}
+		nbc = 0;
 		i = -1;
 	}
-	if (!(buff = (char *)malloc(BUFF_SIZE + 1))) // buff = 33 octets
+	if (!(buff = (char *)malloc(BUFF_SIZE + 1))) // buff vaut 33 octets
 		return (-1);
-	printf("\t\t\tLECTURE DU FICHIER\n");
+	//printf("\t\t\tLECTURE DU FICHIER\n");
 	// Les 32 caracteres suivants du fichier sont copies dans buff
-	// buff    = "abcdefghijklmnopqrstuvwxyz012345"
-	if (read(fd, buff, BUFF_SIZE) == 0) // 32 != 0 FAUX car pas fini de lire
+	rd = read(fd, buff, BUFF_SIZE);
+	if (rd == 0)
 		return (0);
-	// buff    = "abcdefghijklmnopqrstuvwxyz012345\0"
-	//           "012345678901234567890123456789012 "
-	//           "0         1         2         3   "
-	buff[BUFF_SIZE] = '\0';
-	printf("\tbuff = \"%s\"\n", buff);
-	//                          buff[32] = '\0'
-	while (buff[++i] != '\n' && buff[i] != '\0')
-		++nbc; // nbc = 32
-	// QUE CE PASSE T IL SI nbc = 0 ?
-	printf("\t%u %% %d = %u\n", nbc, BUFF_SIZE, nbc % BUFF_SIZE);
-	if (nbc % BUFF_SIZE == 0) // 32 % 32 = 0 donc VRAI
+	buff[rd] = '\0';
+	//printf("\tbuff = \"%s\"\n", buff);
+	if (*line && (*line)[0] != '\0')
 	{
-		// *line = "abcdefghijklmnopqrstuvwxyz012345\0"
-		*line = ft_strdup(buff);
-		if (!*line)
+		buff2 = ft_strdup(buff);
+		if (!buff2)
 			return (-1);
-		printf("\t*line = \"%s\"\n", *line);
+		free(buff);
+		buff = ft_strjoin(*line, buff2);
+		if (!buff)
+			return (-1);
+		free(buff2);
+		//printf("\tbuff = \"%s\"\n", buff);
+	}
+	while (buff[++i] != '\n' && buff[i])
+		++nbc;
+	free(*line);
+	*line = ft_strdup(buff);
+	if (!*line)
+		return (-1);
+	// QUE CE PASSE T IL SI nbc = 0 ?
+	//printf("\tnbc(= %u) %% ft_strlen(*line)(= %zu) = %lu\n", nbc, ft_strlen(*line), nbc % ft_strlen(*line));
+	if (nbc % ft_strlen(*line) == 0 && rd == BUFF_SIZE)
+	{
+		//printf("\t*line = \"%s\"\n", *line);
 		// Ajouter la suite a *line
-		printf("\t%u %% %d = %u\n", nbc, BUFF_SIZE, nbc % BUFF_SIZE);
-		while (nbc % BUFF_SIZE == 0)
+		//printf("\tnbc(= %u) %% ft_strlen(*line)(= %zu) = %lu\n", nbc, ft_strlen(*line), nbc % ft_strlen(*line));
+		while (nbc % ft_strlen(*line) == 0)
 		{
-			printf("\t\t\tLECTURE DU FICHIER\n");
-			// buff = "6789\nabcdefghijklmnopqrstuvwxyz\n"
-			if (read(fd, buff, BUFF_SIZE) == 0) // 32 != 0 FAUX car pas fini de lire
+			//printf("\t\t\tLECTURE DU FICHIER\n");
+			// Les 32 caracteres suivants du fichier sont copies dans buff
+			if (read(fd, buff, BUFF_SIZE) == 0)
 				return (0);
-			// buff = "6789\nabcdefghijklmnopqrstuvwxyz\n\0"
-			//        "01234 567890123456789012345678901 2 "
-			//        "0          1         2         3    "
 			buff[BUFF_SIZE] = '\0';
-			printf("\tbuff = \"%s\"\n", buff);
-			// *line = "abcdefghijklmnopqrstuvwxyz0123456789\nabcdefghijklmnopqrstuvwxyz\n\0"
-			//         "0123456789012345678901234567890123456 789012345678901234567890123 4 "
-			//         "0         1         2         3          4         5         6      "
-
-			*line = ft_strjoin(*line, buff);
+			//printf("\tbuff = \"%s\"\n", buff);
+			buff2 = ft_strdup(*line);
+			if (!buff2)
+				return (-1);
+			free(*line);
+			*line = ft_strjoin(buff2, buff);
 			if (!*line)
 				return (-1);
-			printf("\t*line = \"%s\"\n", *line);
-
-			// vient d'etre rajoute
-			char *newvar = ft_strdup(*line);
-			// free(*line);
-			//
-
-
-			// *line = ft_strjoin(newvar, buff);
-			// *line = malloc(42);
-			// *line = ft_strdup("AABCDCDCD");
-			// *line = ft_strdup("AABCDCDCD");
-
-			// printf("\t*line -> \"%s\" ======> %c \n", *line, *line[0]);
-
-			// [TEST]
-	/*		printf("BBBBB\n");
-			char d = (*line)[0]; // <= SEGFAULT
-			printf("CCCCC\n");
-			printf("EEEE\n");
-			char c = (*line)[1]; // line[0][1] *line[1]
-			printf("AAAAA\n");
-	*/		// for (int i = 0; i < 30; i++) {
-			// 	printf("======> %c \n", *line[i]);
-			// }
-
-	//		printf("\t(*line)[%d]  '%c'\n", i, (*line)[i]);
-			//     line[36]   = '\n'
+			free(buff2);
+			//printf("\t*line = \"%s\"\n", *line);
 			while ((*line)[i] != '\n' && (*line)[i])
 			{
-				++nbc; // nbc = 36
-				++i;   //   i = 36
-	//			printf("\t(*line)[%d] = '%c'\n", i, (*line)[i]);
+				++nbc;
+				++i;
 			}
-			printf("\t%u %% %d = %u\n", nbc, BUFF_SIZE, nbc % BUFF_SIZE);
+			//printf("\tnbc(= %u) %% ft_strlen(*line)(= %zu) = %lu\n", nbc, ft_strlen(*line), nbc % ft_strlen(*line));
 		}
 	}
-	// Il faut tout enlever a partir de '\n'
-	if (nbc % BUFF_SIZE != 0) // VRAI 4 != 0
+	// Il faut enlever tout ce qui se trouve apres le '\n'
+	if (nbc % ft_strlen(*line) != 0 && rd == BUFF_SIZE)
 		(*line)[i] = '\0';
-	return (1);
-}
-
-/*
-int		get_next_line(const int fd, char **line)
-{
-	// s.saved = "",	  s.b1 = 1		s.b2 = 1
-	static t_struct		s = (t_struct){"", 1, 1};
-	char				*buff;
-	char				*buf;
-	int					i;
-
-	i = 0;
-	// Si je dois lire ou relire le fichier (si pas de '\n')
-	while (s.saved[i] != '\n' && s.saved[i] != '\0') // s.saved[0] = '\0'
-		++i;
-	if (s.saved[i] == '\0') // VRAI
-		s.b1 = 1;
-	if (s.b1 && s.b2) // 1 & 1 = VRAI
-	{
-		if (!(buff = (char *)malloc(BUFF_SIZE + 1))) // buff = 33 octets
-			return (-1);
-		printf("\t\t\tLECTURE DU FICHIER\n");
-		// Les 32 caracteres suivants du fichier sont copies dans buff
-		// buff    = "abcdefghijklmnopqrstuvwxyz012345"
-		if (read(fd, buff, BUFF_SIZE) != BUFF_SIZE) // FAUX car pas fini de lire
-			s.b2 = 0;
-		// buff    = "abcdefghijklmnopqrstuvwxyz012345\0"
-		buff[BUFF_SIZE] = '\0';
-		// concatenation de s.saved et buff
-		// s.saved = "abcdefghijklmnopqrstuvwxyz012345\0"
-		ft_strcat(s.saved, buff);
-		// buff = 33 * '\0'
-		ft_bzero(buff, BUFF_SIZE);
-		s.b1 = 0;
-	}
-	i = 0;
-	printf("s.saved = \"%s\"\n", s.saved);
-	while (i <= ft_strlen(s.saved)) // 0 <= 32
-	{
-		if (s.saved[i] == '\n' || s.saved[i] == '\0') // s.saved[0] = 'a'
-		{
-			// *line = "ligne \0"
-			if (s.saved[i] == '\0')
-				*line = ft_strsub(s.saved, 0, i - 1);
-			else
-				*line = ft_strsub(s.saved, 0, i);
-			if (*line == NULL)
-				return (-1);
-			if (s.saved[i] == '\n') // VRAI
-			{
-				// buf = "l2\nln 03\nln04\nln5\nligne\0"
-				buf = ft_strsub(s.saved, i + 1, ft_strlen(s.saved) - i - 1);
-				if (buf == NULL)
-					return (-1);
-			}
-			// s.saved = buf; ----------------------------------------------------------------------------------------------------------------------
-//			printf("(1)_____________________S.SAVED = \"%s\"\n", s.saved);										// s.saved			  = "\nligne \0"
-//			printf("(2)_________________________BUF = \"%s\"\n", buf);											// buf				  =   "ligne \0"
-//			printf("(3)__________FT_STRLEN(BUF) + 1 = %zu\n", ft_strlen(buf) + 1);								// ft_strlen(buf) + 1 = 7
-//			printf("   __________FT_MEMCPY(1, 2, 3) = \"%s\"\n",
-			// ce ft_memcpy segfault
-			ft_memcpy(s.saved, buf, ft_strlen(buf) + 1);//);	// s.saved			  =   "ligne \0"
-			return (1); // return 1 (ligne lue et stockee dans *line)
-		}
-		++i; // i = 
-	}
+	if (rd == BUFF_SIZE)
+		return (1);
 	return (0);
 }
-*/
 
 int		main(int ac, char **av)
 {
 	int		fd;
-	char	*line;
-	int		i;
+	char	*line = NULL;
 	int		gnl;
 
-	i = 0;
 	gnl = 1;
-	fd = open(av[1], O_RDONLY); // open "txt/longtxt.txt"
+	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	while(i < 12 && gnl == 1)
+	while(gnl == 1)
 	{
 		gnl = get_next_line(fd, &line);
  		if (gnl != 1)
 			printf("GNL return : %d\n", gnl);
-		printf("line = \"%s\"\n", line);
-		++i;
-		printf("------------------------------------------------------------------------------------\n");
+		printf("\"%s\"\n", line);
 	}
-//	printf("i = %d\n", i);
 	return (0);
 }
+// test sur txt/txt.txt  -> ligne vide a la fin
+// test sur txt/txt2.txt -> affiche tout sur une seule ligne
+// test sur /dev/random  -> pour etre sur
