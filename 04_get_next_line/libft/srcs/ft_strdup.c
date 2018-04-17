@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 14:04:28 by kemesure          #+#    #+#             */
-/*   Updated: 2018/03/04 14:54:34 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/04/17 16:37:00 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,17 @@
 **	Copie la source dans une destination malloquee et retourne la destination.
 */
 
-// src  = "abcdefghijklmnopqrstuvwxyz012345\0"
-//        "012345678901234567890123456789012 "
-//        "0         1         2         3   "
+//                   src  = " \0"
 char	*ft_strdup(const char *src)
 {
 	char	*dest;
 	size_t	len;
 
-	len = ft_strlen(src);
-	dest = (char *)malloc(len + 1);
-	if (dest == NULL)
+	len = ft_strlen(src); // len = 1
+	dest = (char *)malloc(len + 1); // dest = 2 octets
+	if (dest == NULL) // FAUX
 		return (NULL);
-	ft_strcpy(dest, src);
-	dest[len] = '\0';
+	ft_strcpy(dest, src); // dest = " "
+	dest[len] = '\0';     // dest = " \0"
 	return (dest);
 }
-// dest = "abcdefghijklmnopqrstuvwxyz012345\0"

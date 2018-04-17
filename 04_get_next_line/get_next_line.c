@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:25:12 by kemesure          #+#    #+#             */
-/*   Updated: 2018/03/10 18:48:53 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/04/17 18:06:29 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,100 +42,136 @@
 #include <stdio.h>
 // ___A RETIRER___
 
-int		get_next_line(const int fd, char **line)
+int		ft_save_buff(char **line)
 {
-	static unsigned int		nbc = 0;
-	char					*buff;
-	char					*buff2;
-	int						rd;
-	int						i;
-	int						j;
+	printf("|\t\t\tSAVE BUFF\n");
+	int		i;
+	int		j;
 
 	i = -1;
 	j = -1;
-	if (*line)
+	while ((*line)[++i])
+		;
+	while ((*line)[++i])
+		(*line)[++j] = (*line)[i];
+	(*line)[++j] = '\0';
+	printf("|\t\t\t|\t\t\t*line = \"%s\"\n", *line);
+	i = -1;
+	while ((*line)[++i] != '\n' && (*line)[i])
+		;
+	if ((*line)[i] == '\n')
 	{
-		//printf("\t\t\tSAUVEGARDE DU RESTE DU BUFFER\n");
-		while ((*line)[++i])
-			;
-		while ((*line)[++i])
-			(*line)[++j] = (*line)[i];
-		(*line)[++j] = '\0';
-		//printf("\t*line = \"%s\"\n", *line);
-		i = -1;
-		while ((*line)[++i] != '\n' && (*line)[i])
-			;
-		if ((*line)[i] == '\n')
-		{
-			(*line)[i] = '\0';
-			return (1);
-		}
-		nbc = 0;
-		i = -1;
+		(*line)[i] = '\0';
+		return (1);
 	}
-	if (!(buff = (char *)malloc(BUFF_SIZE + 1))) // buff vaut 33 octets
-		return (-1);
-	//printf("\t\t\tLECTURE DU FICHIER\n");
-	// Les 32 caracteres suivants du fichier sont copies dans buff
+	printf("|\t\t\tSAVE BUFF FIN\n");
+	return (0);
+}
+
+//								*line,		buff
+char	*ft_strjoin_and_free(char *s1, char *s2)
+{
+	printf("|\t\t\tJOIN AND FREE\n");
+	char	*str;
+	size_t	size;
+
+	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	str = (char *)malloc(size);
+	//str = (char *)malloc(10);
+	printf("|\t\t\t|\t\t\tMALLOC FAIT\n");
+// ---------------------------------------- ALLOCATION, str = 3 octets
+	printf("|\t\t\t|\t\t\tSTR = NULL ?\n");
+	if (str == NULL)
+		return (NULL);
+	printf("|\t\t\t|\t\t\tFT_STRCPY(STR, S1)\n");
+	ft_strcpy(str, s1);
+	printf("|\t\t\t|\t\t\tFT_STRCAT(STR, S2)\n");
+	ft_strcat(str, s2);
+	printf("|\t\t\t|\t\t\tstr = \"%s\"\n", str);
+	if (s1 != NULL)
+	{
+		printf("|\t\t\t|\t\t\tFREE(S1) <=> FREE(*line)\n");
+		//free(s1); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// ---------------------------------------- LIBERATION DE MEMOIRE, free(s1)
+	}
+	printf("|\t\t\tJOIN AND FREE FIN\n");
+	return (str);
+}
+
+
+// *line = "\n\n\nbonjour BONJOUR salut SALUT comment ca va ? COMMENT CA VA ? coucou COUCOU t'es ou ? T'es ou ?\n93\n\n\n\0"
+//         "0 1 2 3456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456 789 0 1 2 "
+//         "0            1         2         3         4         5         6         7         8         9           0     "
+int		get_next_line(const int fd, char **line)
+{
+	static unsigned int		nbc = 0;
+	char					buff[BUFF_SIZE + 1];
+	int						rd;
+	int						i;
+
+	i = -1;
+	if (*line)
+		if (!(nbc = 0) && ft_save_buff(&*line) == 1)
+			return (1);
+	printf("LECTURE DU FICHIER\n");
 	rd = read(fd, buff, BUFF_SIZE);
-	if (rd == 0)
+	if (!rd)
 		return (0);
 	buff[rd] = '\0';
-	//printf("\tbuff = \"%s\"\n", buff);
 	if (*line && (*line)[0] != '\0')
 	{
-		buff2 = ft_strdup(buff);
-		if (!buff2)
+		printf("*line = \"%s\"\n", *line);
+		printf(" buff = \"%s\"\n",  buff);
+		*line = ft_strjoin_and_free(*line, buff);
+		if (!*line)
 			return (-1);
-		free(buff);
-		buff = ft_strjoin(*line, buff2);
-		if (!buff)
-			return (-1);
-		free(buff2);
-		//printf("\tbuff = \"%s\"\n", buff);
+		printf(" buff = \"%s\"\n", buff);
 	}
-	while (buff[++i] != '\n' && buff[i])
-		++nbc;
-	free(*line);
+	if (!(*line))
+		while (buff[++i] != '\n' && buff[i])
+			++nbc;
+	else
+		while ((*line)[++i] != '\n' && (*line)[i])
+			++nbc;
 	*line = ft_strdup(buff);
+// ---------------------------------------- ALLOCATION, *line = 2 octets
 	if (!*line)
 		return (-1);
-	// QUE CE PASSE T IL SI nbc = 0 ?
-	//printf("\tnbc(= %u) %% ft_strlen(*line)(= %zu) = %lu\n", nbc, ft_strlen(*line), nbc % ft_strlen(*line));
-	if (nbc % ft_strlen(*line) == 0 && rd == BUFF_SIZE)
+	printf("nbc = %u\n", nbc);
+	printf("ft_strlen(*line) = %zu\n", ft_strlen(*line));
+	if (nbc == ft_strlen(*line))
 	{
-		//printf("\t*line = \"%s\"\n", *line);
-		// Ajouter la suite a *line
-		//printf("\tnbc(= %u) %% ft_strlen(*line)(= %zu) = %lu\n", nbc, ft_strlen(*line), nbc % ft_strlen(*line));
-		while (nbc % ft_strlen(*line) == 0)
+		printf("*line = \"%s\"\n", *line);
+		printf("nbc = %u\n", nbc);
+		printf("ft_strlen(*line) = %zu\n", ft_strlen(*line));
+		while (nbc == ft_strlen(*line))
 		{
-			//printf("\t\t\tLECTURE DU FICHIER\n");
-			// Les 32 caracteres suivants du fichier sont copies dans buff
-			if (read(fd, buff, BUFF_SIZE) == 0)
+			printf("RELECTURE DU FICHIER\n");
+			rd = read(fd, buff, BUFF_SIZE);
+			printf("RELECTURE FAITE\n");
+			if (!rd)
 				return (0);
-			buff[BUFF_SIZE] = '\0';
-			//printf("\tbuff = \"%s\"\n", buff);
-			buff2 = ft_strdup(*line);
-			if (!buff2)
-				return (-1);
-			free(*line);
-			*line = ft_strjoin(buff2, buff);
+			buff[rd] = '\0';
+			printf("BUFF[RD]='\\0'\n");
+			printf("buff = \"%s\"\n", buff);
+			*line = ft_strjoin_and_free(*line, buff);
+// ---------------------------------------- LIBERATION DE MEMOIRE, free(*line)
+// ---------------------------------------- ALLOCATION, *line = 65 octets
 			if (!*line)
 				return (-1);
-			free(buff2);
-			//printf("\t*line = \"%s\"\n", *line);
+			printf("*line = \"%s\"\n", *line);
 			while ((*line)[i] != '\n' && (*line)[i])
 			{
 				++nbc;
 				++i;
 			}
-			//printf("\tnbc(= %u) %% ft_strlen(*line)(= %zu) = %lu\n", nbc, ft_strlen(*line), nbc % ft_strlen(*line));
+			printf("nbc = %u\n", nbc);
+			printf("ft_strlen(*line) = %zu\n", ft_strlen(*line));
 		}
 	}
-	// Il faut enlever tout ce qui se trouve apres le '\n'
-	if (nbc % ft_strlen(*line) != 0 && rd == BUFF_SIZE)
+	if (nbc != ft_strlen(*line))
 		(*line)[i] = '\0';
-	if (rd == BUFF_SIZE)
+	if (rd != 0)
 		return (1);
 	return (0);
 }
@@ -150,15 +186,20 @@ int		main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	while(gnl == 1)
+	while (gnl == 1)
 	{
 		gnl = get_next_line(fd, &line);
+		printf("line = \"%s\"\n", line);
  		if (gnl != 1)
+ 		{
+ 			free(line);
 			printf("GNL return : %d\n", gnl);
-		printf("\"%s\"\n", line);
+ 		}
+		printf("_______________________________________________________________\n");
 	}
 	return (0);
 }
-// test sur txt/txt.txt  -> ligne vide a la fin
-// test sur txt/txt2.txt -> affiche tout sur une seule ligne
-// test sur /dev/random  -> pour etre sur
+
+// test sur /dev/random -> pour etre sur
+// probleme de taille de BUFFSIZE
+// TEST EN COURS SUR TXT2.TXT (j'en suis au debut de la 2eme ligne ("\n"))

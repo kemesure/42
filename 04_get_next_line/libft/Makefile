@@ -6,7 +6,7 @@
 #    By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/19 01:56:29 by kemesure          #+#    #+#              #
-#    Updated: 2018/01/31 13:38:15 by kemesure         ###   ########.fr        #
+#    Updated: 2018/04/12 15:13:16 by kemesure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 %.o: %.c
-	$(CC) $(FLAGS) -I includes -o $@ -c $< 
+	$(CC) $(FLAGS) -g -o $@ -I includes -c $< 
 
 clean:
 	/bin/rm -f $(GCH) $(OBJ)
