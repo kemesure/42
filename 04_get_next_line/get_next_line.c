@@ -5,181 +5,137 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/29 17:25:12 by kemesure          #+#    #+#             */
-/*   Updated: 2018/04/17 18:06:29 by kemesure         ###   ########.fr       */
+/*   Created: 2018/04/21 15:57:20 by kemesure          #+#    #+#             */
+/*   Updated: 2018/04/27 17:49:44 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*
-**	DESCRIPTION :
-**	Lire fichier et copier BUFF_SIZE octets dans un char *buff
-**	Faire une sauvegarde de char *buff dans static char *saved
-**	. Si saved contient un '\n', afficher strsub(saved, 0, i),
-**		buf = ce qui reste apres le '\n' et free(saved)
-**	. Sinon on efface les 32 caracteres lu par les 32 suivants
-**		et saved = strjoin(saved, buff)
-**
-**	RETURN VALUE :
-**	. -1 si il y a une erreur
-**	.  0 si tab[i + 1] == NULL
-**	.  1 si tab[i + 1] != NULL
-**
-**	variable static qui conserve le nombre d'octets effaces
-**	par la copie de buf dans s.saved
-**
-**	Pour le bonus multi fichiers :
-**	Liste chainee avec pointeur sur debut et un autre qui
-**	parcourt tant que ce n'est pas le bon fichier.
-**	Si next == NULL, creer un nouveau maillon.
-**
-**	PROBLEME AVEC LES FICHIERS QUI ONT DES LIGNES DE PLUS DE BUFF_SIZE CARACTERES.
-**	CAUSE DU PROBLEME : JE N'AI PAS LA BONNE METHODE.
-*/
-
 // ___A RETIRER___
 #include <stdio.h>
 // ___A RETIRER___
 
-int		ft_save_buff(char **line)
+//			*line = "123\0", size = 2
+char *ft_realloc(char **str, int size)
 {
-	printf("|\t\t\tSAVE BUFF\n");
+	if (*str) // VRAI
+		free(*str); // *line = "" 0 octets
+	*str = (char *)malloc(size); // ALLOCATION DE *line (2 octets)
+	return (*str);
+}
+
+char	*ft_strjoin_and_free(char *s1, char *s2)
+{
+	char	*str;
+
+	str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (str == NULL)
+		return (NULL);
+	ft_strcpy(str, s1);
+	ft_strcat(str, s2);
+	if (s1 != NULL)
+		free(s1);
+	return (str);
+}
+
+//                               buff="\n\0",  *line = "", rd = 1
+int		ft_save_buff_in_the_line(char **buff, char **line, int rd)
+{
+	char	*buff2;
 	int		i;
 	int		j;
 
 	i = -1;
 	j = -1;
-	while ((*line)[++i])
+
+// VERIFIER SI LE BUFFER CONTIENT UN '\n'
+	while ((*buff)[++i] != '\n' && (*buff)[i]) // FAUX *buff[0] = '\n'
 		;
-	while ((*line)[++i])
-		(*line)[++j] = (*line)[i];
-	(*line)[++j] = '\0';
-	printf("|\t\t\t|\t\t\t*line = \"%s\"\n", *line);
+	// - SI OUI, STOCKER LA PARTIE D'AVANT CE '\n' DANS *line
+	// cas particulier debut du fichier par un '\n'
+	if ((*buff)[i] == '\n' && i == 0) // VRAI
+	{
+		*line = ft_strdup("\n"); // ALLOCATION DE *line (2 octets) = "\n\0"
+		if (!*line) // FAUX, on viens de faire l'allocation
+			return (-1);
+	}
+	else if ((*buff)[i] == '\n') // FAUX, le if etait VRAI (DANS L'EX i VAUT 2 )
+	{							 //                        (ET buff VAUT "12\0")
+		*line = ft_realloc(&*line, i + 1); // ALLOCATION DE *line (2 octets)
+		if (!*line) // FAUX, on viens de faire l'allocation
+			return (-1);
+		while (++j < i)				   // 2 < 2 FAUX
+			(*line)[j] = (*buff)[j];   // *line = "12"
+		(*line)[j] = '\0';			   // *line = "12\0"
+	}
+	// positionner le i sur le 1er '\n' ou '\0'
 	i = -1;
-	while ((*line)[++i] != '\n' && (*line)[i])
+	while ((*buff)[++i] != '\n' && (*buff)[i]) // FAUX *buff[0] = '\n'
 		;
-	if ((*line)[i] == '\n')
+	// - ET SI OUI, STOCKER LA PARTIE D'APRES LE '\n' DANS *buff grace a buff2
+	buff2 = ft_realloc(&buff2, ft_strlen(*buff) - i); // ALLOCATION DE *buff 5octets
+	if (!buff2) // FAUX, on viens de faire l'allocation
+		return (-1);
+	// cas particulier si il y a un '\0' apres le '\n'
+	if ((ft_strlen(*buff) - i) == 1)
+		buff2[0] = '\0';
+	else
 	{
-		(*line)[i] = '\0';
-		return (1);
+		while ((*buff)[++j])		   // -------- CODER A PARTIR D'ICI --------
+			(*buff)[++i] = (*buff)[j]; // -------- CODER A PARTIR D'ICI --------
+		(*buff)[++i] = '\0';		   // -------- CODER A PARTIR D'ICI --------
 	}
-	printf("|\t\t\tSAVE BUFF FIN\n");
-	return (0);
-}
-
-//								*line,		buff
-char	*ft_strjoin_and_free(char *s1, char *s2)
-{
-	printf("|\t\t\tJOIN AND FREE\n");
-	char	*str;
-	size_t	size;
-
-	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	str = (char *)malloc(size);
-	//str = (char *)malloc(10);
-	printf("|\t\t\t|\t\t\tMALLOC FAIT\n");
-// ---------------------------------------- ALLOCATION, str = 3 octets
-	printf("|\t\t\t|\t\t\tSTR = NULL ?\n");
-	if (str == NULL)
-		return (NULL);
-	printf("|\t\t\t|\t\t\tFT_STRCPY(STR, S1)\n");
-	ft_strcpy(str, s1);
-	printf("|\t\t\t|\t\t\tFT_STRCAT(STR, S2)\n");
-	ft_strcat(str, s2);
-	printf("|\t\t\t|\t\t\tstr = \"%s\"\n", str);
-	if (s1 != NULL)
+//	}
+	// SI NON, TOUT STOCKER DANS *line ET REVERIFIER TANT QU'ON TROUVE PAS DE '\n'
+	else
 	{
-		printf("|\t\t\t|\t\t\tFREE(S1) <=> FREE(*line)\n");
-		//free(s1); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// ---------------------------------------- LIBERATION DE MEMOIRE, free(s1)
-	}
-	printf("|\t\t\tJOIN AND FREE FIN\n");
-	return (str);
-}
-
-
-// *line = "\n\n\nbonjour BONJOUR salut SALUT comment ca va ? COMMENT CA VA ? coucou COUCOU t'es ou ? T'es ou ?\n93\n\n\n\0"
-//         "0 1 2 3456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456 789 0 1 2 "
-//         "0            1         2         3         4         5         6         7         8         9           0     "
-int		get_next_line(const int fd, char **line)
-{
-	static unsigned int		nbc = 0;
-	char					buff[BUFF_SIZE + 1];
-	int						rd;
-	int						i;
-
-	i = -1;
-	if (*line)
-		if (!(nbc = 0) && ft_save_buff(&*line) == 1)
-			return (1);
-	printf("LECTURE DU FICHIER\n");
-	rd = read(fd, buff, BUFF_SIZE);
-	if (!rd)
-		return (0);
-	buff[rd] = '\0';
-	if (*line && (*line)[0] != '\0')
-	{
-		printf("*line = \"%s\"\n", *line);
-		printf(" buff = \"%s\"\n",  buff);
-		*line = ft_strjoin_and_free(*line, buff);
+		*line = ft_realloc(&*line, rd + 1); // =  octets	// ALLOCATION DE *line
 		if (!*line)
 			return (-1);
-		printf(" buff = \"%s\"\n", buff);
+		while ((*buff)[++j])		 // *buff[] = ''
+			(*line)[j] = (*buff)[j]; // *line    = ""
+		(*line)[++j] = '\0';		 // *line    = ""
 	}
-	if (!(*line))
-		while (buff[++i] != '\n' && buff[i])
-			++nbc;
-	else
-		while ((*line)[++i] != '\n' && (*line)[i])
-			++nbc;
-	*line = ft_strdup(buff);
-// ---------------------------------------- ALLOCATION, *line = 2 octets
-	if (!*line)
-		return (-1);
-	printf("nbc = %u\n", nbc);
-	printf("ft_strlen(*line) = %zu\n", ft_strlen(*line));
-	if (nbc == ft_strlen(*line))
-	{
-		printf("*line = \"%s\"\n", *line);
-		printf("nbc = %u\n", nbc);
-		printf("ft_strlen(*line) = %zu\n", ft_strlen(*line));
-		while (nbc == ft_strlen(*line))
-		{
-			printf("RELECTURE DU FICHIER\n");
-			rd = read(fd, buff, BUFF_SIZE);
-			printf("RELECTURE FAITE\n");
-			if (!rd)
-				return (0);
-			buff[rd] = '\0';
-			printf("BUFF[RD]='\\0'\n");
-			printf("buff = \"%s\"\n", buff);
-			*line = ft_strjoin_and_free(*line, buff);
-// ---------------------------------------- LIBERATION DE MEMOIRE, free(*line)
-// ---------------------------------------- ALLOCATION, *line = 65 octets
-			if (!*line)
-				return (-1);
-			printf("*line = \"%s\"\n", *line);
-			while ((*line)[i] != '\n' && (*line)[i])
-			{
-				++nbc;
-				++i;
-			}
-			printf("nbc = %u\n", nbc);
-			printf("ft_strlen(*line) = %zu\n", ft_strlen(*line));
-		}
-	}
-	if (nbc != ft_strlen(*line))
-		(*line)[i] = '\0';
-	if (rd != 0)
-		return (1);
-	return (0);
+	return (1);
 }
 
+// txt = "\n\0"
+//		 "0 1 "
+int		get_next_line(const int fd, char **line)
+{
+//	static int		nbc = 0;
+	static char		*buff;	// = ""
+	static int		rd = 0;	// = 0
+
+	// INITIALISATION DU BUFFER
+	if (!buff && !(rd = 0)) // VRAI et rd = 0
+	{
+		buff = (char *)malloc(BUFF_SIZE + 1); // = 33octets	// ALLOCATION DE buff
+		if (!buff) // FAUX, on viens de faire l'allocation
+			return (-1);
+	}
+	if (rd == 0 || rd == BUFF_SIZE) // VRAI rd = 0
+	{
+		rd = read(fd, buff, BUFF_SIZE); // rd = 1 et buff = "\n"
+		if (!rd) // !1 = FAUX
+			return (0);
+		buff[rd] = '\0'; // buff = "\n\0"
+	}
+	if (ft_save_buff_in_the_line(&buff, &*line, rd) == -1)
+		return (-1);
+	if (rd == BUFF_SIZE)
+		return (1);
+	else
+		return (0);
+}
+
+// txt = "\n\0"
+//		 "0 1 "
 int		main(int ac, char **av)
 {
 	int		fd;
-	char	*line = NULL;
+	char	*line;
 	int		gnl;
 
 	gnl = 1;
@@ -190,16 +146,10 @@ int		main(int ac, char **av)
 	{
 		gnl = get_next_line(fd, &line);
 		printf("line = \"%s\"\n", line);
+		free(line);
  		if (gnl != 1)
- 		{
- 			free(line);
 			printf("GNL return : %d\n", gnl);
- 		}
 		printf("_______________________________________________________________\n");
 	}
 	return (0);
 }
-
-// test sur /dev/random -> pour etre sur
-// probleme de taille de BUFFSIZE
-// TEST EN COURS SUR TXT2.TXT (j'en suis au debut de la 2eme ligne ("\n"))

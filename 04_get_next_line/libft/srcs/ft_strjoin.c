@@ -6,7 +6,7 @@
 /*   By: kemesure <kemesure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:06:23 by kemesure          #+#    #+#             */
-/*   Updated: 2018/03/17 17:22:44 by kemesure         ###   ########.fr       */
+/*   Updated: 2018/04/25 15:10:40 by kemesure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,6 @@
 **	des deux chaines.
 */
 
-// Dans gnl la ligne qui appelle ft_strjoin() :
-// *line = ft_strjoin(*line, buff);
-
-// s1 = "abcdefghijklmnopqrstuvwxyz012345\0"
-//      "012345678901234567890123456789012 "
-//      "0         1         2         3   "
-// s2 = "6789\nabcdefghijklmnopqrstuvwxyz\n\0"
-//      "01234 567890123456789012345678901 2 "
-//      "0          1         2         3    "
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
